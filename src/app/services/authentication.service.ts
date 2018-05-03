@@ -28,7 +28,7 @@ export class AuthenticationService {
     var query = '?username=' + user.username + '&password=' + user.password;
 
     return new Promise((resolve, reject) => {
-      this.http.get('http://localhost:3001/users' + query).subscribe(
+      this.http.get('http://' + window.location.hostname + ':3001/users' + query).subscribe(
         data => {
           this.user = data[0];
         },
