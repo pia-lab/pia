@@ -46,11 +46,11 @@ pipeline {
             }
         }
         
-        stage ('Run Server') {
+       /* stage ('Run Server') {
             steps {
                 sh ". ${env.NVM_DIR}/nvm.sh && ng serve"
             }
-        }
+        }*/
         
         stage ('Run Test') {
             steps {
