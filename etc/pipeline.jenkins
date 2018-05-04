@@ -7,8 +7,9 @@ pipeline {
         }
     }
     
-   /* environment {
-    }*/
+    environment {
+        NVM_DIR="$HOME/.nvm"
+    }
     
     options {
         timeout(time: 1, unit: 'HOURS')
@@ -21,14 +22,14 @@ pipeline {
     	stage ('Where Am I') {
             steps {
                 sh "uname -a"
-                sh "npm -v"
-                sh "node -v"
+                sh ". $NVM_DIR/nvm.sh && npm -v"
+                sh ". $NVM_DIR/nvm.sh && node -v"
             }
         }
         
         stage ('Composer Install') {
             steps {
-                sh "npm install --no-interaction"
+                sh ". $NVM_DIR/nvm.sh && npm install --no-interaction"
             }
         }
 
@@ -40,13 +41,13 @@ pipeline {
         
         stage ('Build Project') {
             steps {
-                sh "ng build"
+                sh ". $NVM_DIR/nvm.sh && ng build"
             }
         }
         
         stage ('Run Server') {
             steps {
-                sh "ng serve"
+                sh ". $NVM_DIR/nvm.sh && ng serve"
             }
         }
         
