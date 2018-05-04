@@ -8,7 +8,7 @@ pipeline {
     }
     
     environment {
-        NVM_DIR="/home/jenkins/.nvm/"
+        NVM_DIR="/home/jenkins/.nvm"
         /* warnings, can't use "$HOME/.nvm" as it is not the same in docker and host ... */     
     }
     
@@ -23,14 +23,14 @@ pipeline {
     	stage ('Where Am I') {
             steps {
                 sh "uname -a"
-                sh ". $NVM_DIR/nvm.sh && npm -v"
-                sh ". $NVM_DIR/nvm.sh && node -v"
+                sh ". ${env.NVM_DIR}/nvm.sh && npm -v"
+                sh ". ${env.NVM_DIR}/nvm.sh && node -v"
             }
         }
         
         stage ('Composer Install') {
             steps {
-                sh ". $NVM_DIR/nvm.sh && npm install --no-interaction"
+                sh ". ${env.NVM_DIR}/nvm.sh && npm install --no-interaction"
             }
         }
 
@@ -42,13 +42,13 @@ pipeline {
         
         stage ('Build Project') {
             steps {
-                sh ". $NVM_DIR/nvm.sh && ng build"
+                sh ". ${env.NVM_DIR}/nvm.sh && ng build"
             }
         }
         
         stage ('Run Server') {
             steps {
-                sh ". $NVM_DIR/nvm.sh && ng serve"
+                sh ". ${env.NVM_DIR}/nvm.sh && ng serve"
             }
         }
         
