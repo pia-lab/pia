@@ -247,6 +247,17 @@ export class PiaService {
       });
     }
 
+    if (!is_duplicate) {
+      // Create attachments
+      data.attachments.forEach(attachment => {
+        attachment.id = null;
+        const attachmentModel = new AttachmentModel();
+        attachmentModel.fromJson(attachment);
+        attachmentModel.pia_id = pia.id;
+        this.attachmentApi.create(attachmentModel).subscribe();
+      });
+    }
+
     await this.piaApi.computeProgress(pia).toPromise();
     this.pias.push(pia);
   }
