@@ -141,7 +141,8 @@ export class PiaService {
           answers: null,
           measures: null,
           evaluations: null,
-          comments: null
+          comments: null,
+          attachments: null
         }
         Observable
           .forkJoin(
@@ -149,14 +150,14 @@ export class PiaService {
             this.measureApi.getAll(id),
             this.evaluationApi.getAll(id),
             this.commentApi.getAll(id),
-          //this.attachmentApi.getAll(id),
+            this.attachmentApi.getAll(id),
         )
           .subscribe((values) => {
             data.answers = values[0];
             data.measures = values[1];
             data.evaluations = values[2];
             data.comments = values[3];
-            //data.attachments = values[4];
+            data.attachments = values[4];
             resolve(data);
           });
       });
