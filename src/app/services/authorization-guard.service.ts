@@ -7,6 +7,7 @@ export class AuthorizationGuardService implements CanActivate {
   constructor(private router: Router) {}
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+    
   	let allowed = true;
   	const requiredRoles = route.data.roles;
   	const userRoles = localStorage.getItem('roles');

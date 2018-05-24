@@ -21,15 +21,16 @@ export class AuthenticationComponent implements OnInit {
   }
 
   onSubmit() {
+
     this.authService.authenticate(this.user).then(
-      user => {
-      	if (user === undefined) {
-      		this.error = true;
+      (user) => {
 
-      		return;
-      	}
+        if (user === undefined) {
+          this.error = true;
+          return;
+        }
 
-      	this.router.navigate(['home']);
+        this.router.navigate(['home']);
       },
       () => {
         this.error = true
