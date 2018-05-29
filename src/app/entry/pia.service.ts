@@ -132,34 +132,9 @@ export class PiaService {
    * @memberof PiaService
    */
   exportData(id: number): Promise<any> {
-
     return new Promise((resolve, reject) => {
-
-      this.piaApi.get(id).subscribe((pia: PiaModel) => {
-        const data = {
-          pia: pia,
-          answers: null,
-          measures: null,
-          evaluations: null,
-          comments: null,
-          attachments: null
-        }
-        Observable
-          .forkJoin(
-            this.answerApi.getAll(id),
-            this.measureApi.getAll(id),
-            this.evaluationApi.getAll(id),
-            this.commentApi.getAll(id),
-            this.attachmentApi.getAll(id),
-        )
-          .subscribe((values) => {
-            data.answers = values[0];
-            data.measures = values[1];
-            data.evaluations = values[2];
-            data.comments = values[3];
-            data.attachments = values[4];
-            resolve(data);
-          });
+      this.piaApi.export(id).subscribe((json) => {
+        resolve(json);
       });
     });
   }
