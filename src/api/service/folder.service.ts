@@ -26,6 +26,16 @@ export class FolderService extends BaseService<FolderModel> {
         folder.pias.forEach((pia, index, pias) => {
           pias[index] = (new PiaModel()).fromJson(pia);
         });
+        folder.children.forEach((child, index, children) => {
+          children[index] = (new FolderModel()).fromJson(child);
+        });
+        if (folder.parent !== null) {
+          folder.parent = (new FolderModel()).fromJson(folder.parent)
+        }
+
+        if (folder.root !== null) {
+          folder.root = (new FolderModel()).fromJson(folder.root)
+        }
       });
       return folders;
    });
@@ -36,6 +46,16 @@ export class FolderService extends BaseService<FolderModel> {
       folder.pias.forEach((pia, index, pias) => {
         pias[index] = (new PiaModel()).fromJson(pia);
       });
+      folder.children.forEach((child, index, children) => {
+        children[index] = (new FolderModel()).fromJson(child);
+      });
+      if (folder.parent !== null) {
+        folder.parent = (new FolderModel()).fromJson(folder.parent)
+      }
+
+      if (folder.root !== null) {
+        folder.root = (new FolderModel()).fromJson(folder.root)
+      }
       return folder;
     });
   }

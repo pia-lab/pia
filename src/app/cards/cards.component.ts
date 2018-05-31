@@ -49,7 +49,7 @@ export class CardsComponent implements OnInit, OnDestroy {
       localStorage.setItem('sortOrder', this.sortOrder);
       localStorage.setItem('sortValue', this.sortValue);
     }
-    // this.refreshContent();
+
     this.piaForm = new FormGroup({
       name: new FormControl(),
       author_name: new FormControl(),
@@ -62,14 +62,15 @@ export class CardsComponent implements OnInit, OnDestroy {
     this.paramsSubscribe = this.route.params.subscribe(
       (params: Params) => {
         this.viewStyle.view = params['view'];
+        this.folderId = (params.id ? params.id : null)
+        if (localStorage.getItem('homepageDisplayMode') === 'list') {
+          this.viewOnList();
+        } else {
+          this.viewOnCard();
+        }
       }
     );
-    this.route.params.subscribe(params => { this.folderId = (params.id ? params.id : null) });
-    if (localStorage.getItem('homepageDisplayMode') === 'list') {
-      this.viewOnList();
-    } else {
-      this.viewOnCard();
-    }
+
     this.importPiaForm = new FormGroup({
       import_file: new FormControl('', [])
     });
@@ -193,10 +194,9 @@ export class CardsComponent implements OnInit, OnDestroy {
     } else {
       folder = folderOrFolderCollection[0];
     }
+    this._piaService.currentFolder = folder;
     this._piaService.pias = folder.pias;
     this._piaService.folders = folder.children;
-    this._piaService.parentFolder = folder.parent;
-    this._piaService.isRootFolder = folder.parent != null && folder.parent.root == null;
   }
 
   /**

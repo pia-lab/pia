@@ -17,7 +17,7 @@ export class PiaService {
 
   pias = [];
   folders = [];
-  parentFolder = null
+  currentFolder: FolderModel = null
   isRootFolder: boolean = false
   pia: PiaModel = new PiaModel();
   answer: AnswerModel = new AnswerModel();
@@ -43,8 +43,8 @@ export class PiaService {
   /**
    * Get the current PIA.
    * @return { Observable<PiaModel> }
-  * @memberof PiaService
-  */
+   * @memberof PiaService
+   */
   retrieveCurrentPIA(id: number): Observable<PiaModel> {
 
     return this.piaApi.get(id).map((thePia: PiaModel) => {

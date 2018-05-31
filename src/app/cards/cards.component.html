@@ -133,7 +133,7 @@
             </form>
           </div>
         </div>
-        <div class="pia-newBlock-hint" *ngIf="_piaService.pias && _piaService.pias.length === 0" id="pia-rocket">
+        <div class="pia-newBlock-hint" *ngIf="false && _piaService.pias && _piaService.pias.length === 0" id="pia-rocket">
           <span class="pia-icons pia-icon-small-arrow"></span>
           <div>
             <span class="pia-icons pia-icon-rocket"></span>
@@ -141,13 +141,13 @@
           </div>
         </div>
       </div>
-      <div class="pia-folder-item parent" *ngIf="_piaService.parentFolder != null">
+      <div class="pia-folder-item parent" *ngIf="_piaService.currentFolder && _piaService.currentFolder.parent != null">
         <div class="folder-icon">
           <i class="fa fa-level-up" aria-hidden="true"></i>
         </div>
         <div class="bottom-actions">
-          <ng-template [ngIf]="!_piaService.isRootFolder" [ngIfElse]="rootFolder">
-            <a class="btn btn-green" routerLink="/home/{{_piaService.parentFolder.id}}" href="#">
+          <ng-template [ngIf]="_piaService.currentFolder.parent.id != _piaService.currentFolder.root.id" [ngIfElse]="rootFolder">
+            <a class="btn btn-green" routerLink="/home/{{_piaService.currentFolder.parent.id}}" href="#">
               {{ 'homepage.cards.folder.parent' | translate }}
             </a>
           </ng-template>
