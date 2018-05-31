@@ -180,7 +180,6 @@ export class CardsComponent implements OnInit, OnDestroy {
   }
 
   fetchFolders() {
-    console.info(this.folderId);
     if (this.folderId !== null) {
       return this.folderApi.get(this.folderId).toPromise()
     }
@@ -197,6 +196,7 @@ export class CardsComponent implements OnInit, OnDestroy {
     this._piaService.pias = folder.pias;
     this._piaService.folders = folder.children;
     this._piaService.parentFolder = folder.parent;
+    this._piaService.isRootFolder = folder.parent != null && folder.parent.root == null;
   }
 
   /**

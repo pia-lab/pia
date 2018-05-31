@@ -143,10 +143,10 @@
       </div>
       <div class="pia-folder-item parent" *ngIf="_piaService.parentFolder != null">
         <div class="folder-icon">
-          <i class="fa fa-folder-open" aria-hidden="true"></i>
+          <i class="fa fa-level-up" aria-hidden="true"></i>
         </div>
         <div class="bottom-actions">
-          <ng-template [ngIf]="_piaService.parentFolder.root != null" [ngIfElse]="rootFolder">
+          <ng-template [ngIf]="!_piaService.isRootFolder" [ngIfElse]="rootFolder">
             <a class="btn btn-green" routerLink="/home/{{_piaService.parentFolder.id}}" href="#">
               {{ 'homepage.cards.folder.parent' | translate }}
             </a>

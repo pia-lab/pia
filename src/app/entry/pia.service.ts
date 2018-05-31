@@ -18,6 +18,7 @@ export class PiaService {
   pias = [];
   folders = [];
   parentFolder = null
+  isRootFolder: boolean = false
   pia: PiaModel = new PiaModel();
   answer: AnswerModel = new AnswerModel();
   data: { sections: any };
