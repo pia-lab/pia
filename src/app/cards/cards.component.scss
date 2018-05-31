@@ -306,6 +306,9 @@
       &:hover {
         background-color: rgba(62, 224, 149, 0.25);
       }
+      & > td > i.fa {
+        color: $pia-green !important;
+      }
     }
   }
 }

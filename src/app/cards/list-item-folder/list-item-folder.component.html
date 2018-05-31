@@ -1,5 +1,5 @@
 <td class="folder-listsBlock-item">
-  <div contenteditable (focusout)="onFocusOut('name', $event)">{{ folder.name }}</div>
+  <i class="fa fa-folder"></i>&nbsp;<div contenteditable (focusout)="onFocusOut('name', $event)">{{ folder.name }}</div>
 </td>
 <td class="folder-listsBlock-item" colspan="4">
   <time *ngIf="folder.updated_at">{{ folder.updated_at | date: 'dd/MM/yyyy' }}</time>
