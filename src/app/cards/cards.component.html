@@ -41,11 +41,10 @@
             </ul>
           </div>
         </div>
-        <div *ngIf="viewStyle.view === 'list'" class="pia-filtersBlock-buttons">
-          <button type="button" class="btn btn-green" (click)="_modalsService.openModal('modal-list-new-pia')">
-            <i class="fa fa-folder-open" aria-hidden="true"></i>{{ 'homepage.filters.new_pia' | translate }}</button>
-          <button type="button" (click)="importPia()" class="btn btn-green">
-            <i class="fa fa-upload" aria-hidden="true"></i>{{ 'homepage.filters.import_pia' | translate }}</button>
+        <div class="pia-filtersBlock-buttons">
+          <button *ngxPermissionsOnly="['CanCreatePIA']" type="button" class="btn btn-green" (click)="_modalsService.openModal('modal-list-new-pia')"><i class="fa fa-plus" aria-hidden="true"></i>{{ 'homepage.filters.new_pia' | translate }}</button>
+          <button routerLink="/templates" *ngxPermissionsOnly="['CanCreatePIA']" type="button" class="btn btn-green"><i class="fa fa-folder-open" aria-hidden="true"></i>{{ 'homepage.filters.new_from_template' | translate }}</button>
+          <button type="button" (click)="importPia()" class="btn btn-green"><i class="fa fa-upload" aria-hidden="true"></i>{{ 'homepage.filters.import_pia' | translate }}</button>
         </div>
         <div class="pia-filtersBlock-hint" *ngIf="viewStyle.view === 'list' && _piaService.pias && _piaService.pias.length === 0">
           <div>
