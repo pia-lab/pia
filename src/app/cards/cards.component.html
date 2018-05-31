@@ -148,12 +148,12 @@
         <div class="bottom-actions">
           <ng-template [ngIf]="_piaService.parentFolder.root != null" [ngIfElse]="rootFolder">
             <a class="btn btn-green" routerLink="/home/{{_piaService.parentFolder.id}}" href="#">
-              {{ 'homepage.cards.folder.parent' | translate }} parent
+              {{ 'homepage.cards.folder.parent' | translate }}
             </a>
           </ng-template>
           <ng-template #rootFolder>
               <a class="btn btn-green" routerLink="/home" href="#">
-                {{ 'homepage.cards.folder.parent' | translate }} root
+                {{ 'homepage.cards.folder.parent' | translate }}
               </a>
           </ng-template>
         </div>
