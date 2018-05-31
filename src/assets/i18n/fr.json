@@ -101,6 +101,7 @@
     },
     "lists": {
       "column_pia": "PIA",
+      "column_pias_folders": "PIA / Dossier",
       "column_updated_at": "Ouvert le",
       "column_author": "Saisie",
       "column_evaluation": "Évaluation",
@@ -112,6 +113,7 @@
       "item": {
         "tools": {
           "consult": "Consulter",
+          "consult_folder": "Consulter le dossier",
           "edit": "Éditer",
           "export": "Exporter",
           "duplicate": "Dupliquer",

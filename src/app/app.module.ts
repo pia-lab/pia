@@ -59,6 +59,7 @@ import { CardsRoutingModule } from 'app/cards/cards-routing.module';
 import { ApiModule } from '@api/api.module';
 import { SecurityModule } from '@security/security.module';
 import { FolderItemComponent } from './cards/folder-item/folder-item.component';
+import { ListItemFolderComponent } from './cards/list-item-folder/list-item-folder.component';
 
 const providersList: any = [
   AppDataService,
@@ -126,7 +127,8 @@ export function createTranslateLoader(http: HttpClient) {
     SafeHtmlPipe,
     Nl2brPipe,
     AboutComponent,
-    FolderItemComponent
+    FolderItemComponent,
+    ListItemFolderComponent
   ],
   imports: [
     BrowserModule,

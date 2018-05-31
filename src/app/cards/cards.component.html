@@ -152,9 +152,9 @@
             </a>
           </ng-template>
           <ng-template #rootFolder>
-              <a class="btn btn-green" routerLink="/home" href="#">
-                {{ 'homepage.cards.folder.parent' | translate }}
-              </a>
+            <a class="btn btn-green" routerLink="/home" href="#">
+              {{ 'homepage.cards.folder.parent' | translate }}
+            </a>
           </ng-template>
         </div>
       </div>
@@ -168,7 +168,7 @@
             <tr>
               <th>
                 <a (click)="sortBy('name')">
-                  <span>{{ 'homepage.lists.column_pia' | translate }}</span>
+                  <span>{{ 'homepage.lists.column_pias_folders' | translate }}</span>
                   <i *ngIf="sortValue === 'name'" class="fa fa-caret-{{sortOrder}}"></i>
                 </a>
               </th>
@@ -217,6 +217,28 @@
             </tr>
           </thead>
           <tbody>
+            <tr class="list-item-folder" *ngIf="_piaService.currentFolder && _piaService.currentFolder.parent != null">
+              <td class="folder-listsBlock-item" colspan="8">
+                <div>{{ 'homepage.cards.folder.parent' | translate }}</div>
+              </td>
+              <td class="folder-listsBlock-item">
+                <div class="folder-listsBlock-item-actions">
+                  <ng-template [ngIf]="_piaService.currentFolder && _piaService.currentFolder.parent && _piaService.currentFolder.parent.id != _piaService.currentFolder.root.id" [ngIfElse]="rootFolderList">
+                    <a class="btn pia-tooltip" routerLink="/home/{{_piaService.currentFolder.parent.id}}" href="#">
+                      <i class="fa fa-level-up" aria-hidden="true"></i>
+                      <span class="pia-tooltip-text">{{ 'homepage.cards.folder.parent' | translate }}</span>
+                    </a>
+                  </ng-template>
+                  <ng-template #rootFolderList>
+                    <a class="btn pia-tooltip" routerLink="/home" href="#">
+                      <i class="fa fa-level-up" aria-hidden="true"></i>
+                      <span class="pia-tooltip-text">{{ 'homepage.cards.folder.parent' | translate }}</span>
+                    </a>
+                  </ng-template>
+                </div>
+              </td>
+            </tr>
+            <tr class="app-list-item-folder" [attr.data-id]="folder.id" *ngFor="let folder of _piaService.folders;let i=index" [folder]="folder"></tr>
             <tr class="app-list-item" [ngClass]="{'pia-exampleBlock': pia.is_example}" [attr.data-id]="pia.id" *ngFor="let pia of _piaService.pias;let i=index"
               [pia]="pia"></tr>
           </tbody>

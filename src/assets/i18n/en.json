@@ -91,6 +91,7 @@
     },
     "lists": {
       "column_pia": "PIA",
+      "column_pias_folders": "PIA / Folder",
       "column_updated_at": "Last opened",
       "column_author": "Editing",
       "column_evaluation": "Review",
@@ -102,6 +103,7 @@
       "item": {
         "tools": {
           "consult": "Consult",
+          "consult_folder": "Consult Folder",
           "edit": "Edit",
           "export": "Export",
           "duplicate": "Duplicate",
