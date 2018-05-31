@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-folder-item',
@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./folder-item.component.scss']
 })
 export class FolderItemComponent implements OnInit {
-
+  @Input() folder
+  @Input() previousFolder
   constructor() { }
 
   ngOnInit() {

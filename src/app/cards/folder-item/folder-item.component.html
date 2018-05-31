@@ -2,8 +2,8 @@
   <div class="folder-icon">
       <i class="fa fa-folder-open" aria-hidden="true"></i>
   </div>
-  <input class="folder-title" value="My Super Folder">
+  <input class="folder-title" [value]="folder.name">
   <div class="bottom-actions">
-    <a class="btn btn-green" ng-reflect-router-link="/home" href="#">Consulter le dossier</a>
+    <a class="btn btn-green" routerLink="/home/{{folder.id}}" href="#">{{ 'homepage.cards.folder.open' | translate }}</a>
   </div>
 </div>

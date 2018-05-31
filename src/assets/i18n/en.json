@@ -71,6 +71,11 @@
       "creation_status": "Creation",
       "start": "Start",
       "placeholder_start": "All fields must be filled",
+      "folder": {
+        "title": "Folder",
+        "parent": "Parent",
+        "open": "Open folder"
+      },
       "item": {
         "tools": {
           "export": "Export",

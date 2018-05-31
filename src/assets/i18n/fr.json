@@ -81,6 +81,11 @@
       "creation_status": "Création",
       "start": "Commencer",
       "placeholder_start": "Tous les champs doivent être remplis",
+      "folder": {
+        "title": "Dossier",
+        "parent": "Dossier parent",
+        "open": "Consulter le dossier"
+      },
       "item": {
         "tools": {
           "export": "Exporter",

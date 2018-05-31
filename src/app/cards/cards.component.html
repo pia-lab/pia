@@ -42,8 +42,10 @@
           </div>
         </div>
         <div *ngIf="viewStyle.view === 'list'" class="pia-filtersBlock-buttons">
-          <button type="button" class="btn btn-green" (click)="_modalsService.openModal('modal-list-new-pia')"><i class="fa fa-folder-open" aria-hidden="true"></i>{{ 'homepage.filters.new_pia' | translate }}</button>
-          <button type="button" (click)="importPia()" class="btn btn-green"><i class="fa fa-upload" aria-hidden="true"></i>{{ 'homepage.filters.import_pia' | translate }}</button>
+          <button type="button" class="btn btn-green" (click)="_modalsService.openModal('modal-list-new-pia')">
+            <i class="fa fa-folder-open" aria-hidden="true"></i>{{ 'homepage.filters.new_pia' | translate }}</button>
+          <button type="button" (click)="importPia()" class="btn btn-green">
+            <i class="fa fa-upload" aria-hidden="true"></i>{{ 'homepage.filters.import_pia' | translate }}</button>
         </div>
         <div class="pia-filtersBlock-hint" *ngIf="viewStyle.view === 'list' && _piaService.pias && _piaService.pias.length === 0">
           <div>
@@ -52,10 +54,10 @@
           </div>
         </div>
         <div class="hide">
-            <form enctype="multipart/form-data" [formGroup]="importPiaForm">
-              <input type="file" formControlName="import_file" id="import_file" (change)="importPia($event)" class="hide">
-            </form>
-            <a href="" id="pia-exportBlock"></a>
+          <form enctype="multipart/form-data" [formGroup]="importPiaForm">
+            <input type="file" formControlName="import_file" id="import_file" (change)="importPia($event)" class="hide">
+          </form>
+          <a href="" id="pia-exportBlock"></a>
         </div>
       </div>
     </div>
@@ -68,7 +70,9 @@
             <div class="pia-newBlock-item-new-title">{{ 'homepage.cards.new_pia' | translate }}</div>
             <div class="pia-newBlock-item-new-btn">
               <i class="fa fa-folder-open" aria-hidden="true"></i>
-              <button class="btn" (click)="newPIA()" type="button" title="{{ 'homepage.cards.placeholder_new_pia' | translate }}"><span class="pia-icons pia-icon-pia-plus"></span></button>
+              <button class="btn" (click)="newPIA()" type="button" title="{{ 'homepage.cards.placeholder_new_pia' | translate }}">
+                <span class="pia-icons pia-icon-pia-plus"></span>
+              </button>
             </div>
           </div>
           <span>{{ 'homepage.cards.or' | translate }}</span>
@@ -76,29 +80,37 @@
             <div class="pia-newBlock-item-import-title">{{ 'homepage.cards.import_pia' | translate }}</div>
             <div class="pia-newBlock-item-import-btn">
               <i class="fa fa-upload" aria-hidden="true"></i>
-              <button class="btn" (click)="importPia()" type="button" title="{{ 'homepage.cards.placeholder_import_pia' | translate }}"><span class="pia-icons pia-icon-pia-plus"></span></button>
+              <button class="btn" (click)="importPia()" type="button" title="{{ 'homepage.cards.placeholder_import_pia' | translate }}">
+                <span class="pia-icons pia-icon-pia-plus"></span>
+              </button>
             </div>
           </div>
         </div>
         <div class="pia-cardsBlock pia-editBlock back">
           <div class="pia-cardsBlock-item pia-editBlock-item">
-            <button class="btn" (click)="reversePIA()" type="button" title="{{ 'homepage.cards.title_close_creation' | translate }}"><span class="pia-icons pia-icon-close"></span></button>
+            <button class="btn" (click)="reversePIA()" type="button" title="{{ 'homepage.cards.title_close_creation' | translate }}">
+              <span class="pia-icons pia-icon-close"></span>
+            </button>
             <form class="pia-cardsBlock-item-form" (ngSubmit)="onSubmit(piaForm)" [formGroup]="piaForm">
               <div>
                 <label for="name">{{ 'homepage.cards.pia_name' | translate }}</label>
-                <input formControlName="name" type="text" placeholder="{{ 'homepage.cards.placeholder_pia_name' | translate }}" id="name" required>
+                <input formControlName="name" type="text" placeholder="{{ 'homepage.cards.placeholder_pia_name' | translate }}" id="name"
+                  required>
               </div>
               <div>
                 <label for="author_name">{{ 'homepage.cards.author' | translate }}</label>
-                <input formControlName="author_name" type="text" placeholder="{{ 'homepage.cards.placeholder_author' | translate }}" id="author_name" required>
+                <input formControlName="author_name" type="text" placeholder="{{ 'homepage.cards.placeholder_author' | translate }}" id="author_name"
+                  required>
               </div>
               <div>
                 <label for="evaluator_name">{{ 'homepage.cards.evaluation' | translate }}</label>
-                <input formControlName="evaluator_name" type="text" placeholder="{{ 'homepage.cards.placeholder_evaluation' | translate }}" id="evaluator_name" required>
+                <input formControlName="evaluator_name" type="text" placeholder="{{ 'homepage.cards.placeholder_evaluation' | translate }}"
+                  id="evaluator_name" required>
               </div>
               <div>
                 <label for="validator_name">{{ 'homepage.cards.validation' | translate }}</label>
-                <input formControlName="validator_name" type="text" placeholder="{{ 'homepage.cards.placeholder_validation' | translate }}" id="validator_name" required>
+                <input formControlName="validator_name" type="text" placeholder="{{ 'homepage.cards.placeholder_validation' | translate }}"
+                  id="validator_name" required>
               </div>
               <div class="pia-cardsBlock-item-date" *ngIf="newPia">
                 <div>{{ 'homepage.cards.validation' | translate }}</div>
@@ -129,7 +141,24 @@
           </div>
         </div>
       </div>
-      <app-folder-item></app-folder-item>
+      <div class="pia-folder-item parent" *ngIf="_piaService.parentFolder != null">
+        <div class="folder-icon">
+          <i class="fa fa-folder-open" aria-hidden="true"></i>
+        </div>
+        <div class="bottom-actions">
+          <ng-template [ngIf]="_piaService.parentFolder.root != null" [ngIfElse]="rootFolder">
+            <a class="btn btn-green" routerLink="/home/{{_piaService.parentFolder.id}}" href="#">
+              {{ 'homepage.cards.folder.parent' | translate }} parent
+            </a>
+          </ng-template>
+          <ng-template #rootFolder>
+              <a class="btn btn-green" routerLink="/home" href="#">
+                {{ 'homepage.cards.folder.parent' | translate }} root
+              </a>
+          </ng-template>
+        </div>
+      </div>
+      <app-folder-item *ngFor="let folder of _piaService.folders;let i=index" [folder]="folder" [previousFolder]="i > 0 ? _piaService.folders[i-1] : null"></app-folder-item>
       <app-card-item *ngFor="let pia of _piaService.pias;let i=index" [pia]="pia" [previousPia]="i > 0 ? _piaService.pias[i-1] : null"></app-card-item>
     </div>
     <ng-template #viewList>
@@ -188,7 +217,8 @@
             </tr>
           </thead>
           <tbody>
-            <tr class="app-list-item" [ngClass]="{'pia-exampleBlock': pia.is_example}" [attr.data-id]="pia.id" *ngFor="let pia of _piaService.pias;let i=index" [pia]="pia"></tr>
+            <tr class="app-list-item" [ngClass]="{'pia-exampleBlock': pia.is_example}" [attr.data-id]="pia.id" *ngFor="let pia of _piaService.pias;let i=index"
+              [pia]="pia"></tr>
           </tbody>
         </table>
       </div>

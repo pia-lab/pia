@@ -9,13 +9,15 @@ import { ActionPlanService } from 'app/entry/entry-content/action-plan//action-p
 
 import { Observable } from 'rxjs/Rx';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { PiaModel, AnswerModel, CommentModel, EvaluationModel, MeasureModel, AttachmentModel } from '@api/models';
+import { PiaModel, AnswerModel, CommentModel, EvaluationModel, MeasureModel, AttachmentModel, FolderModel } from '@api/models';
 import { PiaApi, AnswerApi, CommentApi, EvaluationApi, MeasureApi, AttachmentApi } from '@api/services';
 
 @Injectable()
 export class PiaService {
 
   pias = [];
+  folders = [];
+  parentFolder = null
   pia: PiaModel = new PiaModel();
   answer: AnswerModel = new AnswerModel();
   data: { sections: any };
