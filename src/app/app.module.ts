@@ -128,7 +128,7 @@ export function createTranslateLoader(http: HttpClient) {
     SafeHtmlPipe,
     Nl2brPipe,
     AboutComponent,
-    TemplatesComponent
+    TemplatesComponent,
     FolderItemComponent,
     ListItemFolderComponent
   ],
