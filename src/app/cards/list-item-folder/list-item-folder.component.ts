@@ -34,8 +34,10 @@ export class ListItemFolderComponent implements OnInit {
    */
   onFocusOut(attribute: string, event: any) {
     const text = event.target.innerText;
-    this.folder[attribute] = text;
-    this.folderApi.update(this.folder).subscribe();
+    this.folderApi.get(this.folder.id).subscribe((theFolder: FolderModel) => {
+      theFolder[attribute] = text;
+      this.folderApi.update(theFolder).subscribe();
+    });
   }
 
   /**
