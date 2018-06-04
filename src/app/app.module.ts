@@ -59,6 +59,8 @@ import { CardsRoutingModule } from 'app/cards/cards-routing.module';
 import { ApiModule } from '@api/api.module';
 import { SecurityModule } from '@security/security.module';
 import { TemplatesComponent } from './templates/templates.component';
+import { ToastrModule } from 'ngx-toastr';
+import { AppErrorHandler } from 'app/services/app-error.handler';
 
 const providersList: any = [
   AppDataService,
@@ -71,6 +73,10 @@ const providersList: any = [
   SidStatusService,
   LanguagesService,
   GlobalEvaluationService,
+  {
+      provide: ErrorHandler,
+      useClass: AppErrorHandler,
+    }
 ];
 
 if (environment.rollbar_key.length > 0) {
@@ -144,7 +150,11 @@ export function createTranslateLoader(http: HttpClient) {
         deps: [HttpClient]
       }
     }),
-    SecurityModule
+    SecurityModule,
+    ToastrModule.forRoot({
+      positionClass: 'toast-top-right',
+      onActivateTick: true
+    })
   ],
   exports: [],
   providers: providersList,
