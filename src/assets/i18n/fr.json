@@ -937,6 +937,10 @@
       "content": "<span class='strong'>Attention,</span><br>Êtes-vous sûr de vouloir<br>supprimer ce PIA ?",
       "remove": "Supprimer ce PIA"
     },
+    "remove_pia_folder": {
+      "content": "<span class='strong'>Attention,</span><br>Êtes-vous sûr de vouloir<br>supprimer ce dossier ?<p>Les PIAs présentes dans ce dossier seront supprimées</p>",
+      "remove": "Supprimer ce dossier"
+    },
     "remove_attachment": {
       "content": "<span class='strong'>Attention,</span><br>Êtes-vous sûr de vouloir<br>supprimer cette pièce jointe ?",
       "keep": "Conserver",

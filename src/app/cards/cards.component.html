@@ -68,7 +68,7 @@
           <i class="fa fa-level-up" aria-hidden="true"></i>
         </div>
         <div class="bottom-actions">
-          <ng-template [ngIf]="_piaService.currentFolder.parent.id != _piaService.currentFolder.root.id" [ngIfElse]="rootFolder">
+          <ng-template [ngIf]="!_piaService.currentFolder.parent.isRoot" [ngIfElse]="rootFolder">
             <a class="btn btn-green" routerLink="/home/{{_piaService.currentFolder.parent.id}}" href="#">
               {{ 'homepage.cards.folder.parent' | translate }}
             </a>
@@ -80,7 +80,7 @@
           </ng-template>
         </div>
       </div>
-      <app-folder-item *ngFor="let folder of _piaService.folders;let i=index" [folder]="folder" [previousFolder]="i > 0 ? _piaService.folders[i-1] : null"></app-folder-item>
+      <app-folder-item *ngFor="let folder of _piaService.folders;let i=index" [folder]="folder"></app-folder-item>
       <app-card-item *ngFor="let pia of _piaService.pias;let i=index" [pia]="pia" [previousPia]="i > 0 ? _piaService.pias[i-1] : null"></app-card-item>
     </div>
     <ng-template #viewList>
@@ -145,7 +145,7 @@
               </td>
               <td class="folder-listsBlock-item">
                 <div class="folder-listsBlock-item-actions">
-                  <ng-template [ngIf]="_piaService.currentFolder && _piaService.currentFolder.parent && _piaService.currentFolder.parent.id != _piaService.currentFolder.root.id" [ngIfElse]="rootFolderList">
+                  <ng-template [ngIf]="_piaService.currentFolder && _piaService.currentFolder.parent && !_piaService.currentFolder.parent.isroot" [ngIfElse]="rootFolderList">
                     <a class="btn pia-tooltip" routerLink="/home/{{_piaService.currentFolder.parent.id}}" href="#">
                       <i class="fa fa-level-up" aria-hidden="true"></i>
                       <span class="pia-tooltip-text">{{ 'homepage.cards.folder.parent' | translate }}</span>

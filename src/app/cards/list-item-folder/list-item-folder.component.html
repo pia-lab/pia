@@ -1,4 +1,4 @@
-<td class="folder-listsBlock-item">
+<td class="folder-listsBlock-item" [attr.data-id]="folder.id">
   <i class="fa fa-folder"></i>&nbsp;<div contenteditable (focusout)="onFocusOut('name', $event)">{{ folder.name }}</div>
 </td>
 <td class="folder-listsBlock-item" colspan="4">

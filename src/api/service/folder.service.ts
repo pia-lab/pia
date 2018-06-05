@@ -32,10 +32,6 @@ export class FolderService extends BaseService<FolderModel> {
         if (folder.parent !== null) {
           folder.parent = (new FolderModel()).fromJson(folder.parent)
         }
-
-        if (folder.root !== null) {
-          folder.root = (new FolderModel()).fromJson(folder.root)
-        }
       });
       return folders;
    });
@@ -51,10 +47,6 @@ export class FolderService extends BaseService<FolderModel> {
       });
       if (folder.parent !== null) {
         folder.parent = (new FolderModel()).fromJson(folder.parent)
-      }
-
-      if (folder.root !== null) {
-        folder.root = (new FolderModel()).fromJson(folder.root)
       }
       return folder;
     });

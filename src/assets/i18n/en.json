@@ -935,6 +935,10 @@
       "content": "<span class='strong'>Warning,</span><br>Are you sure you want to<br>remove this PIA?",
       "remove": "Remove this PIA"
     },
+    "remove_pia_folder": {
+      "content": "<span class='strong'>Warning,</span><br>Are you sure you want to<br>remove this Folder?<p>Included PIAs will be deleted too</p>",
+      "remove": "Remove this folder"
+    },
     "remove_attachment": {
       "content": "<span class='strong'>Warning,</span><br>Are you sure you want to<br>remove this attachment?",
       "keep": "Keep",

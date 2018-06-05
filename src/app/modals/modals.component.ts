@@ -8,7 +8,8 @@ import { AttachmentsService } from 'app/entry/attachments/attachments.service';
 import { FormControl, FormGroup } from '@angular/forms';
 
 import { PiaModel } from '@api/models';
-import { PiaApi } from '@api/services';
+import { PiaApi, FolderApi } from '@api/services';
+
 
 @Component({
   selector: 'app-modals',
@@ -29,7 +30,8 @@ export class ModalsComponent implements OnInit {
     public _piaService: PiaService,
     public _measuresService: MeasureService,
     public _attachmentsService: AttachmentsService,
-    private piaApi: PiaApi
+    private piaApi: PiaApi,
+    public _folderApi: FolderApi
   ) { }
 
   ngOnInit() {

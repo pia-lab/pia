@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { FolderApi } from '@api/services';
 import { FolderModel } from '@api/models';
+import { PiaService } from '../../entry/pia.service';
+import { ModalsService } from '../../modals/modals.service';
 
 @Component({
   selector: 'app-folder-item',
@@ -15,7 +17,9 @@ export class FolderItemComponent implements OnInit {
   folderForm: FormGroup
 
   constructor(
-    private folderApi: FolderApi
+    private folderApi: FolderApi,
+    private _piaService: PiaService,
+    private _modalsService: ModalsService
   ) { }
 
   ngOnInit() {
@@ -43,4 +47,8 @@ export class FolderItemComponent implements OnInit {
     }
   }
 
+  removeFolder(folder: FolderModel) {
+    localStorage.setItem('folder-id', folder.id);
+    this._modalsService.openModal('modal-remove-pia-folder');
+  }
 }

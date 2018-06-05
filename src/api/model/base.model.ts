@@ -26,11 +26,8 @@ export class BaseModel implements Timestampable {
   protected iterate(obj) {
 
     for (var property in obj) {
-      console.info('iterating object');
-      console.info('iterating object', obj[property] instanceof Date);
       if (obj.hasOwnProperty(property)) {
         if (obj[property] instanceof Date) {
-          console.info('formating date');
           obj[property] = Moment(obj[property]).format()
         } else if (typeof obj[property] == "object") {
           this.iterate(obj[property]);
