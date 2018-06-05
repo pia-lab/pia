@@ -15,7 +15,7 @@ export class BaseModel implements Timestampable {
     }
   }
 
-  protected mapToJson(object): any {
+  protected mapToJson(object?: any): any {
     return this.iterate(object);
   }
 
