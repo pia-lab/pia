@@ -9,6 +9,7 @@ import { Injectable } from '@angular/core';
 import { BaseModel } from '@api/model/base.model';
 import { AnswerService } from '@api/service/answer.service';
 import { Template } from '@api/model/template.model';
+import { FolderModel } from '@api/models';
 
 @Injectable()
 export class PiaService extends BaseService<Pia> {
@@ -56,7 +57,8 @@ export class PiaService extends BaseService<Pia> {
     return this.httpPut(this.routing.one, { id: model.id }, model);
   }
 
-  public create(model: Pia): Observable<Pia> {
+  public create(model: Pia, folder: FolderModel): Observable<Pia> {
+    model.folder = folder;
     return this.httpPost(this.routing.all, {}, model);
   }
 
