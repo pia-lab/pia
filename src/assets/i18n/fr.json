@@ -89,7 +89,8 @@
       "folder": {
         "title": "Dossier",
         "parent": "Dossier parent",
-        "open": "Consulter le dossier"
+        "open": "Consulter le dossier",
+        "root": "Racine"
       },
       "item": {
         "tools": {

@@ -79,7 +79,8 @@
       "folder": {
         "title": "Folder",
         "parent": "Parent",
-        "open": "Open folder"
+        "open": "Open folder",
+        "root": "Root"
       },
       "item": {
         "tools": {
