@@ -14,11 +14,10 @@
         </button>
         <div class="pia-filtersBlock-filters">
           <button class="pia-filtersBlock-filters-btn btn" type="button">
-            {{ 'homepage.filters.sort' | translate }}
+            {{ 'homepage.filters.sort' | translate }} {{ 'homepage.filters.sort_by' | translate }}
             <span class="pia-icons pia-icon-scroll-green"></span>
           </button>
           <div class="pia-filtersBlock-filters-list">
-            <span>{{ 'homepage.filters.sort_by' | translate }}</span>
             <ul>
               <li [ngClass]="{'active': sortValue === 'name'}">
                 <a (click)="sortBy('name');">{{ 'homepage.filters.name' | translate }}</a>
@@ -41,10 +40,30 @@
             </ul>
           </div>
         </div>
+        <div class="pia-filtersBlock-filters">
+          <button class="pia-filtersBlock-filters-btn btn" type="button">
+            {{ 'homepage.filters.new' | translate }}
+            <span class="pia-icons pia-icon-scroll-green"></span>
+          </button>
+          <div class="pia-filtersBlock-filters-list">
+            <ul>
+              <li *ngxPermissionsOnly="['CanCreatePIA']">
+                <a (click)="_modalsService.openModal('modal-list-new-pia')">{{ 'homepage.filters.new_pia' | translate }}</a>
+              </li>
+              <li *ngxPermissionsOnly="['CanCreatePIA']">
+                <a routerLink="/templates">{{ 'homepage.filters.new_from_template' | translate }}</a>
+              </li>
+              <li class="divider"></li>
+              <li *ngxPermissionsOnly="['CanCreatePIA']">
+                <a (click)="_modalsService.openModal('modal-list-new-folder')">{{ 'homepage.filters.new_folder' | translate }}</a>
+              </li>
+            </ul>
+          </div>
+        </div>
         <div class="pia-filtersBlock-buttons">
-          <button *ngxPermissionsOnly="['CanCreatePIA']" type="button" class="btn btn-green" (click)="_modalsService.openModal('modal-list-new-pia')"><i class="fa fa-plus" aria-hidden="true"></i>{{ 'homepage.filters.new_pia' | translate }}</button>
-          <button routerLink="/templates" *ngxPermissionsOnly="['CanCreatePIA']" type="button" class="btn btn-green"><i class="fa fa-folder-open" aria-hidden="true"></i>{{ 'homepage.filters.new_from_template' | translate }}</button>
-          <button type="button" (click)="importPia()" class="btn btn-green"><i class="fa fa-upload" aria-hidden="true"></i>{{ 'homepage.filters.import_pia' | translate }}</button>
+          <button type="button" (click)="importPia()" class="btn btn-green">
+            <i class="fa fa-upload" aria-hidden="true"></i>{{ 'homepage.filters.import_pia' | translate }}
+          </button>
         </div>
         <!-- <div class="pia-filtersBlock-hint" *ngIf="viewStyle.view === 'list' && _piaService.pias && _piaService.pias.length === 0">
           <div>
@@ -145,7 +164,8 @@
               </td>
               <td class="folder-listsBlock-item">
                 <div class="folder-listsBlock-item-actions">
-                  <ng-template [ngIf]="_piaService.currentFolder && _piaService.currentFolder.parent && !_piaService.currentFolder.parent.isroot" [ngIfElse]="rootFolderList">
+                  <ng-template [ngIf]="_piaService.currentFolder && _piaService.currentFolder.parent && !_piaService.currentFolder.parent.isroot"
+                    [ngIfElse]="rootFolderList">
                     <a class="btn pia-tooltip" routerLink="/home/{{_piaService.currentFolder.parent.id}}" href="#">
                       <i class="fa fa-level-up" aria-hidden="true"></i>
                       <span class="pia-tooltip-text">{{ 'homepage.cards.folder.parent' | translate }}</span>
