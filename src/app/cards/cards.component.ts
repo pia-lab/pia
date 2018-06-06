@@ -255,10 +255,9 @@ export class CardsComponent implements OnInit, OnDestroy {
   }
   
   onDrop(event: DndDropEvent, targetFolder: FolderModel) {
-
     if(this.itemToMove) {
       if(this.itemToMove instanceof FolderModel) {
-        this.itemToMove.parent_id = targetFolder.id;
+        this.itemToMove.parent = targetFolder;
 
         this.folderApi.update(this.itemToMove).subscribe(() => {
           this.refreshContent();
