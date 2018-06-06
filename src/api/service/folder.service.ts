@@ -56,8 +56,7 @@ export class FolderService extends BaseService<FolderModel> {
     return this.httpPut(this.routing.one, { id: model.id }, model);
   }
 
-  public create(model: FolderModel, parent: FolderModel): Observable<FolderModel> {
-    model.parent = parent;
+  public create(model: FolderModel): Observable<FolderModel> {
     return this.httpPost(this.routing.all, {}, model);
   }
 

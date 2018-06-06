@@ -88,8 +88,9 @@ export class ModalsComponent implements OnInit {
   onSubmitFolder() {
     const folder = new FolderModel();
     folder.name = this.folderForm.value.name;
+    folder.parent = this._piaService.currentFolder;
 
-    this._folderApi.create(folder, this._piaService.currentFolder).subscribe((newFolder: FolderModel) => {
+    this._folderApi.create(folder).subscribe((newFolder: FolderModel) => {
       this._modalsService.closeModal();
       this.router.navigate(['home', newFolder.id]);
     });

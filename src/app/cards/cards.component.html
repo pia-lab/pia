@@ -92,7 +92,10 @@
   </div>
   <div class="row">
     <div *ngIf="viewStyle.view === 'card'; else viewList" class="small-12 medium-12 columns cardsContainer">
-      <div class="pia-folder-item parent" *ngIf="_piaService.currentFolder && _piaService.currentFolder.parent != null">
+      <div class="pia-folder-item parent" *ngIf="_piaService.currentFolder && _piaService.currentFolder.parent != null"
+        dndDropzone
+        (dndDrop)="onDrop(_piaService.currentFolder.parent)"
+      >
         <div class="folder-icon">
           <i class="fa fa-level-up" aria-hidden="true"></i>
         </div>
@@ -113,19 +116,19 @@
         [folder]="folder"
         [dndDraggable]=""
         [dndEffectAllowed]="'move'"
-        (dndStart)="onDragStart($event, folder)"
-        (dndCanceled)="onDragCanceled($event, 'none')"
+        (dndStart)="onDragStart(folder)"
+        (dndCanceled)="onDragCanceled()"
         dndDropzone
-        (dndDragover)="onDragover($event)"
-        (dndDrop)="onDrop($event, folder)"
+        [ngClass]="{'dndDropzoneDisabled': itemToMove && itemToMove.id == folder.id}"
+        (dndDrop)="onDrop(folder)"
       ></app-folder-item>
       <app-card-item *ngFor="let pia of _piaService.pias;let i=index" 
-        [pia]="pia" 
+        [pia]="pia"
         [previousPia]="i > 0 ? _piaService.pias[i-1] : null"
         [dndDraggable]=""
         [dndEffectAllowed]="'move'"
-        (dndStart)="onDragStart($event, pia)"
-        (dndCanceled)="onDragCanceled($event, 'none')"
+        (dndStart)="onDragStart(pia)"
+        (dndCanceled)="onDragCanceled()"
       ></app-card-item>
     </div>
     <ng-template #viewList>

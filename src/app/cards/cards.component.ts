@@ -240,25 +240,19 @@ export class CardsComponent implements OnInit, OnDestroy {
     });
   }
 
-  onDragStart(event: DragEvent, item: any) {
-    // TODO: resize shadow ?
+  onDragStart(item: any) {
     this.itemToMove = item;
    
   }
 
-  onDragCanceled(event: DragEvent) {
+  onDragCanceled() {
     this.itemToMove = null;
   }
   
-  onDragover(event: DragEvent) {
-    // TODO: highlight drop target
-  }
-  
-  onDrop(event: DndDropEvent, targetFolder: FolderModel) {
-
+  onDrop(targetFolder: FolderModel) {
     if(this.itemToMove) {
       if(this.itemToMove instanceof FolderModel) {
-        this.itemToMove.parent_id = targetFolder.id;
+        this.itemToMove.parent = targetFolder;
 
         this.folderApi.update(this.itemToMove).subscribe(() => {
           this.refreshContent();
@@ -267,7 +261,7 @@ export class CardsComponent implements OnInit, OnDestroy {
         return;
       }
 
-      this.itemToMove.folder_id = targetFolder.id;
+      this.itemToMove.folder = targetFolder;
 
       this.piaApi.update(this.itemToMove).subscribe(() => {
         this.refreshContent();
