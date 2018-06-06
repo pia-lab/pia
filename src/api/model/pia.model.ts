@@ -1,6 +1,5 @@
 
 import { BaseModel } from '@api/model/base.model'
-import { FolderModel } from '@api/models';
 
 export class Pia extends BaseModel {
   public id: any;
@@ -21,7 +20,7 @@ export class Pia extends BaseModel {
   public people_names: string;
   public progress: number;
   public is_example = false;
-  public folder: FolderModel;
+  public folder_id: number;
 
   public numberOfQuestions = 36; // TODO Auto compute questions number
 

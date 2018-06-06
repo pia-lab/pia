@@ -58,7 +58,7 @@ export class PiaService extends BaseService<Pia> {
   }
 
   public create(model: Pia, folder: FolderModel): Observable<Pia> {
-    model.folder = folder;
+    model.folder_id = folder.id;
     return this.httpPost(this.routing.all, {}, model);
   }
 
@@ -82,8 +82,6 @@ export class PiaService extends BaseService<Pia> {
   public import(data: any): Observable<Pia> {
     let query: any = this.buildQuery({});
     const route = this.buildRoute(this.routing.import, {name: name});
-
-    console.info(data);
 
     return this.http.post(route, {data: data}, { params: query }).map(res => this.mapToModel(res, this.modelClass));
   }

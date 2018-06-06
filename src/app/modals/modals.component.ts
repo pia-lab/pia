@@ -90,6 +90,7 @@ export class ModalsComponent implements OnInit {
     folder.name = this.folderForm.value.name;
 
     this._folderApi.create(folder, this._piaService.currentFolder).subscribe((newFolder: FolderModel) => {
+      this._modalsService.closeModal();
       this.router.navigate(['home', newFolder.id]);
     });
   }
