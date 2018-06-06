@@ -4,6 +4,8 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs/Observable';
 
+import { DndDropEvent } from 'ngx-drag-drop';
+
 import { ModalsService } from 'app/modals/modals.service';
 import { PiaService } from 'app/entry/pia.service';
 
@@ -27,7 +29,8 @@ export class CardsComponent implements OnInit, OnDestroy {
   viewStyle: { view: string }
   view: 'card';
   paramsSubscribe: Subscription;
-  folderId: number
+  folderId: number;
+  itemToMove: any = null;
 
   constructor(
     private router: Router,
@@ -40,40 +43,8 @@ export class CardsComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    this.sortOrder = localStorage.getItem('sortOrder');
-    this.sortValue = localStorage.getItem('sortValue');
-
-    if (!this.sortOrder || !this.sortValue) {
-      this.sortOrder = 'up';
-      this.sortValue = 'updated_at';
-      localStorage.setItem('sortOrder', this.sortOrder);
-      localStorage.setItem('sortValue', this.sortValue);
-    }
-
-    this.piaForm = new FormGroup({
-      name: new FormControl(),
-      author_name: new FormControl(),
-      evaluator_name: new FormControl(),
-      validator_name: new FormControl()
-    });
-    this.viewStyle = {
-      view: this.route.snapshot.params['view']
-    }
-    this.paramsSubscribe = this.route.params.subscribe(
-      (params: Params) => {
-        this.viewStyle.view = params['view'];
-        this.folderId = (params.id ? params.id : null)
-        if (localStorage.getItem('homepageDisplayMode') === 'list') {
-          this.viewOnList();
-        } else {
-          this.viewOnCard();
-        }
-      }
-    );
-
-    this.importPiaForm = new FormGroup({
-      import_file: new FormControl('', [])
-    });
+    this.applySortOrder();
+    this.initPiaForm();
   }
 
   ngOnDestroy() {
@@ -180,14 +151,14 @@ export class CardsComponent implements OnInit, OnDestroy {
     this.sortPia();
   }
 
-  fetchFolders() {
+  protected fetchFolders() {
     if (this.folderId !== null) {
       return this.folderApi.get(this.folderId).toPromise()
     }
     return this.folderApi.getAll().toPromise()
   }
 
-  handleFoldersCollection(folderOrFolderCollection: any) {
+  protected handleFoldersCollection(folderOrFolderCollection: any) {
     let folder: FolderModel;
     if (folderOrFolderCollection instanceof FolderModel) {
       folder = folderOrFolderCollection;
@@ -204,7 +175,7 @@ export class CardsComponent implements OnInit, OnDestroy {
    * @private
    * @memberof CardsComponent
    */
-  private sortPia() {
+  protected sortPia() {
     this._piaService.pias.sort((a, b) => {
       let firstValue = a[this.sortValue];
       let secondValue = b[this.sortValue];
@@ -227,6 +198,80 @@ export class CardsComponent implements OnInit, OnDestroy {
     });
     if (this.sortOrder === 'up') {
       this._piaService.pias.reverse();
+    }
+  }
+
+  protected applySortOrder() {
+    this.sortOrder = localStorage.getItem('sortOrder');
+    this.sortValue = localStorage.getItem('sortValue');
+
+    if (!this.sortOrder || !this.sortValue) {
+      this.sortOrder = 'up';
+      this.sortValue = 'updated_at';
+      localStorage.setItem('sortOrder', this.sortOrder);
+      localStorage.setItem('sortValue', this.sortValue);
+    }
+  }
+
+  protected initPiaForm() {
+    this.piaForm = new FormGroup({
+      name: new FormControl(),
+      author_name: new FormControl(),
+      evaluator_name: new FormControl(),
+      validator_name: new FormControl()
+    });
+    this.viewStyle = {
+      view: this.route.snapshot.params['view']
+    }
+    this.paramsSubscribe = this.route.params.subscribe(
+      (params: Params) => {
+        this.viewStyle.view = params['view'];
+        this.folderId = (params.id ? params.id : null)
+        if (localStorage.getItem('homepageDisplayMode') === 'list') {
+          this.viewOnList();
+        } else {
+          this.viewOnCard();
+        }
+      }
+    );
+
+    this.importPiaForm = new FormGroup({
+      import_file: new FormControl('', [])
+    });
+  }
+
+  onDragStart(event: DragEvent, item: any) {
+    // TODO: resize shadow ?
+    this.itemToMove = item;
+   
+  }
+
+  onDragCanceled(event: DragEvent) {
+    this.itemToMove = null;
+  }
+  
+  onDragover(event: DragEvent) {
+    // TODO: highlight drop target
+  }
+  
+  onDrop(event: DndDropEvent, targetFolder: FolderModel) {
+
+    if(this.itemToMove) {
+      if(this.itemToMove instanceof FolderModel) {
+        this.itemToMove.parent_id = targetFolder.id;
+
+        this.folderApi.update(this.itemToMove).subscribe(() => {
+          this.refreshContent();
+        });
+
+        return;
+      }
+
+      this.itemToMove.folder_id = targetFolder.id;
+
+      this.piaApi.update(this.itemToMove).subscribe(() => {
+        this.refreshContent();
+      });
     }
   }
 }

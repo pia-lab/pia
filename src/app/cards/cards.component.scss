@@ -1,4 +1,10 @@
 @import '../../assets/stylesheets/variables';
+
+section {
+    height: 700px;
+    width: 700px;
+    border: 2px solid black;
+}
 // New PIA
 .pia-newBlock {
     >#pia-new-card {
