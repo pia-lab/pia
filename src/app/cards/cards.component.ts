@@ -2,18 +2,19 @@ import { Component, OnInit, ElementRef, OnDestroy, Input } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
+import { Observable } from 'rxjs/Observable';
 
 import { ModalsService } from 'app/modals/modals.service';
 import { PiaService } from 'app/entry/pia.service';
 
-import { PiaModel } from '@api/models';
-import { PiaApi } from '@api/services';
+import { PiaModel, FolderModel } from '@api/models';
+import { PiaApi, FolderApi } from '@api/services';
 
 @Component({
   selector: 'app-cards',
   templateUrl: './cards.component.html',
   styleUrls: ['./cards.component.scss'],
-  providers: []
+  providers: [FolderApi]
 })
 
 export class CardsComponent implements OnInit, OnDestroy {
@@ -26,13 +27,16 @@ export class CardsComponent implements OnInit, OnDestroy {
   viewStyle: { view: string }
   view: 'card';
   paramsSubscribe: Subscription;
+  folderId: number
 
-  constructor(private router: Router,
+  constructor(
+    private router: Router,
     private el: ElementRef,
     private route: ActivatedRoute,
     public _modalsService: ModalsService,
     public _piaService: PiaService,
-    private piaApi: PiaApi
+    private piaApi: PiaApi,
+    private folderApi: FolderApi
   ) { }
 
   ngOnInit() {
@@ -45,7 +49,7 @@ export class CardsComponent implements OnInit, OnDestroy {
       localStorage.setItem('sortOrder', this.sortOrder);
       localStorage.setItem('sortValue', this.sortValue);
     }
-    // this.refreshContent();
+
     this.piaForm = new FormGroup({
       name: new FormControl(),
       author_name: new FormControl(),
@@ -58,13 +62,15 @@ export class CardsComponent implements OnInit, OnDestroy {
     this.paramsSubscribe = this.route.params.subscribe(
       (params: Params) => {
         this.viewStyle.view = params['view'];
+        this.folderId = (params.id ? params.id : null)
+        if (localStorage.getItem('homepageDisplayMode') === 'list') {
+          this.viewOnList();
+        } else {
+          this.viewOnCard();
+        }
       }
     );
-    if (localStorage.getItem('homepageDisplayMode') === 'list') {
-      this.viewOnList();
-    } else {
-      this.viewOnCard();
-    }
+
     this.importPiaForm = new FormGroup({
       import_file: new FormControl('', [])
     });
@@ -122,7 +128,7 @@ export class CardsComponent implements OnInit, OnDestroy {
     pia.author_name = this.piaForm.value.author_name;
     pia.evaluator_name = this.piaForm.value.evaluator_name;
     pia.validator_name = this.piaForm.value.validator_name;
-    const p = this.piaApi.create(pia).subscribe((newPia: PiaModel) => {
+    const p = this.piaApi.create(pia, this._piaService.currentFolder).subscribe((newPia: PiaModel) => {
       this.router.navigate(['entry', newPia.id, 'section', 1, 'item', 1]);
     });
   }
@@ -165,18 +171,32 @@ export class CardsComponent implements OnInit, OnDestroy {
    * @memberof CardsComponent
    */
   async refreshContent() {
+    const theFolders = await this.fetchFolders();
 
-     const thePias: PiaModel[] = await this.piaApi.getAll().toPromise();
-      if (thePias.length == 0) {
-        return;
-      }
+    this.handleFoldersCollection(theFolders);
 
-      this._piaService.pias = thePias;
-      this.sortOrder = localStorage.getItem('sortOrder');
-      this.sortValue = localStorage.getItem('sortValue');
-      this.sortPia();
+    this.sortOrder = localStorage.getItem('sortOrder');
+    this.sortValue = localStorage.getItem('sortValue');
+    this.sortPia();
+  }
 
+  fetchFolders() {
+    if (this.folderId !== null) {
+      return this.folderApi.get(this.folderId).toPromise()
+    }
+    return this.folderApi.getAll().toPromise()
+  }
 
+  handleFoldersCollection(folderOrFolderCollection: any) {
+    let folder: FolderModel;
+    if (folderOrFolderCollection instanceof FolderModel) {
+      folder = folderOrFolderCollection;
+    } else {
+      folder = folderOrFolderCollection[0];
+    }
+    this._piaService.currentFolder = folder;
+    this._piaService.pias = folder.pias;
+    this._piaService.folders = folder.children;
   }
 
   /**
