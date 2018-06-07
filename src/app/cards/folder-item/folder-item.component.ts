@@ -34,14 +34,13 @@ export class FolderItemComponent implements OnInit {
    */
   folderNameFocusOut() {
     let userText = this.folderForm.controls['name'].value;
-    if (userText) {
+    if (userText  && typeof userText === 'string') {
       userText = userText.replace(/^\s+/, '').replace(/\s+$/, ''); // trim value
     }
     if (userText !== '') {
 
       this.folderApi.get(this.folder.id).subscribe((theFolder: FolderModel) => {
-
-        theFolder.name = this.folderForm.value.name;
+        theFolder.name = this.folderForm.value.name.value;
         this.folderApi.update(theFolder).subscribe();
       });
     }
