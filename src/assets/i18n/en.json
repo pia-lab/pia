@@ -56,8 +56,10 @@
       "author": "Author",
       "assessor": "Reviewer",
       "validator": "Validator",
-      "new_pia": "New PIA",
-      "new_from_template": "New from template",
+      "new": "New...",
+      "new_pia": "PIA",
+      "new_from_template": "PIA from template",
+      "new_folder": "Folder",
       "import_pia": "Import PIA",
       "list_rocket_content": "Get started ! To initiate <br>a PIA, click on the +",
       "card_rocket_content": "Get started !<br><br>To initiate a PIA,<br> click on New PIA"
@@ -70,6 +72,8 @@
       "placeholder_import_pia": "Import PIA",
       "title_close_creation": "Close",
       "pia_name": "PIA",
+      "folder_name": "Folder name",
+      "create_folder": "Create folder",
       "placeholder_pia_name": "PIA's title",
       "author": "Editing",
       "placeholder_author": "Firstname, lastname",
@@ -82,6 +86,12 @@
       "creation_status": "Creation",
       "start": "Start",
       "placeholder_start": "All fields must be filled",
+      "folder": {
+        "title": "Folder",
+        "parent": "Parent",
+        "open": "Open folder",
+        "root": "Root"
+      },
       "item": {
         "tools": {
           "export": "Export",
@@ -97,6 +107,7 @@
     },
     "lists": {
       "column_pia": "PIA",
+      "column_pias_folders": "PIA / Folder",
       "column_updated_at": "Last opened",
       "column_author": "Editing",
       "column_evaluation": "Review",
@@ -108,6 +119,7 @@
       "item": {
         "tools": {
           "consult": "Consult",
+          "consult_folder": "Consult Folder",
           "edit": "Edit",
           "export": "Export",
           "duplicate": "Duplicate",
@@ -937,6 +949,10 @@
     "remove_pia": {
       "content": "<span class='strong'>Warning,</span><br>Are you sure you want to<br>remove this PIA?",
       "remove": "Remove this PIA"
+    },
+    "remove_pia_folder": {
+      "content": "<span class='strong'>Warning,</span><br>Are you sure you want to<br>remove this Folder?<p>Included PIAs will be deleted too</p>",
+      "remove": "Remove this folder"
     },
     "remove_attachment": {
       "content": "<span class='strong'>Warning,</span><br>Are you sure you want to<br>remove this attachment?",

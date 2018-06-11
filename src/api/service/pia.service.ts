@@ -9,6 +9,7 @@ import { Injectable } from '@angular/core';
 import { BaseModel } from '@api/model/base.model';
 import { AnswerService } from '@api/service/answer.service';
 import { Template } from '@api/model/template.model';
+import { FolderModel } from '@api/models';
 
 @Injectable()
 export class PiaService extends BaseService<Pia> {
@@ -32,7 +33,6 @@ export class PiaService extends BaseService<Pia> {
     return this.answerService.getAll(model.id).map((answers:Answer[]) => {
       return this.computeProgressFromAnswers(model, answers);
     });
-
   }
 
   public computeProgressFromAnswers(model: Pia, answers:Answer[]): number {
@@ -80,8 +80,6 @@ export class PiaService extends BaseService<Pia> {
   public import(data: any): Observable<Pia> {
     let query: any = this.buildQuery({});
     const route = this.buildRoute(this.routing.import, {name: name});
-
-    console.info(data);
 
     return this.http.post(route, {data: data}, { params: query }).map(res => this.mapToModel(res, this.modelClass));
   }

@@ -94,7 +94,7 @@ export class QuestionsComponent implements OnInit, OnDestroy {
     }
 
   }
-
+  
   ngOnChanges(changes) {
     // only run when property "data" changed
     if (changes['pia']) {
@@ -168,8 +168,6 @@ export class QuestionsComponent implements OnInit, OnDestroy {
    * @memberof QuestionsComponent
    */
   questionContentFocusIn() {
-
-
     this.permissionsService.hasPermission('CanEditPIA').then((hasPerm: boolean) => {
       if (hasPerm && this._globalEvaluationService.answerEditionEnabled) {
         this.loadEditor();
@@ -184,7 +182,7 @@ export class QuestionsComponent implements OnInit, OnDestroy {
    */
   questionContentFocusOut() {
     let userText = this.questionForm.controls['text'].value;
-    if (userText) {
+    if (userText && typeof userText === 'string') {
       userText = userText.replace(/^\s+/, '').replace(/\s+$/, '');
     }
     // update
@@ -404,5 +402,9 @@ export class QuestionsComponent implements OnInit, OnDestroy {
     this._knowledgeBaseService.placeholder = null;
     tinymce.remove(this.editor);
     this.editor = null;
+  }
+
+  protected checkPermissions() {
+    
   }
 }

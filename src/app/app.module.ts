@@ -61,6 +61,9 @@ import { SecurityModule } from '@security/security.module';
 import { TemplatesComponent } from './templates/templates.component';
 import { ToastrModule } from 'ngx-toastr';
 import { AppErrorHandler } from 'app/services/app-error.handler';
+import { FolderItemComponent } from './cards/folder-item/folder-item.component';
+import { ListItemFolderComponent } from './cards/list-item-folder/list-item-folder.component';
+import { DndModule } from 'ngx-drag-drop';
 
 const providersList: any = [
   AppDataService,
@@ -132,7 +135,9 @@ export function createTranslateLoader(http: HttpClient) {
     SafeHtmlPipe,
     Nl2brPipe,
     AboutComponent,
-    TemplatesComponent
+    TemplatesComponent,
+    FolderItemComponent,
+    ListItemFolderComponent
   ],
   imports: [
     BrowserModule,
@@ -154,7 +159,8 @@ export function createTranslateLoader(http: HttpClient) {
     ToastrModule.forRoot({
       positionClass: 'toast-top-right',
       onActivateTick: true
-    })
+    }),
+    DndModule
   ],
   exports: [],
   providers: providersList,
