@@ -14,7 +14,7 @@
     },
     "unauthorized_action":{
       "title" : "Unauthorized Action",
-      "content" : "[401] : You are not allowed to do this action"
+      "content" : "[403] : You are not allowed to perform this action"
     }
   },
   "header": {

@@ -19,16 +19,18 @@ export class AppErrorHandler implements ErrorHandler {
 
     switch (httpErrorCode) {
       case 403:
-      this.toastr.error(
-        null,
-        this.i18n.instant('messages.unauthorized_action.title')
-      );
+        this.toastr.error(
+          null,
+          this.i18n.instant('messages.unauthorized_action.title')
+        );
+
         break;
       case 500:
         this.toastr.error(
           null,
           this.i18n.instant('messages.server_error.title')
         );
+        
         break;
       default:
 

@@ -74,9 +74,9 @@ const providersList: any = [
   LanguagesService,
   GlobalEvaluationService,
   {
-      provide: ErrorHandler,
-      useClass: AppErrorHandler,
-    }
+    provide: ErrorHandler,
+    useClass: AppErrorHandler,
+  }
 ];
 
 if (environment.rollbar_key.length > 0) {
