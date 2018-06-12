@@ -96,6 +96,12 @@
       "creation_status": "Création",
       "start": "Commencer",
       "placeholder_start": "Tous les champs doivent être remplis",
+      "pia_type": "Type",
+      "pia_types": {
+        "regular": "Traitement",
+        "simplified": "Simplifié",
+        "advanced"  : "Avec analyse d'impact"
+      },
       "folder": {
         "title": "Dossier",
         "parent": "Dossier parent",
