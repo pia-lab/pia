@@ -242,13 +242,13 @@ export class CardsComponent implements OnInit, OnDestroy {
 
   onDragStart(item: any) {
     this.itemToMove = item;
-   
+
   }
 
   onDragCanceled() {
     this.itemToMove = null;
   }
-  
+
   onDrop(targetFolder: FolderModel) {
     if(this.itemToMove) {
       if(this.itemToMove instanceof FolderModel) {
