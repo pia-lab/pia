@@ -169,19 +169,10 @@ export class CardItemComponent implements OnInit {
   }
 
   /**
-   * Focuses pia validator name field.
-   * @memberof CardItemComponent
-   */
-  piaTypeFocusIn() {
-    this.piaType.nativeElement.focus();
-  }
-
-  /**
    * Disables pia validator name field and saves data.
    * @memberof CardItemComponent
    */
   piaTypeFocusOut() {
-    console.log(this.piaForm.value);
     this.piaApi.get(this.piaForm.value.id).subscribe((thePia: PiaModel) => {
       thePia.type = this.piaForm.value.type;
       this.piaApi.update(thePia).subscribe();

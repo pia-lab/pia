@@ -58,14 +58,14 @@
                      id="pia-edit-name"
                      (focusout)="piaNameFocusOut()">
           </div>
-          <div (click)="piaTypeFocusIn()">
+          <div>
               <label for="pia-edit-type">{{ 'homepage.cards.pia_type' | translate }}</label>
               <select
                      #piaType
                      formControlName="type"
                      required
                      id="pia-edit-type"
-                     (focusout)="piaTypeFocusOut()"
+                     (change)="piaTypeFocusOut()"
               >
                   <option *ngFor="let type of piaTypes" value="{{ type }}">{{ 'homepage.cards.pia_types.' + type | translate }}</option>
               </select>

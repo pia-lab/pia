@@ -7,7 +7,7 @@ import { PiaService } from 'app/entry/pia.service';
 import { AttachmentsService } from 'app/entry/attachments/attachments.service';
 import { FormControl, FormGroup } from '@angular/forms';
 
-import { PiaModel FolderModel } from '@api/models';
+import { PiaModel, FolderModel } from '@api/models';
 import { PiaApi, FolderApi } from '@api/services';
 import { PiaType } from '@api/model/pia.model';
 
