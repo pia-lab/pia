@@ -30,21 +30,21 @@ export class SectionsComponent implements OnInit {
 
   async ngOnInit() {
     const piaType = this._piaService.pia.type;
-    
-    this.data = await this._appDataService.getDataNav();
+    const dataNav = await this._appDataService.getDataNav();
+    let sections = {...dataNav.sections};
 
     if(piaType == PiaType.regular) {
-      delete this.data.sections[3];
-      delete this.data.sections[2];
+      delete sections[3];
+      delete sections[2];
     }
 
     if(piaType === PiaType.simplified) {
-      delete this.data.sections[3];
-      delete this.data.sections[2];
-      delete this.data.sections[1];
+      delete sections[3];
+      delete sections[2];
+      delete sections[1];
     }
 
-    this.data.sections = Object.values(this.data.sections);
+    this.data = {sections: Object.values(sections)};
 
     this.data.sections.forEach((section: any) => {
       section.items.forEach((item: any) => {
