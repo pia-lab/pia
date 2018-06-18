@@ -13,9 +13,11 @@ select {
 	line-height: 1.5;
 	color: #0a0a0a;
 	transition: box-shadow 0.5s, border-color 0.25s ease-in-out; 
-
+	&:hover {
+		outline: 1px dotted $pia-green;
+	}
 	&:focus {
-		outline: none;
+		outline: 1px dotted $pia-green;
 		border: 1px solid #8a8a8a;
 		background-color: #fefefe;
 		box-shadow: 0 0 5px #cacaca;
