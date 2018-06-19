@@ -1,13 +1,14 @@
 import { browser, by, element } from 'protractor';
 import { LoginPage } from './page/login.po';
 import { HomePage } from './page/home.po';
+import './set-env';
 
 
 describe('PIA Login page', () => {
 
   const auth = {
-    username: 'didier.prat@maboite.fr',
-    password: 'didier.prat'
+    username: process.env.TEST_USERNAME,
+    password: process.env.TEST_PASSWORD
   };
 
   let loginPage: LoginPage;

@@ -13,7 +13,7 @@
           <i class="fa fa-list" aria-hidden="true"></i>
           <div>{{ 'homepage.filters.list' | translate }}</div>
         </button>
-        <div class="pia-filtersBlock-filters">
+        <div class="pia-filtersBlock-filters menu-sort">
           <button class="pia-filtersBlock-filters-btn btn" type="button">
             {{ 'homepage.filters.sort' | translate }} {{ 'homepage.filters.sort_by' | translate }}
             <span class="pia-icons pia-icon-scroll-green"></span>
@@ -41,7 +41,7 @@
             </ul>
           </div>
         </div>
-        <div class="pia-filtersBlock-filters">
+        <div class="pia-filtersBlock-filters menu-new">
           <button class="pia-filtersBlock-filters-btn btn" type="button">
             {{ 'homepage.filters.new' | translate }}
             <span class="pia-icons pia-icon-scroll-green"></span>
@@ -49,20 +49,20 @@
           <div class="pia-filtersBlock-filters-list">
             <ul>
               <li>
-                <button *ngxPermissionsOnly="['CanCreatePIA']" (click)="_modalsService.openModal('modal-list-new-pia')">{{ 'homepage.filters.new_pia' | translate }}</button>
+                <button name="menu-new-pia" *ngxPermissionsOnly="['CanCreatePIA']" (click)="_modalsService.openModal('modal-list-new-pia')">{{ 'homepage.filters.new_pia' | translate }}</button>
               </li>
               <li >
-                <button *ngxPermissionsOnly="['CanCreatePIA']" routerLink="/templates">{{ 'homepage.filters.new_from_template' | translate }}</button>
+                <button name="menu-new-pia-from-template" *ngxPermissionsOnly="['CanCreatePIA']" routerLink="/templates">{{ 'homepage.filters.new_from_template' | translate }}</button>
               </li>
               <li class="divider"></li>
               <li>
-                <button *ngxPermissionsOnly="['CanCreateFolder']" (click)="_modalsService.openModal('modal-list-new-folder')">{{ 'homepage.filters.new_folder' | translate }}</button>
+                <button name="menu-new-folder" *ngxPermissionsOnly="['CanCreateFolder']" (click)="_modalsService.openModal('modal-list-new-folder')">{{ 'homepage.filters.new_folder' | translate }}</button>
               </li>
             </ul>
           </div>
         </div>
         <div class="pia-filtersBlock-buttons">
-          <button type="button" (click)="importPia()" class="btn btn-green">
+          <button name="menu-import" type="button" (click)="importPia()" class="btn btn-green">
             <i class="fa fa-upload" aria-hidden="true"></i>{{ 'homepage.filters.import_pia' | translate }}
           </button>
         </div>
@@ -112,7 +112,7 @@
           </ng-template>
         </div>
       </div>
-      <app-folder-item *ngFor="let folder of _piaService.folders;let i=index" 
+      <app-folder-item *ngFor="let folder of _piaService.folders;let i=index"
         [folder]="folder"
         [dndDraggable]=""
         [dndEffectAllowed]="'move'"
@@ -122,7 +122,7 @@
         [ngClass]="{'dndDropzoneDisabled': itemToMove && itemToMove.id == folder.id}"
         (dndDrop)="onDrop(folder)"
       ></app-folder-item>
-      <app-card-item *ngFor="let pia of _piaService.pias;let i=index" 
+      <app-card-item *ngFor="let pia of _piaService.pias;let i=index"
         [pia]="pia"
         [previousPia]="i > 0 ? _piaService.pias[i-1] : null"
         [dndDraggable]=""
