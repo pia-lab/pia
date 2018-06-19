@@ -52,7 +52,7 @@ export enum PiaStatus {
 }
 
 export enum PiaType {
-  regular = 'regular',
   simplified = 'simplified',
+  regular = 'regular',
   advanced = 'advanced'
 }
