@@ -215,7 +215,7 @@
     </div>
 </div>
 
-<div class="pia-modalBlock" id="modal-remove-pia-folder">
+<div class="pia-modalBlock" id="modal-remove-folder">
     <div class="pia-modalBlock-content pia-modalBlock-removePIA bounceIn">
         <button tabindex="3" type="button" class="pia-modalBlock-close btn" title="{{ 'modals.close' | translate }}" (click)="_modalsService.closeModal()">
             <span class="pia-icons pia-icon-close-big"></span>
@@ -297,6 +297,13 @@
                 <label for="name">{{ 'homepage.cards.pia_name' | translate }}</label>
                 <input formControlName="name" type="text" placeholder="{{ 'homepage.cards.placeholder_pia_name' | translate }}" id="name"
                     required>
+            </div>
+            <div *ngIf="false">
+                <label for="type">{{ 'homepage.cards.pia_type' | translate }}</label>
+                <select formControlName="type" id="type"
+                    required>
+                    <option *ngFor="let type of piaTypes" value="{{ type }}">{{ 'homepage.cards.pia_types.' + type | translate }}</option>
+                </select>
             </div>
             <div>
                 <label for="author_name">{{ 'homepage.cards.author' | translate }}</label>
