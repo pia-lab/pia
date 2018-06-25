@@ -2,12 +2,23 @@ import { browser, by, element } from 'protractor';
 
 export class FolderCard {
 
-  container() {
-    return element(by.css('.cardsContainer'));
+  constructor(private element){
+  
   }
 
-  byFolderName(folderName: string) {
-    return element(by.cssContainingText('input.folder-title', folderName));
+  el(){
+    return this.element;
+  }
+
+  openToolMenu() {
+    return this.element.element(by.css('a.btn.pia-tooltip')).click();
+  }
+
+  clickOnDeleteInToolMenu(){
+    return this.openToolMenu().then(() =>{
+      return this.element.element(by.css('.pia-cardsBlock-toolbar-delete')).click();
+    });
+    
   }
 
 }
