@@ -32,7 +32,6 @@ describe('PIA Login page', () => {
       expect(loginPage.loginErrorMessage().isDisplayed()).toBeTruthy();
     });
 
-
   });
 
   it('when login is successful — he should redirect to home page', () => {
@@ -50,7 +49,8 @@ describe('PIA Login page', () => {
     }, 10000);
 
     expect(homePage.navbarProfile().isPresent()).toBeTruthy();
-
+    homePage.clickOnLogoutInProfileMenu();
+    
   });
 
 });
