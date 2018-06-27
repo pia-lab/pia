@@ -8,6 +8,7 @@
   }
   &-logoBlock {
     //text-align: center;
+    margin-bottom: 8px;
     height: 48px;
     a {
       img {
@@ -29,8 +30,8 @@
     }
     .pia-versionInfoBlock {
       color: $pia-green;
-      vertical-align: text-bottom;
-      
+      font-size: 0.90rem;
+      margin-left: 5px;
     }
   }
 }
