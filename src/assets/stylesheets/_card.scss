@@ -220,7 +220,7 @@
           margin-top: 21px;
           text-align: center;
           a, button {
-              border-radius: 20px;
+              //border-radius: 20px;
               border: 1px solid;
               padding: 9px 20px;
               display: inline-block;
@@ -252,6 +252,8 @@
               cursor: context-menu;
               .pia-cardsBlock-toolbar-moreList {
                 display: block;
+                border: 1px solid $pia-green;
+                border-left: none;
               }
             }
           }
