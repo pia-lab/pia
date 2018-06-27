@@ -105,10 +105,12 @@
       >
         <div class="folder-icon" routerLink="{{getRouteToParentFolder()}}">
           <i class="fa fa-level-up" aria-hidden="true"></i>
+          
         </div>
+        <div class="folder-title">{{ 'homepage.cards.folder.parent' | translate }}</div>
         <div class="bottom-actions">
-            <a class="btn btn-green" routerLink="{{getRouteToParentFolder()}}" href="#">
-              {{ 'homepage.cards.folder.parent' | translate }}
+            <a class="btn btn-green" routerLink="{{getRouteToParentFolder()}}" href="#" >
+              {{ 'homepage.cards.item.back_to_parent' | translate }}
             </a>
         </div>
       </div>

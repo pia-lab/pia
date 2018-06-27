@@ -373,7 +373,7 @@ section {
   position: relative;
   margin-right: 12px;
   margin-bottom: 40px;
-  height: 370px;
+  height: 382px;
   border: 1px solid #A7A7A7;
   padding: 9px;
   background-color: transparent; //background: url("../../../assets/images/pia-bg.png") repeat center center;
@@ -385,13 +385,16 @@ section {
       font-size: 7rem;
     }
   }
-  input.folder-title {
+  .folder-title {
     width: 100%;
     text-align: center;
     font-size: 1.9rem;
     color: #2BBBAD;
     background: transparent;
     border: 0;
+    
+  }
+  input.folder-title{
     &:hover {
       outline: 1px dotted $pia-green;
       cursor: text;
@@ -399,7 +402,7 @@ section {
   }
   .bottom-actions {
     position: absolute;
-    bottom: 12px;
+    bottom: 3px;
     left: 9px;
     right: 9px;
     border-top: 1px solid #2BBBAD;
