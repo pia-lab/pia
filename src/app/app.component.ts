@@ -71,6 +71,7 @@ export class AppComponent {
       'CanDeletePIA','CanImportPIA', 'CanExportPIA', 'CanCreateFolder',
        'AccessToValidationSection'
     ]);
+    roles['ROLE_SHARED_DPO'] = roles['ROLE_DPO'];
 
     roles['ROLE_ADMIN'] = [].concat(roles['ROLE_DPO']);
     roles['ROLE_TECHNICAL_ADMIN'] = [].concat(roles['ROLE_ADMIN']);

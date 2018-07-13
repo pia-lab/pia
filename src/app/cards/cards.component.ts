@@ -16,8 +16,7 @@ import { PermissionsService } from '@security/permissions.service';
 @Component({
   selector: 'app-cards',
   templateUrl: './cards.component.html',
-  styleUrls: ['./cards.component.scss'],
-  providers: [FolderApi]
+  styleUrls: ['./cards.component.scss']
 })
 
 export class CardsComponent implements OnInit, OnDestroy {

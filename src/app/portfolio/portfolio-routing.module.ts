@@ -1,25 +1,19 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { CardsComponent } from 'app/cards/cards.component';
+import { PortfolioComponent } from 'app/portfolio/portfolio.component';
 import { AuthenticationGuardService } from '@security/authentication-guard.service';
 
 const routes: Routes = [
   
-  
   {
-  	path: 'folders',
-  	component: CardsComponent,
+  	path: 'portfolio',
+  	component: PortfolioComponent,
   	canActivate: [AuthenticationGuardService]
   },
-  {
-    path: 'folders/:id',
-    component: CardsComponent,
-    canActivate: [AuthenticationGuardService]
-  }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class CardsRoutingModule { }
+export class PortfolioRoutingModule { }

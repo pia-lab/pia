@@ -54,7 +54,6 @@ import { ListItemComponent } from 'app/cards/list-item/list-item.component';
 import { SummaryComponent } from 'app/summary/summary.component';
 import { AboutComponent } from 'app/about/about.component';
 import { AppRoutingModule } from 'app/app-routing.module';
-import { CardsRoutingModule } from 'app/cards/cards-routing.module';
 
 import { ApiModule } from '@api/api.module';
 import { SecurityModule } from '@security/security.module';
@@ -63,6 +62,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { AppErrorHandler } from 'app/services/app-error.handler';
 import { FolderItemComponent } from './cards/folder-item/folder-item.component';
 import { ListItemFolderComponent } from './cards/list-item-folder/list-item-folder.component';
+import { PortfolioComponent } from 'app/portfolio';
+import { DashboardComponent, DashboardItemComponent } from 'app/dashboard';
 import { DndModule } from 'ngx-drag-drop';
 
 const providersList: any = [
@@ -137,7 +138,10 @@ export function createTranslateLoader(http: HttpClient) {
     AboutComponent,
     TemplatesComponent,
     FolderItemComponent,
-    ListItemFolderComponent
+    ListItemFolderComponent,
+    PortfolioComponent,
+    DashboardComponent,
+    DashboardItemComponent
   ],
   imports: [
     BrowserModule,
