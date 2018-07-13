@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from '@security/authentication.service';
 
 
 @Component({
@@ -8,6 +9,17 @@ import { Component } from '@angular/core';
   providers: []
 })
 
-export class PortfolioComponent {
+export class PortfolioComponent implements OnInit{
  
+  public structures:any[];
+
+  constructor(
+    private authService: AuthenticationService
+  ) {}
+
+  ngOnInit(): void {
+    this.authService.profileSubject.subscribe((profile) =>{
+      this.structures = profile.portfolio_structures;
+    });
+  }
 }

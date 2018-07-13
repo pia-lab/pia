@@ -62,7 +62,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { AppErrorHandler } from 'app/services/app-error.handler';
 import { FolderItemComponent } from './cards/folder-item/folder-item.component';
 import { ListItemFolderComponent } from './cards/list-item-folder/list-item-folder.component';
-import { PortfolioComponent } from 'app/portfolio';
+import { PortfolioComponent, StructureItemComponent } from 'app/portfolio';
 import { DashboardComponent, DashboardItemComponent } from 'app/dashboard';
 import { DndModule } from 'ngx-drag-drop';
 
@@ -140,6 +140,7 @@ export function createTranslateLoader(http: HttpClient) {
     FolderItemComponent,
     ListItemFolderComponent,
     PortfolioComponent,
+    StructureItemComponent,
     DashboardComponent,
     DashboardItemComponent
   ],

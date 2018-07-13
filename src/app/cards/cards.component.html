@@ -85,11 +85,11 @@
     <div class="small-12 medium-12 columns" *ngIf="_piaService.currentFolder">
       <ul class="breadcrumbs folder-breadcrumbs">
           <li *ngFor="let item of _piaService.currentFolder.hierarchy">
-              <a routerLink="/home" *ngIf="item.lvl == 0">
+              <a routerLink="/folders" *ngIf="item.lvl == 0">
                 <i class="fa fa-folder-open"></i>
                 {{ 'homepage.cards.folder.root' | translate }}
               </a>
-              <a routerLink="/home/{{item.id}}" *ngIf="item.lvl > 0">
+              <a routerLink="/folders/{{item.id}}" *ngIf="item.lvl > 0">
                 <i class="fa fa-folder-open"></i>
                 {{ item.name }}
               </a>
