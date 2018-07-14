@@ -63,7 +63,7 @@ export class FolderItemComponent implements OnInit {
   removeFolder(folder: FolderModel) {
     //@todo waiting for modal refactoring
     localStorage.setItem('folder-id', folder.id);
-    localStorage.setItem('structure-id', folder.structure_id);
+    //@note structure-id is already set by ProfileSession
     this._modalsService.openModal('modal-remove-folder');
   }
 }

@@ -1,4 +1,5 @@
 import { Component, Input } from "@angular/core";
+import { ProfileSession } from "../../services/profile-session.service";
 
 @Component({
   selector: "app-structure-item",
@@ -9,5 +10,14 @@ export class StructureItemComponent {
 
   @Input() structure;
 
+  constructor(private session:ProfileSession){
 
+  }
+
+  public navigateTo(structure){
+
+    this.session.navigateToStructure(structure);
+
+
+  }
 }

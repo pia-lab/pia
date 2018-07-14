@@ -65,9 +65,15 @@ import { ListItemFolderComponent } from './cards/list-item-folder/list-item-fold
 import { PortfolioComponent, StructureItemComponent } from 'app/portfolio';
 import { DashboardComponent, DashboardItemComponent } from 'app/dashboard';
 import { DndModule } from 'ngx-drag-drop';
+import { ProfileSession } from './services/profile-session.service';
+import { PortfolioGuardService } from 'app/services/portfolio-guard.service';
+import { StructureGuardService } from 'app/services/structure-guard.service';
 
 const providersList: any = [
   AppDataService,
+  ProfileSession,
+  PortfolioGuardService,
+  StructureGuardService,
   MeasureService,
   ModalsService,
   AttachmentsService,

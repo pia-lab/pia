@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 
-import { AppDataService } from 'app/services/app-data.service';
-import { ModalsService } from 'app/modals/modals.service';
-import { ActionPlanService } from 'app/entry/entry-content/action-plan//action-plan.service';
+import { AppDataService } from '../services/app-data.service';
+import { ModalsService } from '../modals/modals.service';
+import { ActionPlanService } from './entry-content/action-plan/action-plan.service';
 
 // new imports
 
-import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { PiaModel, AnswerModel, CommentModel, EvaluationModel, MeasureModel, AttachmentModel, FolderModel } from '@api/models';
 import { PiaApi, AnswerApi, CommentApi, EvaluationApi, MeasureApi, AttachmentApi, FolderApi } from '@api/services';
@@ -100,7 +100,6 @@ export class PiaService {
         document.querySelector('.pia-folder-item[data-id="' + folderID + '"]').remove();
       }
       localStorage.removeItem('folder-id');
-      localStorage.removeItem('structure-id');
     });
 
     this._modalsService.closeModal();
