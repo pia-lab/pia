@@ -9,12 +9,12 @@ const routes: Routes = [
   {
   	path: 'folders',
   	component: CardsComponent,
-  	canActivate: [AuthenticationGuardService]
+    canActivate: [AuthenticationGuardService],
   },
   {
     path: 'folders/:id',
     component: CardsComponent,
-    canActivate: [AuthenticationGuardService]
+    canActivate: [AuthenticationGuardService],
   }
 ];
 

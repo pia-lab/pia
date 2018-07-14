@@ -4,6 +4,7 @@ export class UserProfile extends BaseModel {
   public username: string;
   public email: string;
   public roles: string[];
+  public structure_id:any;
   public portfolios: UserProfilePortfolio[];
   public portfolio_structures: UserProfileStructure[];
 }

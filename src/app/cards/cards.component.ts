@@ -12,6 +12,7 @@ import { PiaService } from 'app/entry/pia.service';
 import { PiaModel, FolderModel } from '@api/models';
 import { PiaApi, FolderApi } from '@api/services';
 import { PermissionsService } from '@security/permissions.service';
+import { AuthenticationService } from '@security/authentication.service';
 
 @Component({
   selector: 'app-cards',
@@ -32,6 +33,7 @@ export class CardsComponent implements OnInit, OnDestroy {
   folderId: number;
   itemToMove: any = null;
   canCreatePIA: boolean;
+  public structureId:any;
 
   constructor(
     private router: Router,
@@ -41,14 +43,17 @@ export class CardsComponent implements OnInit, OnDestroy {
     public _piaService: PiaService,
     private piaApi: PiaApi,
     private folderApi: FolderApi,
-    private permissionsService: PermissionsService
+    private permissionsService: PermissionsService,
+    private authService: AuthenticationService
   ) { }
 
   ngOnInit() {
     // add permission verification
-    const hasPerm$ = this.permissionsService.hasPermission('CanCreatePIA');
-    hasPerm$.then((bool: boolean) => {
+    this.permissionsService.hasPermission('CanCreatePIA').then((bool: boolean) => {
       this.canCreatePIA = bool;
+    });
+    this.authService.profileSubject.subscribe((profile) => {
+      this.structureId = profile.structure_id;
     });
     this.applySortOrder();
     this.initPiaForm();
@@ -160,9 +165,9 @@ export class CardsComponent implements OnInit, OnDestroy {
 
   protected fetchFolders() {
     if (this.folderId !== null) {
-      return this.folderApi.get(this.folderId).toPromise()
+      return this.folderApi.get(this.structureId,this.folderId).toPromise()
     }
-    return this.folderApi.getAll().toPromise()
+    return this.folderApi.getAll(this.structureId).toPromise();
   }
 
   protected handleFoldersCollection(folderOrFolderCollection: any) {

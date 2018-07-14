@@ -90,8 +90,9 @@ export class PiaService {
 
   removeFolder() {
     const folderID = parseInt(localStorage.getItem('folder-id'), 10);
+    const structureID = parseInt(localStorage.getItem('structure-id'), 10);
     // Removes from DB.
-    this.folderApi.deleteById(folderID).subscribe(() => {
+    this.folderApi.deleteById(structureID, folderID).subscribe(() => {
       // Deletes the Folder from the view.
       if (localStorage.getItem('homepageDisplayMode') && localStorage.getItem('homepageDisplayMode') === 'list') {
         document.querySelector('tr.app-list-item-folder[data-id="' + folderID + '"]').remove();
@@ -99,6 +100,7 @@ export class PiaService {
         document.querySelector('.pia-folder-item[data-id="' + folderID + '"]').remove();
       }
       localStorage.removeItem('folder-id');
+      localStorage.removeItem('structure-id');
     });
 
     this._modalsService.closeModal();
