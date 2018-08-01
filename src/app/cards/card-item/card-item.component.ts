@@ -19,9 +19,9 @@ import { PiaType } from '@api/model/pia.model';
     './card-item_doing.component.scss', './card-item_archived.component.scss'],
 })
 export class CardItemComponent implements OnInit {
-  @Input() pia: any;
-  @Input() previousPia: any;
-  piaForm: FormGroup;
+  @Input() processing: any;
+  @Input() previousProcessing: any;
+  processingForm: FormGroup;
   attachments: any;
   piaTypes: any;
 
@@ -41,29 +41,22 @@ export class CardItemComponent implements OnInit {
 
   ngOnInit() {
 
-    this.piaForm = new FormGroup({
-      id: new FormControl(this.pia.id),
-      name: new FormControl({ value: this.pia.name, disabled: true }),
-      author_name: new FormControl({ value: this.pia.author_name, disabled: true }),
-      evaluator_name: new FormControl({ value: this.pia.evaluator_name, disabled: true }),
-      validator_name: new FormControl({ value: this.pia.validator_name, disabled: true }),
-      type: new FormControl({value: this.pia.type, disabled: true})
+    this.processingForm = new FormGroup({
+      id: new FormControl(this.processing.id),
+      name: new FormControl({ value: this.processing.name, disabled: true }),
+      author: new FormControl({ value: this.processing.author, disabled: true }),
+      processors: new FormControl({ value: this.processing.processors, disabled: true }),
+      controllers: new FormControl({ value: this.processing.controllers, disabled: true })
     });
 
     // add permission verification
     const hasPerm$ = this.permissionsService.hasPermission('CanCreatePIA');
     hasPerm$.then((bool: boolean) => {
-      for (const field in this.piaForm.controls) {
-          const fc = this.piaForm.get(field);
+      for (const field in this.processingForm.controls) {
+          const fc = this.processingForm.get(field);
           bool ? fc.enable() : fc.disable();
       }
     } );
-
-    this.attachmentApi.getAll(this.pia.id).subscribe((entries: AttachmentModel[]) => {
-      this.attachments = entries;
-    });
-
-    this.piaTypes = Object.values(PiaType);
   }
 
   /**
@@ -71,7 +64,7 @@ export class CardItemComponent implements OnInit {
    * @memberof CardItemComponent
    */
   piaNameFocusIn() {
-    // this.piaForm.controls['name'].enable();
+    // this.processingForm.controls['name'].enable();
     this.piaName.nativeElement.focus();
   }
 
@@ -80,14 +73,14 @@ export class CardItemComponent implements OnInit {
    * @memberof CardItemComponent
    */
   piaNameFocusOut() {
-    let userText = this.piaForm.controls['name'].value;
+    let userText = this.processingForm.controls['name'].value;
     if (userText && typeof userText === 'string') {
       userText = userText.replace(/^\s+/, '').replace(/\s+$/, '');
     }
     if (userText !== '') {
 
-      this.piaApi.get(this.piaForm.value.id).subscribe((thePia: PiaModel) => {
-        thePia.name = this.piaForm.value.name;
+      this.piaApi.get(this.processingForm.value.id).subscribe((thePia: PiaModel) => {
+        thePia.name = this.processingForm.value.name;
         this.piaApi.update(thePia).subscribe();
       });
     }
@@ -106,13 +99,13 @@ export class CardItemComponent implements OnInit {
    * @memberof CardItemComponent
    */
   piaAuthorNameFocusOut() {
-    let userText = this.piaForm.controls['author_name'].value;
+    let userText = this.processingForm.controls['author_name'].value;
     if (userText && typeof userText === 'string') {
       userText = userText.replace(/^\s+/, '').replace(/\s+$/, '');
     }
     if (userText !== '') {
-      this.piaApi.get(this.piaForm.value.id).subscribe((thePia: PiaModel) => {
-        thePia.author_name = this.piaForm.value.author_name;
+      this.piaApi.get(this.processingForm.value.id).subscribe((thePia: PiaModel) => {
+        thePia.author_name = this.processingForm.value.author_name;
         this.piaApi.update(thePia).subscribe();
       });
     }
@@ -131,13 +124,13 @@ export class CardItemComponent implements OnInit {
    * @memberof CardItemComponent
    */
   piaEvaluatorNameFocusOut() {
-    let userText = this.piaForm.controls['evaluator_name'].value;
+    let userText = this.processingForm.controls['evaluator_name'].value;
     if (userText && typeof userText === 'string') {
       userText = userText.replace(/^\s+/, '').replace(/\s+$/, '');
     }
     if (userText !== '') {
-      this.piaApi.get(this.piaForm.value.id).subscribe((thePia: PiaModel) => {
-        thePia.evaluator_name = this.piaForm.value.evaluator_name;
+      this.piaApi.get(this.processingForm.value.id).subscribe((thePia: PiaModel) => {
+        thePia.evaluator_name = this.processingForm.value.evaluator_name;
         this.piaApi.update(thePia).subscribe();
       });
     }
@@ -156,13 +149,13 @@ export class CardItemComponent implements OnInit {
    * @memberof CardItemComponent
    */
   piaValidatorNameFocusOut() {
-    let userText = this.piaForm.value.validator_name;
+    let userText = this.processingForm.value.validator_name;
     if (userText && typeof userText === 'string') {
       userText = userText.replace(/^\s+/, '').replace(/\s+$/, '');
     }
     if (userText !== '') {
-      this.piaApi.get(this.piaForm.value.id).subscribe((thePia: PiaModel) => {
-        thePia.validator_name = this.piaForm.value.validator_name;
+      this.piaApi.get(this.processingForm.value.id).subscribe((thePia: PiaModel) => {
+        thePia.validator_name = this.processingForm.value.validator_name;
         this.piaApi.update(thePia).subscribe();
       });
     }
@@ -173,8 +166,8 @@ export class CardItemComponent implements OnInit {
    * @memberof CardItemComponent
    */
   piaTypeFocusOut() {
-    this.piaApi.get(this.piaForm.value.id).subscribe((thePia: PiaModel) => {
-      thePia.type = this.piaForm.value.type;
+    this.piaApi.get(this.processingForm.value.id).subscribe((thePia: PiaModel) => {
+      thePia.type = this.processingForm.value.type;
 
       this.piaApi.update(thePia).subscribe();
     });

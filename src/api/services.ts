@@ -8,3 +8,4 @@ export { UserProfileService as UserProfileApi } from '@api/service/user-profile.
 export { UserTokenService as UserTokenApi } from '@api/service/user-token.service';
 export { TemplateService as TemplateApi } from '@api/service/template.service';
 export { FolderService as FolderApi } from '@api/service/folder.service';
+export { ProcessingService as ProcessingApi } from '@api/service/processing.service';

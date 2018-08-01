@@ -1,21 +1,20 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRoute, Router, Params } from '@angular/router';
+import { Router } from '@angular/router';
 
 import { AppDataService } from '../services/app-data.service';
 import { ModalsService } from '../modals/modals.service';
-import { ActionPlanService } from './entry-content/action-plan/action-plan.service';
 
 // new imports
 
 import { Observable } from 'rxjs';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { PiaModel, AnswerModel, CommentModel, EvaluationModel, MeasureModel, AttachmentModel, FolderModel } from '@api/models';
-import { PiaApi, AnswerApi, CommentApi, EvaluationApi, MeasureApi, AttachmentApi, FolderApi } from '@api/services';
+import { PiaModel, AnswerModel, EvaluationModel, FolderModel } from '@api/models';
+import { PiaApi, EvaluationApi, FolderApi } from '@api/services';
 
 @Injectable()
 export class PiaService {
 
   pias = [];
+  processings = [];
   folders = [];
   currentFolder: FolderModel = null
   isRootFolder: boolean = false
@@ -25,15 +24,10 @@ export class PiaService {
 
   constructor(
     private _router: Router,
-    private route: ActivatedRoute,
     private _appDataService: AppDataService,
     private _modalsService: ModalsService,
     private piaApi: PiaApi,
-    private answerApi: AnswerApi,
-    private commentApi: CommentApi,
     private evaluationApi: EvaluationApi,
-    private measureApi: MeasureApi,
-    private attachmentApi: AttachmentApi,
     private folderApi: FolderApi
   ) {
     this._appDataService.getDataNav().then((dataNav) => {
