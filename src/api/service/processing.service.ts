@@ -19,7 +19,7 @@ export class ProcessingService extends BaseService<Processing> {
     import: '/processings/import'
   };
 
-  constructor(http: HttpClient, protected answerService: AnswerService) {
+  constructor(http: HttpClient) {
     super(http);
   }
 
