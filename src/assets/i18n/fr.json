@@ -129,6 +129,8 @@
       "creation_status": "Création",
       "start": "Commencer",
       "placeholder_start": "Tous les champs doivent être remplis",
+      "controllers": "Responsables de traitement",
+      "placeholder_controllers": "Nom(s) et Prénom(s)",
       "pia_type": "Type",
       "pia_types": {
         "regular": "Traitement",
