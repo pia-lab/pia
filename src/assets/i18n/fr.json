@@ -152,7 +152,9 @@
         },
         "edit_pia": "Éditer le PIA",
         "consult_pia": "Consulter le PIA",
-        "back_to_parent":"Retour"
+        "back_to_parent":"Retour",
+        "edit_processing": "Éditer le traitement",
+        "consult_processing": "Consulter le traitement"
       }
     },
     "lists": {
@@ -178,6 +180,12 @@
           "remove": "Supprimer"
         }
       }
+    }
+  },
+  "processing": {
+    "statuses": {
+      "0": "Valide",
+      "1": "Archivé"
     }
   },
   "pia": {

@@ -1,6 +1,6 @@
 <div class="pia-cardsBlock pia" [ngClass]="{'pia-archiveBlock': processing.status == 1}" [attr.data-id]="processing.id">
     <div class="pia-cardsBlock-header-title" *ngIf="processing.id !== null">
-      <span *ngIf="!previousProcessing || previousProcessing.status !== processing.status">{{ processing.getStatusLabel() | translate }}</span>
+      <span *ngIf="!previousProcessing || previousProcessing.status !== processing.status">{{ ('processing.statuses.' + processing.status) | translate }}</span>
     </div>
     <div class="pia-cardsBlock-item pia-doingBlock-item">
       <div *ngIf="attachments && attachments.length > 0" class="pia-cardsBlock-item-attachment" aria-hidden="true">
@@ -68,16 +68,6 @@
                      id="pia-edit-author-name"
                      (focusout)="processingAuthorFocusOut()">
           </div>
-          <div (click)="processingProcessorFocusIn()">
-              <label for="pia-edit-evaluator-name">{{ 'homepage.cards.processor' | translate }}</label>
-              <input type="text"
-                     #processingProcessor
-                     formControlName="processor"
-                     required
-                     placeholder="{{ 'homepage.cards.placeholder_processor' | translate }}"
-                     id="pia-edit-evaluator-name"
-                     (focusout)="processingProcessorFocusOut()">
-          </div>
           <div (click)="processingControllersFocusIn()">
               <label for="pia-edit-validator-name">{{ 'homepage.cards.controllers' | translate }}</label>
               <input type="text"
@@ -95,21 +85,14 @@
         <div class="pia-cardsBlock-item-status">
             <div class="pia-cardsBlock-item-status-infos">
                 <div>{{ 'homepage.cards.status' | translate }}</div>
-                <div class="pendingValidation" *ngIf="pia.status === 0 && pia.progress === 100;else defaultStatuses">
-                  {{ 'pia.statuses.5' | translate }}
+                <div class="pendingValidation">
+                  {{ ('processing.statuses.' + processing.status) | translate }}
                 </div>
-                <ng-template #defaultStatuses>
-                  <div>{{ pia.getStatusLabel() | translate }}</div>
-                </ng-template>
-            </div>
-            <div class="pia-cardsBlock-item-status-progressBar">
-                <div>{{ pia.progress }}%</div>
-                <progress max="100" value="{{ pia.progress }}"></progress>
             </div>
         </div>
         <div class="pia-cardsBlock-item-btn bottom-actions">
-          <a *ngIf="pia.status === 0" routerLink="/entry/{{pia.id}}/section/1/item/1" class="btn btn-green">{{ 'homepage.cards.item.edit_pia' | translate }}</a>
-          <a *ngIf="pia.status > 0" routerLink="/entry/{{pia.id}}/section/1/item/1" class="btn btn-green">{{ 'homepage.cards.item.consult_pia' | translate }}</a>
+          <a *ngIf="processing.status === 0" routerLink="/entry/{{processing.id}}/section/1/item/1" class="btn btn-green">{{ 'homepage.cards.item.edit_processing' | translate }}</a>
+          <a *ngIf="processing.status > 0" routerLink="/entry/{{processing.id}}/section/1/item/1" class="btn btn-green">{{ 'homepage.cards.item.consult_processing' | translate }}</a>
         </div>
       </form>
   </div>
