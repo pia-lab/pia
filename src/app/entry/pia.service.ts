@@ -8,7 +8,7 @@ import { ModalsService } from '../modals/modals.service';
 
 import { Observable } from 'rxjs';
 import { PiaModel, AnswerModel, EvaluationModel, FolderModel } from '@api/models';
-import { PiaApi, EvaluationApi, FolderApi } from '@api/services';
+import { PiaApi, EvaluationApi, FolderApi, ProcessingApi } from '@api/services';
 
 @Injectable()
 export class PiaService {
@@ -28,7 +28,8 @@ export class PiaService {
     private _modalsService: ModalsService,
     private piaApi: PiaApi,
     private evaluationApi: EvaluationApi,
-    private folderApi: FolderApi
+    private folderApi: FolderApi,
+    private processingApi: ProcessingApi
   ) {
     this._appDataService.getDataNav().then((dataNav) => {
       this.data = dataNav;
@@ -76,6 +77,28 @@ export class PiaService {
       }
 
       localStorage.removeItem('pia-id');
+    });
+
+
+    this._modalsService.closeModal();
+  }
+
+  /**
+   * Allows an user to remove a PIA.
+   * @memberof PiaService
+   */
+  removeProcessing() {
+    const processingID = parseInt(localStorage.getItem('processing-id'), 10);
+    // Removes from DB.
+    this.processingApi.deleteById(processingID).subscribe(() => {
+      // Deletes the PIA from the view.
+      if (localStorage.getItem('homepageDisplayMode') && localStorage.getItem('homepageDisplayMode') === 'list') {
+        document.querySelector('.app-list-item[data-id="' + processingID + '"]').remove();
+      } else {
+        document.querySelector('.pia-cardsBlock.pia[data-id="' + processingID + '"]').remove();
+      }
+
+      localStorage.removeItem('processing-id');
     });
 
 

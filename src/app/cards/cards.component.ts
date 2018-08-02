@@ -42,7 +42,7 @@ export class CardsComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     public _modalsService: ModalsService,
     public _piaService: PiaService,
-    // private piaApi: PiaApi,
+    private permissionsService: PermissionsService,
     private processingApi: ProcessingApi,
     private folderApi: FolderApi,
     private session: ProfileSession
@@ -50,7 +50,9 @@ export class CardsComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.structure = this.session.getCurrentStructure();
-
+    this.permissionsService.hasPermission('CanCreateProcessing').then((bool: boolean) => {
+      this.canCreateProcessing = bool;
+    });
     this.applySortOrder();
     // this.initPiaForm();
     this.initProcessingForm();

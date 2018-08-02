@@ -24,17 +24,15 @@
             <a href="javascript:;" class="btn pia-tooltip" title="{{ 'homepage.cards.item.tools.more_options' | translate }}">
               <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
               <ul class="pia-cardsBlock-toolbar-moreList">
+                <!--
                 <li *ngxPermissionsOnly="['CanCreateProcessing']">
                   <i class="fa fa-files-o" aria-hidden="true"></i>
                   <a href="javascript:;" (click)="_piaService.duplicate(processing.id)">{{ 'homepage.cards.item.tools.duplicate' | translate }}</a>
                 </li>
-                <li>
-                  <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
-                  <a routerLink="/summary/{{processing.id}}" [queryParams]="{ displayOnlyActionPlan: true }" [innerHTML]="'homepage.cards.item.tools.action_plan' | translate"></a>
-                </li>
+               -->
                 <li>
                   <i class="fa fa-file-text-o" aria-hidden="true"></i>
-                  <a routerLink="/summary/{{processing.id}}" [innerHTML]="'homepage.cards.item.tools.processing' | translate"></a>
+                  <a routerLink="/summary/{{processing.id}}" [innerHTML]="'homepage.cards.item.tools.show_pias' | translate"></a>
                 </li>
                 <li *ngxPermissionsOnly="['CanDeleteProcessing']">
                   <i class="fa fa-trash-o" aria-hidden="true"></i>
@@ -51,7 +49,7 @@
           <div (click)="processingNameFocusIn()">
               <label for="pia-edit-name">{{ 'homepage.cards.processing_name' | translate }}</label>
               <input type="text"
-                     #piaName
+                     #processingName
                      formControlName="name"
                      required
                      placeholder="{{ 'homepage.cards.placeholder_processing_name' | translate }}"
@@ -85,10 +83,14 @@
         <div class="pia-cardsBlock-item-status">
             <div class="pia-cardsBlock-item-status-infos">
                 <div>{{ 'homepage.cards.status' | translate }}</div>
-                <div class="pendingValidation">
+                <div>
                   {{ ('processing.statuses.' + processing.status) | translate }}
                 </div>
             </div>
+        </div>
+        <div class="pia-cardsBlock-item-pias-number">
+          <label for="pia-edit-validator-name">{{ 'homepage.cards.pias_number' | translate }}</label>
+          <div>{{ processing.pias.length }}</div>
         </div>
         <div class="pia-cardsBlock-item-btn bottom-actions">
           <a *ngIf="processing.status === 0" routerLink="/entry/{{processing.id}}/section/1/item/1" class="btn btn-green">{{ 'homepage.cards.item.edit_processing' | translate }}</a>

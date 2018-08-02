@@ -135,6 +135,7 @@
         "simplified": "Traitement simplifié",
         "advanced"  : "Traitement avec analyse d'impact"
       },
+      "pias_number": "Nombre de PIA",
       "folder": {
         "title": "Dossier",
         "parent": "Dossier parent",
@@ -148,7 +149,8 @@
           "duplicate": "Dupliquer",
           "action_plan": "Afficher le<br>plan d'action",
           "pia": "Afficher le<br>PIA",
-          "remove": "Supprimer"
+          "remove": "Supprimer",
+          "show_pias": "Voir les PIAs"
         },
         "edit_pia": "Éditer le PIA",
         "consult_pia": "Consulter le PIA",
@@ -999,6 +1001,10 @@
     "remove_pia": {
       "content": "<span class='strong'>Attention,</span><br>Êtes-vous sûr de vouloir<br>supprimer ce PIA ?",
       "remove": "Supprimer ce PIA"
+    },
+    "remove_processing": {
+      "content": "<span class='strong'>Attention,</span><br>Êtes-vous sûr de vouloir<br>supprimer ce traitement ?",
+      "remove": "Supprimer ce traitement"
     },
     "remove_pia_folder": {
       "content": "<span class='strong'>Attention,</span><br>Êtes-vous sûr de vouloir<br>supprimer ce dossier ?<p>Les PIAs présentes dans ce dossier seront supprimées</p>",
