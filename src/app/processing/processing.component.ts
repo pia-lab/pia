@@ -2,12 +2,10 @@ import { Component, OnInit, Output, OnDestroy, DoCheck } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 
 import { KnowledgeBaseService } from 'app/entry/knowledge-base/knowledge-base.service';
-import { ProcessingService } from './processing.service';
 import { ModalsService } from '../modals/modals.service';
 import { ProcessingArchitectureService } from '../services/processing-architecture.service';
 import { SidStatusService } from '../services/sid-status.service';
 import { ProcessingModel } from '@api/models';
-import { ProcessingApi } from '@api/services';
 
 @Component({
   selector: 'app-processing',
@@ -15,20 +13,21 @@ import { ProcessingApi } from '@api/services';
   styleUrls: ['./processing.component.scss']
 })
 export class ProcessingComponent implements OnInit {
+  processing: ProcessingModel;
   sections: any;
-  section: { id: number, title: string, short_help: string, items: any };
-  item: { id: number, title: string, evaluation_mode: string, short_help: string, questions: any };
+  section: { id: number, title: string, short_help: string, fields: any };
+  field: { id: number, title: string, evaluation_mode: string, short_help: string, questions: any };
 
   constructor(private route: ActivatedRoute,
     private _modalsService: ModalsService,
     private _processingArchitectureService: ProcessingArchitectureService,
     private _sidStatusService: SidStatusService,
-    private knowledgeBaseService: KnowledgeBaseService,
-    private _processingService: ProcessingService
+    private knowledgeBaseService: KnowledgeBaseService
   ) { }
 
   ngOnInit() {
     this.sections = this.route.snapshot.data.sections;
+    this.processing = this.route.snapshot.data.processing;
     this.getSectionFromRouteParams(this.route.snapshot.params);
 
     this.route.params.subscribe((newParams: Params) => {
@@ -39,21 +38,21 @@ export class ProcessingComponent implements OnInit {
   }
 
   /**
-   * Gets form section and item from route params
+   * Gets form section and field from route params
    * @private
    * @param {Params} params
    * @memberof ProcessingComponent
    */
   private getSectionFromRouteParams(params: Params) {
     const sectionId = parseInt(this.route.snapshot.params['section_id'], 10) || 1;
-    const itemId = parseInt(this.route.snapshot.params['item_id'], 10) || 1;
+    const fieldId = parseInt(this.route.snapshot.params['field_id'], 10) || 1;
 
     this.section = this.sections.filter((section) => {
       return section.id === sectionId;
     })[0];
 
-    // this.item = this.section.items.filter((item) => {
-    //   return item.id === itemId;
+    // this.field = this.section.fields.filter((field) => {
+    //   return field.id === fieldId;
     // })[0];
 
     // this.updateKnowledgeBase();
@@ -63,7 +62,7 @@ export class ProcessingComponent implements OnInit {
    * Updates the knowledge base section
    * @private
    * @param {number} sectionId - The section id.
-   * @param {number} itemId - The item id.
+   * @param {number} fieldId - The field id.
    * @memberof ProcessingComponent
    */
   private updateKnowledgeBase() {
@@ -75,7 +74,7 @@ export class ProcessingComponent implements OnInit {
     knowledgeBaseContent.value = '';
 
     this.knowledgeBaseService.q = null;
-    this.knowledgeBaseService.loadByItem(this.item);
+    this.knowledgeBaseService.loadByItem(this.field);
     this.knowledgeBaseService.placeholder = null;
   }
 

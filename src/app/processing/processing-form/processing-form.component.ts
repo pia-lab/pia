@@ -1,6 +1,5 @@
 import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
-import 'rxjs/add/operator/map'
 
 import { ProcessingArchitectureService } from '../../services/processing-architecture.service';
 import { ModalsService } from '../../modals/modals.service';
@@ -8,8 +7,8 @@ import { PaginationService } from 'app/processing/processing-form/pagination.ser
 import { TranslateService } from '@ngx-translate/core';
 import { SidStatusService } from '../../services/sid-status.service';
 import { KnowledgeBaseService } from 'app/entry/knowledge-base/knowledge-base.service';
-import { ProcessingService } from '../processing.service';
 import { ProcessingModel } from '@api/models';
+import { ProcessingApi } from '@api/services';
 
 @Component({
   selector: 'app-processing-form',
@@ -18,51 +17,60 @@ import { ProcessingModel } from '@api/models';
 })
 
 export class ProcessingFormComponent implements OnInit, OnChanges {
+  @Input() sections: any;
+  @Input() processing: ProcessingModel;
   @Input() section: any;
   @Input() item: any;
-  @Input() data: any;
-  @Input() sections: any;
-  processing: ProcessingModel = new ProcessingModel();
 
-  constructor(private _router: Router,
-              private _processingArchitectureService: ProcessingArchitectureService,
-              private _activatedRoute: ActivatedRoute,
-              private _modalsService: ModalsService,
-              public _processingService: ProcessingService,
-              public _sidStatusService: SidStatusService,
-              public _paginationService: PaginationService,
-              private _translateService: TranslateService,
-              private _knowledgeBaseService: KnowledgeBaseService) { }
+  constructor(private router: Router,
+              private processingArchitectureService: ProcessingArchitectureService,
+              private activatedRoute: ActivatedRoute,
+              private modalsService: ModalsService,
+              public processingApi: ProcessingApi,
+              public sidStatusService: SidStatusService,
+              public paginationService: PaginationService,
+              private translateService: TranslateService,
+              private knowledgeBaseService: KnowledgeBaseService) { }
 
   ngOnInit() {
-    this._knowledgeBaseService.toHide = [];
+    this.knowledgeBaseService.toHide = [];
+    this.processing = new ProcessingModel();
+    this.processing.id = 42;
   }
 
   ngOnChanges() {
-    const sectionId = parseInt(this._activatedRoute.snapshot.params['section_id'], 10);
-    const itemId = parseInt(this._activatedRoute.snapshot.params['item_id'], 10);
+    const sectionId = parseInt(this.activatedRoute.snapshot.params['sectionid'], 10);
+    const itemId = parseInt(this.activatedRoute.snapshot.params['itemid'], 10);
 
-    this._paginationService.setPagination(sectionId, itemId);
+    this.paginationService.setPagination(sectionId, itemId);
+  }
+
+  updateKnowledgeBase() {
+    console.log('focusIn: knowledgebase update');
+  }
+
+  updateProcessing() {
+    this.processingApi.update(this.processing);
   }
 
 
   /**
    * Go to next item.
    * @private
-   * @param {number} status_start - From status.
-   * @param {number} status_end - To status.
+   * @param {number} statusstart - From status.
+   * @param {number} statusend - To status.
    * @memberof EntryContentComponent
    */
-  private goToNextSectionItem(status_start: number, status_end: number) {
-    const goto_section_item = this._paginationService.getNextSectionItem(status_start, status_end)
+  private goToNextSectionItem(statusstart: number, statusend: number) {
+    const gotosectionitem = this.paginationService.getNextSectionItem(statusstart, statusend)
 
-    this._router.navigate([
+    this.router.navigate([
       'entry',
-      this._processingService.processing.id,
+      this.processing.id,
       'section',
-      goto_section_item[0],
+      gotosectionitem[0],
       'item',
-      goto_section_item[1]
+      gotosectionitem[1]
     ]);
   }
 }

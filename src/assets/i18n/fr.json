@@ -177,6 +177,28 @@
       }
     }
   },
+  "processing": {
+    "form": {
+      "description": "Quels sont les finalités du traitement",
+      "standards": "Quels sont les référenciels applicables",
+      "non-eu-transfer": "Transfert hors UE",
+      "data-types": "Types de données traitées",
+      "storage": "Où les données sont elles stockées",
+      "lifecycle": "Cycle de vie des données",
+      "processors": "Sous traitants",
+      "sections": {
+        "description": {
+          "title": "Description de l'activité de traitement"
+        },
+        "data": {
+          "title": "Données traitées"
+        },
+        "lifecycle": {
+          "title": "Cycle de vie des données"
+        }
+      }
+    }
+  },
   "pia": {
     "statuses": {
       "0": "En cours",

@@ -18,48 +18,213 @@
       <!-- <h2 *ngIf="item.title">{{ item.title | translate }}</h2>
       <h4 *ngIf="item.short_help">{{ item.short_help | translate }}</h4> -->
     </div>
-    <!-- <a *ngIf="section.id === 4 && item.id === 2;else defaultBlock" routerLink="/summary/{{_processingService.processing.id}}" [queryParams]="{ displayOnlyActionPlan: true }" class="btn processing-previewBlock">
+    <!-- <a *ngIf="section.id === 4 && item.id === 2;else defaultBlock" routerLink="/summary/{{processing.id}}" [queryParams]="{ displayOnlyActionPlan: true }" class="btn processing-previewBlock">
       <span class="processing-icons processing-icon-preview"></span>
       <div [innerHTML]="'processing.header.display_action_plan' | translate"></div>
     </a> -->
     <ng-template #defaultBlock>
-      <a routerLink="/summary/{{_processingService.processing.id}}" class="btn processing-previewBlock">
+      <a routerLink="/summary/{{processing.id}}" class="btn processing-previewBlock">
         <span class="processing-icons processing-icon-preview"></span>
         <div>{{ 'processing.header.preview' | translate }}</div>
       </a>
     </ng-template>
   </header>
-    
   <main>
-      <form class="processing-form" #processingForm="ngForm" (ngSubmit)="onSubmit()">
-          <fieldset>
-              <div>
-                  <label for="processing-description">{{ 'processing.form.description' | translate }}</label>
-                  <input id="processing-description" type="text"  [(ngModel)]="processing.description" name="description" required>
-              </div>
-          </fieldset>
-<!-- name
-author
-status = self::STATUS_DOING
-description
-lifeCycle
-storage
-standards
-processors
-controllers
-nonEuTransfer
-processingDataTypes -->
-      </form>
+
+    <form id="processing-form" #processingForm="ngForm" (ngSubmit)="onSubmit()">
+
+      <fieldset id="description" class="form-section">
+        <div class="form-field">
+          <label class="title" for="processing-description">{{ 'processing.form.description' | translate }}</label>
+          <textarea 
+            class="field" 
+            id="processing-description" 
+            [(ngModel)]="processing.description"
+            name="description" 
+            required
+            (focusin)="updateKnowledgeBase($event.target)"
+            (change)="updateProcessing()"
+          ></textarea>
+        </div>
+        <div class="form-field">
+          <label class="title" for="processing-standards">{{ 'processing.form.standards' | translate }}</label>
+          <textarea 
+            class="field" 
+            id="processing-standards" 
+            type="text" 
+            [(ngModel)]="processing.standards" 
+            name="standards" 
+            required
+            (focusin)="updateKnowledgeBase($event.target)"
+            (change)="updateProcessing()"
+          ></textarea>
+        </div>
+        <div class="form-field">
+          <label class="title" for="processing-non-eu-transfer">{{ 'processing.form.non-eu-transfer' | translate }}</label>
+          <input class="field" 
+            id="processing-non-eu-transfer" 
+            type="checkbox" 
+            name="non-eu-transfer" 
+            required
+            [(ngModel)]="processing.non-eu-transfer"
+            (focusin)="updateKnowledgeBase($event.target)"
+            (change)="updateProcessing()"
+          >
+        </div>
+      </fieldset>
+
+      <fieldset id="data" class="form-section">
+        <div class="form-field">
+          <label class="title" for="processing-data-types">{{ 'processing.form.data-types' | translate }}</label>
+          <input 
+            class="field" 
+            id="processing-data-types" 
+            type="checkbox" 
+            [(ngModel)]="processing.data-types" 
+            name="data-types"
+            value="identification"
+            required
+            (focusin)="updateKnowledgeBase($event.target)"
+            (change)="updateProcessing()"  
+          >
+          <input 
+            class="field" 
+            id="processing-data-types" 
+            type="checkbox" 
+            [(ngModel)]="processing.data-types" 
+            name="data-types"
+            value="personal"
+            required
+            (focusin)="updateKnowledgeBase($event.target)"
+            (change)="updateProcessing()"  
+          >
+          <input 
+            class="field" 
+            id="processing-data-types" 
+            type="checkbox" 
+            [(ngModel)]="processing.data-types" 
+            name="data-types"
+            value="professional"
+            required
+            (focusin)="updateKnowledgeBase($event.target)"
+            (change)="updateProcessing()"  
+          >
+          <input 
+            class="field" 
+            id="processing-data-types" 
+            type="checkbox" 
+            [(ngModel)]="processing.data-types" 
+            name="data-types"
+            value="financial"
+            required
+            (focusin)="updateKnowledgeBase($event.target)"
+            (change)="updateProcessing()"  
+          >
+          <input 
+            class="field" 
+            id="processing-data-types" 
+            type="checkbox" 
+            [(ngModel)]="processing.data-types" 
+            name="data-types"
+            value="log"
+            required
+            (focusin)="updateKnowledgeBase($event.target)"
+            (change)="updateProcessing()"  
+          >
+          <input 
+            class="field" 
+            id="processing-data-types" 
+            type="checkbox" 
+            [(ngModel)]="processing.data-types" 
+            name="data-types"
+            value="location"
+            required
+            (focusin)="updateKnowledgeBase($event.target)"
+            (change)="updateProcessing()"  
+          >
+          <input 
+            class="field" 
+            id="processing-data-types" 
+            type="checkbox" 
+            [(ngModel)]="processing.data-types" 
+            name="data-types"
+            value="internet"
+            required
+            (focusin)="updateKnowledgeBase($event.target)"
+            (change)="updateProcessing()"  
+          >
+          <input 
+            class="field" 
+            id="processing-data-types" 
+            type="checkbox" 
+            [(ngModel)]="processing.data-types" 
+            name="data-types"
+            value="other"
+            required
+            (focusin)="updateKnowledgeBase($event.target)"
+            (change)="updateProcessing()"  
+          >
+        </div>
+        <div class="form-field">
+          <label class="title" for="processing-storage">{{ 'processing.form.storage' | translate }}</label>
+          <textarea 
+            class="field" 
+            id="processing-storage" 
+            type="text" 
+            [(ngModel)]="processing.storage" 
+            name="storage" 
+            required
+            (focusin)="updateKnowledgeBase($event.target)"
+            (change)="updateProcessing()"  
+          ></textarea>
+        </div>
+      </fieldset>
+
+      <fieldset id="lifecycle" class="form-section">
+        <div class="form-field">
+          <label class="title" for="processing-lifecycle">{{ 'processing.form.lifecycle' | translate }}</label>
+          <textarea 
+            class="field" 
+            id="processing-lifecycle" 
+            type="text" 
+            [(ngModel)]="processing.lifecycle" 
+            name="lifecycle" 
+            required
+            (focusin)="updateKnowledgeBase($event.target)"
+            (change)="updateProcessing()"  
+          ></textarea>
+        </div>
+        <div class="form-field">
+          <label class="title" for="processing-processors">{{ 'processing.form.processors' | translate }}</label>
+          <!-- <tag-input
+                    (onAdd)="onAdd($event)"
+                    (onTagEdited)="onTagEdited($event)"
+                    (onRemove)="onRemove($event)"
+                    (focusin)="updateKnowledgeBase($event.target)"
+                    (change)="updateProcessing()" 
+                    formControlName="list"
+                    [clearOnBlur]="true"
+                    [theme]="'foundation-theme'"
+                    [placeholder]="placeholder | translate"
+                    [editable]="false"
+                    [onlyFromAutocomplete]="true"
+                    [secondaryPlaceholder]="'aaaaa' | translate">
+            <tag-input-dropdown [showDropdownIfEmpty]="true"></tag-input-dropdown>
+          </tag-input> -->
+        </div>
+      </fieldset>
+    </form>
   </main>
 
   <footer class="processing-entryContentBlock-footer">
     <div class="processing-entryContentBlock-footer-nav">
-      <a [ngClass]="{'mask': _paginationService.hasPreviousLink === false}" class="processing-previousLink" routerLink="/processing/{{_processingService.processing.id}}/section/{{_paginationService.previousLink[0]}}/item/{{_paginationService.previousLink[1]}}">
-          <i class="fa fa-angle-double-left" aria-hidden="true"></i>
-          {{ _paginationService.previousLink[2] | translate }}
-      </a><a [ngClass]="{'mask': _paginationService.hasNextLink === false}" class="processing-nextLink" routerLink="/processing/{{_processingService.processing.id}}/section/{{_paginationService.nextLink[0]}}/item/{{_paginationService.nextLink[1]}}">
-          {{ _paginationService.nextLink[2] | translate }}
-          <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+      <a [ngClass]="{'mask': paginationService.hasPreviousLink === false}" class="processing-previousLink" routerLink="/processing/{{processing.id}}/section/{{paginationService.previousLink[0]}}/item/{{paginationService.previousLink[1]}}">
+        <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+        {{ paginationService.previousLink[2] | translate }}
+      </a>
+      <a [ngClass]="{'mask': paginationService.hasNextLink === false}" class="processing-nextLink" routerLink="/processing/{{processing.id}}/section/{{paginationService.nextLink[0]}}/item/{{paginationService.nextLink[1]}}">
+        {{ paginationService.nextLink[2] | translate }}
+        <i class="fa fa-angle-double-right" aria-hidden="true"></i>
       </a>
     </div>
   </footer>
