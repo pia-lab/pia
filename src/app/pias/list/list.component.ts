@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { PiaApi } from '@api/services';
+import { PiaApi, ProcessingApi } from '@api/services';
 import { ActivatedRoute } from '@angular/router';
-import { PiaModel } from '@api/models';
+import { PiaModel, ProcessingModel } from '@api/models';
 
 @Component({
   selector: 'app-pias-list',
@@ -10,13 +10,18 @@ import { PiaModel } from '@api/models';
 })
 export class PiasListComponent implements OnInit {
 
-  public pias: Array<PiaModel>
+  public processing: ProcessingModel = new ProcessingModel()
+  public pias: Array<PiaModel> = []
 
   constructor(
     private route: ActivatedRoute,
-    private piaApi: PiaApi
+    private piaApi: PiaApi,
+    private processingApi: ProcessingApi
   ) {
     this.route.params.subscribe( params => {
+      this.processingApi.get(params.id).subscribe(processing => {
+        this.processing = processing;
+      });
       this.piaApi.getAll({'processing' : params.id}).subscribe((pias: Array<PiaModel>) => {
         this.pias = pias;
       });

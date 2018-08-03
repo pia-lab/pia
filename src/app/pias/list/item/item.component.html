@@ -1,2 +1,19 @@
-<td>{{ pia.name }}</td>
-<td>{{ pia.author_name }}</td>
+<td>
+  {{ pia.name }}
+</td>
+<td>
+  <ul>
+    <li title="{{ 'processing.pia-list.item.author_name' | translate }}">
+      <b>{{ 'processing.pia-list.item.author_name' | translate | slice : 0 : 1 }}:</b> {{ pia.author_name }}
+    </li>
+    <li title="{{ 'processing.pia-list.item.evaluator_name' | translate }}">
+      <b>{{ 'processing.pia-list.item.evaluator_name' | translate | slice : 0 : 1 }}:</b> {{ pia.evaluator_name }}
+    </li>
+    <li title="{{ 'processing.pia-list.item.validator_name' | translate }}">
+      <b>{{ 'processing.pia-list.item.validator_name' | translate | slice : 0 : 1 }}:</b> {{ pia.validator_name }}
+    </li>
+  </ul>
+</td>
+<td>
+  {{ ('pia.statuses.' + pia.status) | translate }}
+</td>

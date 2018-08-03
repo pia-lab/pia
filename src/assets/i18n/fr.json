@@ -194,7 +194,13 @@
     "pia-list": {
       "table-header": {
         "name": "Nom",
-        "author": "Auteur"
+        "stakeholders": "Parties prenantes",
+        "status": "État"
+      },
+      "item": {
+        "author_name": "Auteur",
+        "evaluator_name": "Évaluateur",
+        "validator_name": "Validateur"
       }
     }
   },
