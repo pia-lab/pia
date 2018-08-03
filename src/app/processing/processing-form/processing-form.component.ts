@@ -1,10 +1,7 @@
 import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 
-import { ProcessingArchitectureService } from '../../services/processing-architecture.service';
-import { ModalsService } from '../../modals/modals.service';
 import { PaginationService } from 'app/processing/processing-form/pagination.service';
-import { TranslateService } from '@ngx-translate/core';
 import { SidStatusService } from '../../services/sid-status.service';
 import { KnowledgeBaseService } from 'app/entry/knowledge-base/knowledge-base.service';
 import { ProcessingModel } from '@api/models';
@@ -19,23 +16,20 @@ import { ProcessingApi } from '@api/services';
 export class ProcessingFormComponent implements OnInit, OnChanges {
   @Input() sections: any;
   @Input() processing: ProcessingModel;
-  @Input() section: any;
+  @Input() currentSection: any;
   @Input() item: any;
 
-  constructor(private router: Router,
-              private processingArchitectureService: ProcessingArchitectureService,
-              private activatedRoute: ActivatedRoute,
-              private modalsService: ModalsService,
-              public processingApi: ProcessingApi,
-              public sidStatusService: SidStatusService,
-              public paginationService: PaginationService,
-              private translateService: TranslateService,
-              private knowledgeBaseService: KnowledgeBaseService) { }
+  constructor(
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+    public processingApi: ProcessingApi,
+    public sidStatusService: SidStatusService,
+    public paginationService: PaginationService,
+    private knowledgeBaseService: KnowledgeBaseService
+  ) { }
 
   ngOnInit() {
     this.knowledgeBaseService.toHide = [];
-    this.processing = new ProcessingModel();
-    this.processing.id = 42;
   }
 
   ngOnChanges() {
@@ -50,7 +44,14 @@ export class ProcessingFormComponent implements OnInit, OnChanges {
   }
 
   updateProcessing() {
+    console.log(this.processing);
     this.processingApi.update(this.processing);
+  }
+
+  getSectionById(sectionId) {
+    return this.sections.filter((section) => {
+      return section.id === sectionId;
+    });
   }
 
 

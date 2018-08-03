@@ -8,9 +8,11 @@ import { Observable } from 'rxjs/Rx';
 export class ProcessingResolve implements Resolve<any> {
   constructor(private processingApi: ProcessingApi) { }
 
-  resolve(route: ActivatedRouteSnapshot): Observable<ProcessingModel> {
+  resolve(route: ActivatedRouteSnapshot){//: Observable<ProcessingModel> {
     const processingId = route.params.id;
-
-    return this.processingApi.get(processingId);
+    let p = new ProcessingModel();
+    p.id = 42;
+    return p;
+    //return this.processingApi.get(processingId);
   }
 }

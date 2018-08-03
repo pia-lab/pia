@@ -3,10 +3,13 @@
 
 // Sections
 .processing {
-  &-sectionBlock {
+  .active {
+    color: red;
+  }
+  &-section {
     &-header {
       display: flex;
-      justify-content: flex-end;
+      justify-content: flex-start;
       padding: 0;
       border-bottom: solid 2px $pia-gray;
       h1 {
@@ -24,6 +27,7 @@
       }
     }
     &-title {
+      color: $pia-gray;
       margin-top: 18px;
       margin-left: 10px;
       text-transform: uppercase;
@@ -32,8 +36,9 @@
       align-self: center;
       display: flex;
       font-weight: 600;
-      justify-content: flex-end;
+      justify-content: flex-start;
       font-size: 1.3rem;
+      cursor: pointer;
       hr {
         margin: auto 10px auto auto;
         background-color: $pia-gray;
@@ -41,6 +46,7 @@
         height: 1px;
       }
     }
+    
     &-list {
       padding: 0;
       margin-bottom: 22px;
@@ -90,7 +96,7 @@
       }
       
       #general-section {
-        .pia-sectionBlock-title {
+        .pia-section-title {
           color: $pia-green;
           border-color: $pia-green;
         }
@@ -107,7 +113,7 @@
         }
       }
       #data-section {
-        .pia-sectionBlock-title {
+        .pia-section-title {
           color: $pia-blue;
           border-color: $pia-blue;
         }
@@ -125,7 +131,7 @@
       }
       
       #lifecycle-section {
-        .pia-sectionBlock-title {
+        .pia-section-title {
           color: $pia-red;
           border-color: $pia-red;
         }

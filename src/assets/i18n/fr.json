@@ -199,6 +199,20 @@
       }
     }
   },
+  "processed-data-types": {
+    "form": {
+      "duration": "Durée de conservation",
+      "sensitive": "Données sensibles ?",
+      "identification": "État-civil, identité, données d'identification, images(ex.nom, prénom, adresse, photographie, date et lieu de naissance, etc.)",
+      "personal": "Vie personnelle (ex. habitudes de vie, situation familiale, etc.)",
+      "professional": "Vie professionnelle(ex. CV, situation professionnelle, scolarité, formation, distinctions, diplômes, etc.)",
+      "financial": "Informations d’ordre économique et financier (ex. revenus, situation financière, données bancaires, etc.)",
+      "log": "Données de connexion (ex. adresses Ip, logs, identifiants des terminaux, identifiants de connexion, informations d'horodatage, etc.)",
+      "location": "Données de localisation (ex. déplacements, données GPS, GSM, ...)",
+      "internet": "Internet(ex. cookies, traceurs, données de navigation, mesures d’audience, ...)",
+      "other": "Autres catégories de données"
+    }
+  },
   "pia": {
     "statuses": {
       "0": "En cours",

@@ -16,7 +16,7 @@ const routes: Routes = [
     }
   },
   {
-    path: 'processing/:id/section/:section_id/field/:field_id',
+    path: 'processing/:id/section/:section_id',
     component: ProcessingComponent,
     canActivate: [AuthenticationGuardService],
     resolve: {

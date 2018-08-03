@@ -1,27 +1,13 @@
-<section class="processing-entryContentBlock processing-entryContentBlock-section{{section.id}}">
+<section class="processing-entryContentBlock processing-entryContentBlock-section{{currentSection.id}}">
   <header autoscroll="true" class="processing-entryContentBlock-header">
     <div>
-      <!-- <i class="fa" *ngIf="_sidStatusService.sidStatusIcon[_sidStatusService.itemStatus[section.id + '.' + item.id]]; else specialIcon" [ngClass]="_sidStatusService.sidStatusIcon[_sidStatusService.itemStatus[section.id + '.' + item.id]]" aria-hidden="true"></i> -->
-      <!-- <i class="fa" #specialIcon *ngIf="_sidStatusService.specialIcon[section.id + '.' + item.id]" [ngClass]="_sidStatusService.specialIcon[section.id + '.' + item.id]" aria-hidden="true"></i> -->
       <div class="processing-entryContentBlock-header-progress">
-        <!-- <div *ngIf="_sidStatusService.itemStatus[section.id + '.' + item.id] <= 4">
-          {{ 'processing.header.edition' | translate }}
-        </div> -->
-        <!-- <div *ngIf="_sidStatusService.itemStatus[section.id + '.' + item.id] > 4 && _sidStatusService.itemStatus[section.id + '.' + item.id] <= 7">
-          {{ 'processing.header.evaluation' | translate }}
-        </div> -->
       </div>
     </div>
     <div class="processing-entryContentBlock-header-title">
-      <h1 *ngIf="section.title">{{ section.title | translate }}</h1>
-      <h3 *ngIf="section.short_help">{{ section.short_help | translate }}</h3>
-      <!-- <h2 *ngIf="item.title">{{ item.title | translate }}</h2>
-      <h4 *ngIf="item.short_help">{{ item.short_help | translate }}</h4> -->
+      <h1 *ngIf="currentSection.title">{{ currentSection.title | translate }}</h1>
+      <h3 *ngIf="currentSection.short_help">{{ currentSection.short_help | translate }}</h3>
     </div>
-    <!-- <a *ngIf="section.id === 4 && item.id === 2;else defaultBlock" routerLink="/summary/{{processing.id}}" [queryParams]="{ displayOnlyActionPlan: true }" class="btn processing-previewBlock">
-      <span class="processing-icons processing-icon-preview"></span>
-      <div [innerHTML]="'processing.header.display_action_plan' | translate"></div>
-    </a> -->
     <ng-template #defaultBlock>
       <a routerLink="/summary/{{processing.id}}" class="btn processing-previewBlock">
         <span class="processing-icons processing-icon-preview"></span>
@@ -31,9 +17,9 @@
   </header>
   <main>
 
-    <form id="processing-form" #processingForm="ngForm" (ngSubmit)="onSubmit()">
+    <form id="processing-form" #processingForm="ngForm">
 
-      <fieldset id="description" class="form-section">
+      <fieldset *ngIf="currentSection == 1" id="description" class="form-section">
         <div class="form-field">
           <label class="title" for="processing-description">{{ 'processing.form.description' | translate }}</label>
           <textarea 
@@ -52,118 +38,25 @@
             class="field" 
             id="processing-standards" 
             type="text" 
-            [(ngModel)]="processing.standards" 
+            [(ngModel)]="processing.standards"
             name="standards" 
             required
             (focusin)="updateKnowledgeBase($event.target)"
             (change)="updateProcessing()"
           ></textarea>
         </div>
-        <div class="form-field">
-          <label class="title" for="processing-non-eu-transfer">{{ 'processing.form.non-eu-transfer' | translate }}</label>
-          <input class="field" 
-            id="processing-non-eu-transfer" 
-            type="checkbox" 
-            name="non-eu-transfer" 
-            required
-            [(ngModel)]="processing.non-eu-transfer"
-            (focusin)="updateKnowledgeBase($event.target)"
-            (change)="updateProcessing()"
-          >
-        </div>
       </fieldset>
 
-      <fieldset id="data" class="form-section">
+      <fieldset *ngIf="currentSection == 2" id="data" class="form-section">
         <div class="form-field">
           <label class="title" for="processing-data-types">{{ 'processing.form.data-types' | translate }}</label>
-          <input 
-            class="field" 
-            id="processing-data-types" 
-            type="checkbox" 
-            [(ngModel)]="processing.data-types" 
+          <app-processed-data-types 
+            [(ngModel)]="processing.processedDataTypes" 
             name="data-types"
-            value="identification"
-            required
-            (focusin)="updateKnowledgeBase($event.target)"
-            (change)="updateProcessing()"  
-          >
-          <input 
-            class="field" 
-            id="processing-data-types" 
-            type="checkbox" 
-            [(ngModel)]="processing.data-types" 
-            name="data-types"
-            value="personal"
-            required
-            (focusin)="updateKnowledgeBase($event.target)"
-            (change)="updateProcessing()"  
-          >
-          <input 
-            class="field" 
-            id="processing-data-types" 
-            type="checkbox" 
-            [(ngModel)]="processing.data-types" 
-            name="data-types"
-            value="professional"
-            required
-            (focusin)="updateKnowledgeBase($event.target)"
-            (change)="updateProcessing()"  
-          >
-          <input 
-            class="field" 
-            id="processing-data-types" 
-            type="checkbox" 
-            [(ngModel)]="processing.data-types" 
-            name="data-types"
-            value="financial"
-            required
-            (focusin)="updateKnowledgeBase($event.target)"
-            (change)="updateProcessing()"  
-          >
-          <input 
-            class="field" 
-            id="processing-data-types" 
-            type="checkbox" 
-            [(ngModel)]="processing.data-types" 
-            name="data-types"
-            value="log"
-            required
-            (focusin)="updateKnowledgeBase($event.target)"
-            (change)="updateProcessing()"  
-          >
-          <input 
-            class="field" 
-            id="processing-data-types" 
-            type="checkbox" 
-            [(ngModel)]="processing.data-types" 
-            name="data-types"
-            value="location"
-            required
-            (focusin)="updateKnowledgeBase($event.target)"
-            (change)="updateProcessing()"  
-          >
-          <input 
-            class="field" 
-            id="processing-data-types" 
-            type="checkbox" 
-            [(ngModel)]="processing.data-types" 
-            name="data-types"
-            value="internet"
-            required
-            (focusin)="updateKnowledgeBase($event.target)"
-            (change)="updateProcessing()"  
-          >
-          <input 
-            class="field" 
-            id="processing-data-types" 
-            type="checkbox" 
-            [(ngModel)]="processing.data-types" 
-            name="data-types"
-            value="other"
-            required
-            (focusin)="updateKnowledgeBase($event.target)"
-            (change)="updateProcessing()"  
-          >
+            id="processing-data-types"
+            (focusIn)="updateKnowledgeBase($event.target)"
+            (change)="updateProcessing()"
+          ></app-processed-data-types>
         </div>
         <div class="form-field">
           <label class="title" for="processing-storage">{{ 'processing.form.storage' | translate }}</label>
@@ -180,7 +73,7 @@
         </div>
       </fieldset>
 
-      <fieldset id="lifecycle" class="form-section">
+      <fieldset *ngIf="currentSection == 3" id="lifecycle" class="form-section">
         <div class="form-field">
           <label class="title" for="processing-lifecycle">{{ 'processing.form.lifecycle' | translate }}</label>
           <textarea 
@@ -212,18 +105,30 @@
             <tag-input-dropdown [showDropdownIfEmpty]="true"></tag-input-dropdown>
           </tag-input> -->
         </div>
+        <div class="form-field">
+          <label class="title" for="processing-non-eu-transfer">{{ 'processing.form.non-eu-transfer' | translate }}</label>
+          <input class="field" 
+            
+            type="checkbox" 
+            name="non-eu-transfer" 
+            required
+            [(ngModel)]="processing.nonEuTransfer"
+            (focusin)="updateKnowledgeBase($event.target)"
+            (change)="updateProcessing()"
+          >
+        </div>
       </fieldset>
     </form>
   </main>
 
   <footer class="processing-entryContentBlock-footer">
     <div class="processing-entryContentBlock-footer-nav">
-      <a [ngClass]="{'mask': paginationService.hasPreviousLink === false}" class="processing-previousLink" routerLink="/processing/{{processing.id}}/section/{{paginationService.previousLink[0]}}/item/{{paginationService.previousLink[1]}}">
+      <a *ngIf="currentSection > 1" class="processing-previous" routerLink="/processing/{{ processing.id }}/section/{{ getSectionById(currentSection - 1).id }}">
         <i class="fa fa-angle-double-left" aria-hidden="true"></i>
-        {{ paginationService.previousLink[2] | translate }}
+        {{ getSectionById(currentSection - 1).title | translate }}
       </a>
-      <a [ngClass]="{'mask': paginationService.hasNextLink === false}" class="processing-nextLink" routerLink="/processing/{{processing.id}}/section/{{paginationService.nextLink[0]}}/item/{{paginationService.nextLink[1]}}">
-        {{ paginationService.nextLink[2] | translate }}
+      <a *ngIf="currentSection < 3" class="processing-next" routerLink="/processing/{{ processing.id }}/section/{{ getSectionById(currentSection + 1).id }}">
+        {{ getSectionById(currentSection + 1).title | translate }}
         <i class="fa fa-angle-double-right" aria-hidden="true"></i>
       </a>
     </div>

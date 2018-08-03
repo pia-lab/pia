@@ -6,6 +6,7 @@ import { ModalsService } from '../modals/modals.service';
 import { ProcessingArchitectureService } from '../services/processing-architecture.service';
 import { SidStatusService } from '../services/sid-status.service';
 import { ProcessingModel } from '@api/models';
+import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-processing',
@@ -15,7 +16,7 @@ import { ProcessingModel } from '@api/models';
 export class ProcessingComponent implements OnInit {
   processing: ProcessingModel;
   sections: any;
-  section: { id: number, title: string, short_help: string, fields: any };
+  currentSection: number;
   field: { id: number, title: string, evaluation_mode: string, short_help: string, questions: any };
 
   constructor(private route: ActivatedRoute,
@@ -28,35 +29,31 @@ export class ProcessingComponent implements OnInit {
   ngOnInit() {
     this.sections = this.route.snapshot.data.sections;
     this.processing = this.route.snapshot.data.processing;
-    this.getSectionFromRouteParams(this.route.snapshot.params);
+    this.currentSection = this.route.snapshot.params['section_id'] || 1;
 
-    this.route.params.subscribe((newParams: Params) => {
-      this.getSectionFromRouteParams(newParams);
-
-      window.scroll(0, 0);
-    });
+    this.changeSection(this.currentSection);
   }
 
-  /**
-   * Gets form section and field from route params
-   * @private
-   * @param {Params} params
-   * @memberof ProcessingComponent
-   */
-  private getSectionFromRouteParams(params: Params) {
-    const sectionId = parseInt(this.route.snapshot.params['section_id'], 10) || 1;
-    const fieldId = parseInt(this.route.snapshot.params['field_id'], 10) || 1;
+  // /**
+  //  * Gets form currentSection and field from route params
+  //  * @private
+  //  * @param {Params} params
+  //  * @memberof ProcessingComponent
+  //  */
+  // private getSectionFromRouteParams(params: Params) {
+  //   const currentSectionId = parseInt(this.route.snapshot.params['currentSection_id'], 10) || 1;
+  //   const fieldId = parseInt(this.route.snapshot.params['field_id'], 10) || 1;
 
-    this.section = this.sections.filter((section) => {
-      return section.id === sectionId;
-    })[0];
+  //   this.currentSection = this.sections.filter((currentSection) => {
+  //     return currentSection.id === currentSectionId;
+  //   })[0];
 
-    // this.field = this.section.fields.filter((field) => {
-    //   return field.id === fieldId;
-    // })[0];
+  //   // this.field = this.currentSection.fields.filter((field) => {
+  //   //   return field.id === fieldId;
+  //   // })[0];
 
-    // this.updateKnowledgeBase();
-  }
+  //   // this.updateKnowledgeBase();
+  // }
 
   /**
    * Updates the knowledge base section
@@ -76,6 +73,10 @@ export class ProcessingComponent implements OnInit {
     this.knowledgeBaseService.q = null;
     this.knowledgeBaseService.loadByItem(this.field);
     this.knowledgeBaseService.placeholder = null;
+  }
+
+  changeSection(sectionNumber) {
+    this.currentSection = sectionNumber;
   }
 
 }

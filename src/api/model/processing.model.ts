@@ -14,7 +14,7 @@ export class Processing extends BaseModel {
   public processors: any;
   public controllers: any;
   public nonEuTransfer: string;
-  public dataTypes: any;
+  public processedDataTypes: any;
   public folder: FolderModel;
   public pias: PiaModel[];
 }
