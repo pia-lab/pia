@@ -74,6 +74,7 @@ import { ProcessingComponent } from './processing/processing.component';
 import { ProcessingFormComponent} from './processing/processing-form/processing-form.component';
 import { ProcessingService} from './processing/processing.service';
 import { PiasListComponent } from './pias/list/list.component';
+import { PiasListItemComponent } from './pias/list/item/item.component';
 
 const providersList: any = [
   AppDataService,
@@ -160,7 +161,8 @@ export function createTranslateLoader(http: HttpClient) {
     DashboardItemComponent,
     ProcessingComponent,
     ProcessingFormComponent,
-    PiasListComponent
+    PiasListComponent,
+    PiasListItemComponent
   ],
   imports: [
     BrowserModule,

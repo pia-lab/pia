@@ -1,3 +1,28 @@
-<p>
-  list works!
-</p>
+<app-header></app-header>
+
+<div class="container pia-mainContainerBlock">
+  <div class="row">
+
+    <div class="small-12 medium-12 columns">
+
+      <h2 class="page-title">{{processing.name}}</h2>
+
+      <table class="stack hover">
+
+        <thead>
+          <tr>
+            <th>{{ 'processing.pia-list.table-header.name' | translate }}</th>
+            <th>{{ 'processing.pia-list.table-header.author' | translate }}</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let pia of pias" app-pias-list-item [pia]="pia"></tr>
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+</div>

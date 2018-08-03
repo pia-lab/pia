@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { PiaApi } from '@api/services';
+import { ActivatedRoute } from '@angular/router';
+import { PiaModel } from '@api/models';
 
 @Component({
   selector: 'app-pias-list',
@@ -7,9 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PiasListComponent implements OnInit {
 
-  constructor() { }
+  public pias: Array<PiaModel>
 
-  ngOnInit() {
+  constructor(
+    private route: ActivatedRoute,
+    private piaApi: PiaApi
+  ) {
+    this.route.params.subscribe( params => {
+      this.piaApi.getAll({'processing' : params.id}).subscribe((pias: Array<PiaModel>) => {
+        this.pias = pias;
+      });
+    });
   }
+
+  ngOnInit() {}
+
 
 }

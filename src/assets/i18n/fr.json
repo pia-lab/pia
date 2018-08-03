@@ -190,6 +190,12 @@
     "statuses": {
       "0": "Valide",
       "1": "Archivé"
+    },
+    "pia-list": {
+      "table-header": {
+        "name": "Nom",
+        "author": "Auteur"
+      }
     }
   },
   "pia": {

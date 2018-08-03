@@ -3,10 +3,8 @@ import { BaseService } from '@api/service/base.service';
 import { Observable } from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
 import { Pia } from '@api/model/pia.model';
-import { Evaluation } from '@api/model/evaluation.model';
 import { Answer } from '@api/model/answer.model';
 import { Injectable } from '@angular/core';
-import { BaseModel } from '@api/model/base.model';
 import { AnswerService } from '@api/service/answer.service';
 import { Template } from '@api/model/template.model';
 import { FolderModel } from '@api/models';
@@ -28,7 +26,7 @@ export class PiaService extends BaseService<Pia> {
     super(http);
   }
 
-  public computeProgressFromAnswers(model: Pia, answers:Answer[]): number {
+  public computeProgressFromAnswers(model: Pia, answers: Answer[]): number {
     model.progress = Math.round((100 / model.numberOfQuestions) * answers.length);
     return model.progress;
   }
@@ -38,8 +36,8 @@ export class PiaService extends BaseService<Pia> {
     return this.httpPost(this.routing.template, {templateId: template.id}, model);
   }
 
-  public getAll(): Observable<Pia[]> {
-    return this.httpGetAll(this.routing.all);
+  public getAll(criteria: any): Observable<Pia[]> {
+    return this.httpGetAll(this.routing.all, null, criteria);
   }
 
   public get(id: any): Observable<Pia> {
@@ -64,7 +62,7 @@ export class PiaService extends BaseService<Pia> {
   }
 
   public export(id: number): Observable<string> {
-    let query: any = this.buildQuery({});
+    const query: any = this.buildQuery({});
     const route = this.buildRoute(this.routing.export, {id: id});
 
     return this.http.get(route, { params: query }).map((res: any) => {
@@ -73,7 +71,7 @@ export class PiaService extends BaseService<Pia> {
   }
 
   public import(data: any): Observable<Pia> {
-    let query: any = this.buildQuery({});
+    const query: any = this.buildQuery({});
     const route = this.buildRoute(this.routing.import, {name: name});
 
     return this.http.post(route, {data: data}, { params: query }).map(res => this.mapToModel(res, this.modelClass));

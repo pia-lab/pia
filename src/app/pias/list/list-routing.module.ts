@@ -7,7 +7,7 @@ import { PiasListComponent } from './list.component';
 
 const routes: Routes = [
   {
-  	path: 'processing/:id/pias',
+  	path: 'processings/:id/pias',
   	component: PiasListComponent,
   	canActivate: [AuthenticationGuardService, PiaResolve]
   },
