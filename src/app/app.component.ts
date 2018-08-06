@@ -69,6 +69,7 @@ export class AppComponent {
       'CanCreatePIA', 'CanCreatePIAExample', 'CanShowPIA',
       'CanEvaluatePIA', 'CanValidatePIA', 'CanCancelValidatePIA',
       'CanDeletePIA','CanImportPIA', 'CanExportPIA', 'CanCreateFolder',
+      'CanCreateProcessing', 'CanEditProcessing', 'CanImportProcessing', 'CanExportProcessing',
        'AccessToValidationSection'
     ]);
     roles['ROLE_SHARED_DPO'] = roles['ROLE_DPO'];

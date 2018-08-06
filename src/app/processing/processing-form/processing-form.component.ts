@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 
 import { ProcessingModel } from '@api/models';
 import { ProcessingApi } from '@api/services';
+import { PermissionsService } from '@security/permissions.service';
 
 
 @Component({
@@ -20,8 +21,9 @@ export class ProcessingFormComponent implements OnDestroy {
   elementId: String;
 
   constructor(
-    public processingApi: ProcessingApi,
-    private ref: ChangeDetectorRef
+    private processingApi: ProcessingApi,
+    private ref: ChangeDetectorRef,
+    private permissionsService: PermissionsService
   ) { }
 
   ngOnDestroy() {
@@ -41,14 +43,14 @@ export class ProcessingFormComponent implements OnDestroy {
   }
 
   editField(element: any) {
-    // this.permissionsService.hasPermission('CanEditPIA').then((hasPerm: boolean) => {
-      //     if (hasPerm && this._globalEvaluationService.answerEditionEnabled) {
+    this.permissionsService.hasPermission('CanEditProcessing').then((hasPerm: boolean) => {
+      if (hasPerm) {
         this.elementId = element.id;
 
         this.loadEditor(element);
         this.updateKnowledgeBase(element);
-      //     }
-      //   });
+      }
+    });
   }
 
   /**
