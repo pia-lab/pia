@@ -1,11 +1,14 @@
-export { Processing as ProcessingModel } from '@api/model/processing.model';
-export { Pia as PiaModel } from '@api/model/pia.model';
-export { Answer as AnswerModel } from '@api/model/answer.model';
-export { Comment as CommentModel } from '@api/model/comment.model';
-export { Evaluation as EvaluationModel } from '@api/model/evaluation.model';
-export { Measure as MeasureModel } from '@api/model/measure.model';
-export { Attachment as AttachmentModel } from '@api/model/attachment.model';
-export { UserProfile as UserProfileModel } from '@api/model/user-profile.model';
-export { UserToken as UserTokenModel } from '@api/model/user-token.model';
-export { Template as TemplateModel } from '@api/model/template.model';
-export { Folder as FolderModel } from '@api/model/folder.model';
+//temporary model aliasing
+//to avoid naming collision with old PIA-CNIL models
+
+export { Processing as ProcessingModel } from '@api/model';
+export { Pia as PiaModel } from '@api/model';
+export { Answer as AnswerModel } from '@api/model';
+export { Comment as CommentModel } from '@api/model';
+export { Evaluation as EvaluationModel } from '@api/model';
+export { Measure as MeasureModel } from '@api/model';
+export { Attachment as AttachmentModel } from '@api/model';
+export { UserProfile as UserProfileModel } from '@api/model';
+export { UserToken as UserTokenModel } from '@api/model';
+export { Template as TemplateModel } from '@api/model';
+export { Folder as FolderModel } from '@api/model';
