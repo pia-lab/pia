@@ -223,7 +223,7 @@
       <label class="exists-label" for="other">{{ 'processed-data-types.form.other'| translate }}</label>
     </div>
     <div class="type-duration" *ngIf="other">
-      <input type="text" name="other" field="name" id="other-duration" class="duration" category="other" (change)="updateValue(
+      <input type="text" name="other[data]" field="data" id="other-data" class="other" category="other" (change)="updateValue(
                             $event.target.attributes.category.nodeValue,
                             $event.target.attributes.field.nodeValue,
                             $event.target.value

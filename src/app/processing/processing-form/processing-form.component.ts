@@ -1,9 +1,5 @@
-import { Router, ActivatedRoute } from '@angular/router';
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
-import { PaginationService } from 'app/processing/processing-form/pagination.service';
-import { SidStatusService } from '../../services/sid-status.service';
-import { KnowledgeBaseService } from 'app/entry/knowledge-base/knowledge-base.service';
 import { ProcessingModel } from '@api/models';
 import { ProcessingApi } from '@api/services';
 
@@ -13,35 +9,14 @@ import { ProcessingApi } from '@api/services';
   styleUrls: ['./processing-form.component.scss']
 })
 
-export class ProcessingFormComponent implements OnInit, OnChanges {
+export class ProcessingFormComponent {
   @Input() sections: any;
   @Input() processing: ProcessingModel;
   @Input() currentSection: any;
-  @Input() item: any;
 
   constructor(
-    private router: Router,
-    private activatedRoute: ActivatedRoute,
     public processingApi: ProcessingApi,
-    public sidStatusService: SidStatusService,
-    public paginationService: PaginationService,
-    private knowledgeBaseService: KnowledgeBaseService
   ) { }
-
-  ngOnInit() {
-    this.knowledgeBaseService.toHide = [];
-  }
-
-  ngOnChanges() {
-    const sectionId = parseInt(this.activatedRoute.snapshot.params['sectionid'], 10);
-    const itemId = parseInt(this.activatedRoute.snapshot.params['itemid'], 10);
-
-    this.paginationService.setPagination(sectionId, itemId);
-  }
-
-  updateKnowledgeBase() {
-    console.log('focusIn: knowledgebase update');
-  }
 
   updateProcessing() {
     console.log(this.processing);
@@ -49,29 +24,10 @@ export class ProcessingFormComponent implements OnInit, OnChanges {
   }
 
   getSectionById(sectionId) {
-    return this.sections.filter((section) => {
-      return section.id === sectionId;
-    });
+    return this.sections.filter((section) => section.id === sectionId)[0];
   }
 
+  updateKnowledgeBase(item: any) {
 
-  /**
-   * Go to next item.
-   * @private
-   * @param {number} statusstart - From status.
-   * @param {number} statusend - To status.
-   * @memberof EntryContentComponent
-   */
-  private goToNextSectionItem(statusstart: number, statusend: number) {
-    const gotosectionitem = this.paginationService.getNextSectionItem(statusstart, statusend)
-
-    this.router.navigate([
-      'entry',
-      this.processing.id,
-      'section',
-      gotosectionitem[0],
-      'item',
-      gotosectionitem[1]
-    ]);
   }
 }

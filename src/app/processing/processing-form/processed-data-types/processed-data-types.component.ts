@@ -47,9 +47,9 @@ export class ProcessedDataTypesComponent implements ControlValueAccessor {
    * @param element
    */
   writeValue(value: any): void {
-      if (this.onChange) {
-        this.onChange(value);
-      }
+    if (this.onChange) {
+      this.onChange(value);
+    }
   }
 
   /**

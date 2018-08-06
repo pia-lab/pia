@@ -1,19 +1,18 @@
-import { Component, OnInit, Output, OnDestroy, DoCheck } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { Component, OnInit, OnChanges } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 import { KnowledgeBaseService } from 'app/entry/knowledge-base/knowledge-base.service';
 import { ModalsService } from '../modals/modals.service';
 import { ProcessingArchitectureService } from '../services/processing-architecture.service';
 import { SidStatusService } from '../services/sid-status.service';
 import { ProcessingModel } from '@api/models';
-import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-processing',
   templateUrl: './processing.component.html',
   styleUrls: ['./processing.component.scss']
 })
-export class ProcessingComponent implements OnInit {
+export class ProcessingComponent implements OnInit, OnChanges {
   processing: ProcessingModel;
   sections: any;
   currentSection: number;
@@ -29,6 +28,12 @@ export class ProcessingComponent implements OnInit {
   ngOnInit() {
     this.sections = this.route.snapshot.data.sections;
     this.processing = this.route.snapshot.data.processing;
+    this.currentSection = this.route.snapshot.params['section_id'] || 1;
+
+    this.changeSection(this.currentSection);
+  }
+
+  ngOnChanges() {
     this.currentSection = this.route.snapshot.params['section_id'] || 1;
 
     this.changeSection(this.currentSection);
