@@ -18,31 +18,53 @@
   <main>
 
     <form id="processing-form" #processingForm="ngForm">
-
+      
       <fieldset *ngIf="currentSection == 1" id="description" class="form-section">
         <div class="form-field">
           <label class="title" for="processing-description">{{ 'processing.form.description' | translate }}</label>
-          <textarea 
+          <div (click)="editField(description)"
+            class="pia-questionBlock-contentText"
+            [innerHTML]="processingForm.form.controls['description']?.value | safeHtml"
+            [ngClass]="{ 'hide': ((editor && elementId === description.id) || !processingForm.form.controls['description']?.value) }" 
+          ></div>
+          
+          <textarea
             class="field" 
             id="processing-description" 
-            [(ngModel)]="processing.description"
-            name="description" 
             required
-            (focusin)="updateKnowledgeBase($event.target)"
+            name="description" 
+            minRows="8"
+            cols="50"
+            placeholder="'processing.form.description.placeholder' | translate"
+            #description
             (change)="updateProcessing()"
+            [(ngModel)]="processing.description"
+            [ngClass]="{ 'hide': (processingForm.form.controls['description']?.value && processingForm.form.controls['description']?.value.length > 0) }"
+            (focusin)="editField($event.target)"
           ></textarea>
         </div>
+        
         <div class="form-field">
           <label class="title" for="processing-standards">{{ 'processing.form.standards' | translate }}</label>
-          <textarea 
+          <div (click)="editField(standards)"
+            class="pia-questionBlock-contentText"
+            [innerHTML]="processingForm.form.controls['standards']?.value | safeHtml"
+            [ngClass]="{ 'hide': ((editor && elementId === standards.id) || !processingForm.form.controls['standards']?.value) }" 
+          ></div>
+          
+          <textarea
             class="field" 
             id="processing-standards" 
-            type="text" 
-            [(ngModel)]="processing.standards"
-            name="standards" 
             required
-            (focusin)="updateKnowledgeBase($event.target)"
+            name="standards" 
+            minRows="8"
+            cols="50"
+            placeholder="'processing.form.standards.placeholder' | translate"
+            #standards
             (change)="updateProcessing()"
+            [(ngModel)]="processing.standards"
+            [ngClass]="{ 'hide': (processingForm.form.controls['standards']?.value && processingForm.form.controls['standards']?.value.length > 0) }"
+            (focusin)="editField($event.target)"
           ></textarea>
         </div>
       </fieldset>
@@ -58,65 +80,102 @@
             (change)="updateProcessing()"
           ></app-processed-data-types>
         </div>
+
         <div class="form-field">
           <label class="title" for="processing-storage">{{ 'processing.form.storage' | translate }}</label>
-          <textarea 
+          <div (click)="editField(storage)"
+            class="pia-questionBlock-contentText"
+            [innerHTML]="processingForm.form.controls['storage']?.value | safeHtml"
+            [ngClass]="{ 'hide': ((editor && elementId === storage.id) || !processingForm.form.controls['storage']?.value) }" 
+          ></div>
+          
+          <textarea
             class="field" 
             id="processing-storage" 
-            type="text" 
-            [(ngModel)]="processing.storage" 
-            name="storage" 
             required
-            (focusin)="updateKnowledgeBase($event.target)"
-            (change)="updateProcessing()"  
+            name="storage" 
+            minRows="8"
+            cols="50"
+            placeholder="'processing.form.storage.placeholder' | translate"
+            #storage
+            (change)="updateProcessing()"
+            [(ngModel)]="processing.storage"
+            [ngClass]="{ 'hide': (processingForm.form.controls['storage']?.value && processingForm.form.controls['storage']?.value.length > 0) }"
+            (focusin)="editField($event.target)"
           ></textarea>
         </div>
       </fieldset>
 
       <fieldset *ngIf="currentSection == 3" id="lifecycle" class="form-section">
-        <div class="form-field">
-          <label class="title" for="processing-lifecycle">{{ 'processing.form.lifecycle' | translate }}</label>
-          <textarea 
-            class="field" 
-            id="processing-lifecycle" 
-            type="text" 
-            [(ngModel)]="processing.lifecycle" 
-            name="lifecycle" 
-            required
-            (focusin)="updateKnowledgeBase($event.target)"
-            (change)="updateProcessing()"  
-          ></textarea>
-        </div>
-        <div class="form-field">
-          <label class="title" for="processing-processors">{{ 'processing.form.processors' | translate }}</label>
-          <!-- <tag-input
-                    (onAdd)="onAdd($event)"
-                    (onTagEdited)="onTagEdited($event)"
-                    (onRemove)="onRemove($event)"
-                    (focusin)="updateKnowledgeBase($event.target)"
-                    (change)="updateProcessing()" 
-                    formControlName="list"
-                    [clearOnBlur]="true"
-                    [theme]="'foundation-theme'"
-                    [placeholder]="placeholder | translate"
-                    [editable]="false"
-                    [onlyFromAutocomplete]="true"
-                    [secondaryPlaceholder]="'aaaaa' | translate">
-            <tag-input-dropdown [showDropdownIfEmpty]="true"></tag-input-dropdown>
-          </tag-input> -->
-        </div>
-        <div class="form-field">
-          <label class="title" for="processing-non-eu-transfer">{{ 'processing.form.non-eu-transfer' | translate }}</label>
-          <input class="field" 
+          <div class="form-field">
+            <label class="title" for="processing-lifecycle">{{ 'processing.form.lifecycle' | translate }}</label>
+            <div (click)="editField(lifecycle)"
+              class="pia-questionBlock-contentText"
+              [innerHTML]="processingForm.form.controls['lifecycle']?.value | safeHtml"
+              [ngClass]="{ 'hide': ((editor && elementId === lifecycle.id) || !processingForm.form.controls['lifecycle']?.value) }" 
+            ></div>
             
-            type="checkbox" 
-            name="non-eu-transfer" 
-            required
-            [(ngModel)]="processing.nonEuTransfer"
-            (focusin)="updateKnowledgeBase($event.target)"
-            (change)="updateProcessing()"
-          >
-        </div>
+            <textarea
+              class="field"
+              id="processing-lifecycle" 
+              required
+              name="lifecycle" 
+              minRows="8"
+              cols="50"
+              placeholder="'processing.form.lifecycle.placeholder' | translate"
+              #lifecycle
+              (change)="updateProcessing()"
+              [(ngModel)]="processing.lifecycle"
+              [ngClass]="{ 'hide': (processingForm.form.controls['lifecycle']?.value && processingForm.form.controls['lifecycle']?.value.length > 0) }"
+              (focusin)="editField($event.target)"
+            ></textarea>
+          </div>
+          <div class="form-field">
+            <label class="title" for="processing-processors">{{ 'processing.form.processors' | translate }}</label>
+            <div (click)="editField(processors)"
+              class="pia-questionBlock-contentText"
+              [innerHTML]="processingForm.form.controls['processors']?.value | safeHtml"
+              [ngClass]="{ 'hide': ((editor && elementId === processors.id) || !processingForm.form.controls['processors']?.value) }" 
+            ></div>
+            
+            <textarea
+              class="field" 
+              id="processing-processors" 
+              required
+              name="processors" 
+              minRows="8"
+              cols="50"
+              placeholder="'processing.form.processors.placeholder' | translate"
+              #processors
+              (change)="updateProcessing()"
+              [(ngModel)]="processing.processors"
+              [ngClass]="{ 'hide': (processingForm.form.controls['processors']?.value && processingForm.form.controls['processors']?.value.length > 0) }"
+              (focusin)="editField($event.target)"
+            ></textarea>
+          </div>
+          <div class="form-field">
+            <label class="title" for="processing-non-eu-transfer">{{ 'processing.form.non-eu-transfer' | translate }}</label>
+            <div (click)="editField(nonEuTransfer)"
+              class="pia-questionBlock-contentText"
+              [innerHTML]="processingForm.form.controls['non-eu-transfer']?.value | safeHtml"
+              [ngClass]="{ 'hide': ((editor && elementId === nonEuTransfer.id) || !processingForm.form.controls['non-eu-transfer']?.value) }" 
+            ></div>
+            
+            <textarea
+              class="field" 
+              id="processing-non-eu-transfer" 
+              required
+              name="non-eu-transfer" 
+              minRows="8"
+              cols="50"
+              placeholder="'processing.form.non-eu-transfer.placeholder' | translate"
+              #nonEuTransfer
+              (change)="updateProcessing()"
+              [(ngModel)]="processing.nonEuTransfer"
+              [ngClass]="{ 'hide': (processingForm.form.controls['non-eu-transfer']?.value && processingForm.form.controls['non-eu-transfer']?.value.length > 0) }"
+              (focusin)="editField($event.target)"
+            ></textarea>
+          </div>
       </fieldset>
     </form>
   </main>

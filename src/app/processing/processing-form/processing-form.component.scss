@@ -401,19 +401,11 @@
     background-color: #fff;
     padding: 12px 32px;
     box-shadow: 1px 1px 15px 1px rgba(210,210,210,1);
-    .accordeon {
-      position: absolute;
-      right: 20px;
-      top: 22px;
-      cursor: pointer;
-      &:before {
-        position: absolute;
-        content: '';
-        top: -4px;
-        right: -4px;
-        left: -4px;
-        bottom: -4px;
-      }
+    .hide {
+      display: none;
+    }
+    *:not(label) {
+      margin-top: 20px;
     }
     .title {
       position: relative;
