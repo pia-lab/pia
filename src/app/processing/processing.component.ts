@@ -39,28 +39,11 @@ export class ProcessingComponent implements OnInit, OnChanges {
     this.changeSection(this.currentSection);
   }
 
-  // /**
-  //  * Gets form currentSection and field from route params
-  //  * @private
-  //  * @param {Params} params
-  //  * @memberof ProcessingComponent
-  //  */
-  // private getSectionFromRouteParams(params: Params) {
-  //   const currentSectionId = parseInt(this.route.snapshot.params['currentSection_id'], 10) || 1;
-  //   const fieldId = parseInt(this.route.snapshot.params['field_id'], 10) || 1;
+  changeSection(sectionNumber) {
+    this.currentSection = sectionNumber;
+  }
 
-  //   this.currentSection = this.sections.filter((currentSection) => {
-  //     return currentSection.id === currentSectionId;
-  //   })[0];
-
-  //   // this.field = this.currentSection.fields.filter((field) => {
-  //   //   return field.id === fieldId;
-  //   // })[0];
-
-  //   // this.updateKnowledgeBase();
-  // }
-
-  /**
+   /**
    * Updates the knowledge base section
    * @private
    * @param {number} sectionId - The section id.
@@ -78,10 +61,6 @@ export class ProcessingComponent implements OnInit, OnChanges {
     this.knowledgeBaseService.q = null;
     this.knowledgeBaseService.loadByItem(this.field);
     this.knowledgeBaseService.placeholder = null;
-  }
-
-  changeSection(sectionNumber) {
-    this.currentSection = sectionNumber;
   }
 
 }

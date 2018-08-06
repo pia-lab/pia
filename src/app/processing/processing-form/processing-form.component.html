@@ -5,8 +5,8 @@
       </div>
     </div>
     <div class="processing-entryContentBlock-header-title">
-      <h1 *ngIf="currentSection.title">{{ currentSection.title | translate }}</h1>
-      <h3 *ngIf="currentSection.short_help">{{ currentSection.short_help | translate }}</h3>
+      <h1>{{ getSectionById(currentSection).title | translate }}</h1>
+      <h3>{{ getSectionById(currentSection).short_help | translate }}</h3>
     </div>
     <ng-template #defaultBlock>
       <a routerLink="/summary/{{processing.id}}" class="btn processing-previewBlock">

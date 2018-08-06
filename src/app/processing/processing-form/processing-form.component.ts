@@ -1,5 +1,5 @@
-import { Component, Input, OnInit, OnDestroy, ViewChild, ChangeDetectorRef } from '@angular/core';
-import { FormGroup, FormControl, NgForm } from '@angular/forms';
+import { Component, Input, OnDestroy, ViewChild, ChangeDetectorRef } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 import { ProcessingModel } from '@api/models';
 import { ProcessingApi } from '@api/services';
@@ -11,7 +11,7 @@ import { ProcessingApi } from '@api/services';
   styleUrls: ['./processing-form.component.scss']
 })
 
-export class ProcessingFormComponent implements OnInit, OnDestroy {
+export class ProcessingFormComponent implements OnDestroy {
   @Input() sections: any;
   @Input() processing: ProcessingModel;
   @Input() currentSection: any;
@@ -23,9 +23,6 @@ export class ProcessingFormComponent implements OnInit, OnDestroy {
     public processingApi: ProcessingApi,
     private ref: ChangeDetectorRef
   ) { }
-
-  ngOnInit() {
-  }
 
   ngOnDestroy() {
     this.closeEditor();
