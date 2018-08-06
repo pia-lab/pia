@@ -5,13 +5,11 @@ import {ProcessingResolve} from 'app/services/processing.resolve.service'; // @T
 import {PiaService} from 'app/entry/pia.service';
 import { PiasListComponent } from './list.component';
 
-const routes: Routes = [
-  {
-  	path: 'processings/:id/pias',
-  	component: PiasListComponent,
-  	canActivate: [AuthenticationGuardService, ProcessingResolve]
-  },
-];
+const routes: Routes = [{
+  path: 'processings/:id/pias',
+  component: PiasListComponent,
+  canActivate: [AuthenticationGuardService, ProcessingResolve]
+}];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

@@ -25,13 +25,17 @@ const routes: Routes = [
   },
   { path: '', component: AuthenticationComponent },
   { path: 'logout', component: AuthenticationComponent },
-  { path: 'summary/:id',
+  {
+    path: 'summary/:id',
     component: SummaryComponent ,
     canActivate: [AuthenticationGuardService, PiaResolve]
   },
   { path: 'help', component: HelpComponent },
   { path: 'about', component: AboutComponent },
-  { path: 'processings/:id/pias', component: PiasListComponent },
+  {
+    path: 'processings/:id/pias',
+    component: PiasListComponent
+  },
   { path: '**', component: ErrorsComponent },
 ];
 
