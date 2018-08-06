@@ -1,7 +1,7 @@
 
-import { BaseService } from '@api/service/base.service';
+import { BaseService } from './base.service';
 import { Observable } from 'rxjs/Observable';
-import { Attachment } from '@api/model';
+import { Attachment } from '../model';
 import { Injectable } from '@angular/core';
 
 @Injectable()

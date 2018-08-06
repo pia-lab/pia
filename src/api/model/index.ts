@@ -1,4 +1,5 @@
 export { BaseModel } from './base.model';
+export { Timestampable } from './timestampable.model';
 export { Processing } from './processing.model';
 export { Pia } from './pia.model';
 export { Answer } from './answer.model';

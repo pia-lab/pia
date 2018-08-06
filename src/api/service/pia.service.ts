@@ -1,10 +1,10 @@
 
-import { BaseService } from '@api/service/base.service';
+import { BaseService } from './base.service';
 import { Observable } from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { AnswerService } from '@api/service/answer.service';
-import { Pia, Template, Folder, Answer } from '@api/model';
+import { AnswerService } from './answer.service';
+import { Pia, Template, Folder, Answer } from '../model';
 
 @Injectable()
 export class PiaService extends BaseService<Pia> {

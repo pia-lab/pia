@@ -1,9 +1,9 @@
 
-import { BaseService } from '@api/service/base.service';
+import { BaseService } from './base.service';
 import { Observable } from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Folder, Processing } from '@api/model';
+import { Folder, Processing } from '../model';
 
 @Injectable()
 export class FolderService extends BaseService<Folder> {

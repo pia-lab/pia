@@ -1,5 +1,5 @@
 
-import { BaseModel } from '@api/model';
+import { BaseModel } from '../model';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import * as UrlTemplate from 'url-template';
