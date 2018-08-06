@@ -14,9 +14,11 @@ import { TemplatesRoutingModule } from 'app/templates/templates-routing.module';
 import { PortfolioRoutingModule } from 'app/portfolio';
 import { DashboardRoutingModule } from 'app/dashboard';
 import { AuthenticationGuardService } from '@security/authentication-guard.service';
+
 import { PiaResolve } from 'app/services/pia.resolve.service';
 import { PiaService } from 'app/entry/pia.service';
 import { PiasListComponent } from './pias/list/list.component';
+import { ProcessingService } from 'app/processing/processing.service';
 
 const routes: Routes = [
   {
