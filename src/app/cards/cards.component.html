@@ -6,6 +6,10 @@
     <div class="small-12 medium-12 columns">
       <h2 class="page-title">{{structure.name}}</h2>
       <div class="pia-filtersBlock">
+        <!--
+
+          Hiding list button because of lack of working feature with this view mode
+
         <button class="pia-filtersBlock-switch btn" type="button" *ngIf="viewStyle.view === 'list'" (click)="viewOnCard()">
           <i class="fa fa-list" aria-hidden="true"></i>
           <div>{{ 'homepage.filters.card' | translate }}</div>
@@ -14,6 +18,8 @@
           <i class="fa fa-list" aria-hidden="true"></i>
           <div>{{ 'homepage.filters.list' | translate }}</div>
         </button>
+
+        -->
         <div class="pia-filtersBlock-filters menu-sort">
           <button class="pia-filtersBlock-filters-btn btn" type="button">
             {{ 'homepage.filters.sort' | translate }} {{ 'homepage.filters.sort_by' | translate }}...
