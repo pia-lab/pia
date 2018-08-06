@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AnswerService } from './answer.service';
-import { Pia, Template, Folder, Answer } from '../model';
+import { Pia, Template, Folder, Answer, Processing } from '../model';
 
 @Injectable()
 export class PiaService extends BaseService<Pia> {
@@ -45,8 +45,8 @@ export class PiaService extends BaseService<Pia> {
     return this.httpPut(this.routing.one, { id: model.id }, model);
   }
 
-  public create(model: Pia, folder: Folder): Observable<Pia> {
-    model.folder = folder;
+  public create(model: Pia, processing: Processing): Observable<Pia> {
+    model.processing = processing;
     return this.httpPost(this.routing.all, {}, model);
   }
 
