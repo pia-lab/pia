@@ -195,12 +195,23 @@
       "table-header": {
         "name": "Nom",
         "stakeholders": "Parties prenantes",
-        "status": "État"
+        "status": "État",
+        "createdAndUpdatedAt": "Créé le<br />MàJ le",
+        "progress": "Avancement"
       },
       "item": {
         "author_name": "Auteur",
         "evaluator_name": "Évaluateur",
-        "validator_name": "Validateur"
+        "validator_name": "Validateur",
+        "actions": {
+          "export": "Exporter le PIA",
+          "tooltip": "Actions",
+          "duplicate": "Dupliquer le PIA",
+          "edit": "Éditer le PIA",
+          "action_plan": "Plan d'action",
+          "show": "Afficher le PIA",
+          "remove": "Supprimer le PIA"
+        }
       }
     }
   },
