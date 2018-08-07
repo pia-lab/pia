@@ -24,10 +24,8 @@ export class PiasListComponent implements OnInit {
     private _piaService: PiaService,
     protected _modalsService: ModalsService
   ) {
+    this.processing = this.route.snapshot.data.processing;
     this.route.params.subscribe( params => {
-      this.processingApi.get(params.id).subscribe(processing => {
-        this.processing = processing;
-      });
       this.piaApi.getAll({'processing' : params.id}).subscribe((pias: Array<PiaModel>) => {
         this.pias = pias;
       });

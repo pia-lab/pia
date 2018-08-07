@@ -189,24 +189,49 @@
   },
   "processing": {
     "form": {
-      "description": "Quels sont les finalités du traitement",
-      "standards": "Quels sont les référenciels applicables",
-      "non-eu-transfer": "Transfert hors UE",
-      "data-types": "Types de données traitées",
-      "storage": "Où les données sont elles stockées",
-      "lifecycle": "Cycle de vie des données",
-      "processors": "Sous traitants",
+      "description": {
+        "label":  "Quelles sont les finalités du traitement",
+        "placeholder": "Saisissez les finalités du traitement"
+      },
+      "standards": {
+        "label":  "Quels sont les référentiels applicables",
+        "placeholder": "Saisissez les référentiels applicables"
+      },
+      "non-eu-transfer": {
+        "label":  "Transfert hors UE",
+        "placeholder": "Saisissez s'il y a des transferts de données"
+      },
+      "data-types": {
+        "label":  "Types de données traitées"
+      },
+      "storage": {
+        "label":  "Où les données sont elles stockées",
+        "placeholder": "Saisissez les supports de données, emplacements, etc."
+      },
+      "lifecycle": {
+        "label":  "Cycle de vie des données",
+        "placeholder": "Saisissez "
+      },
+      "processors": {
+        "label":  "Sous traitants",
+        "placeholder": "Saisissez "
+      },
       "sections": {
         "description": {
-          "title": "Description de l'activité de traitement"
+          "title": "Description de l'activité de traitement",
+          "short_help": "Contexte du traitement"
         },
         "data": {
-          "title": "Données traitées"
+          "title": "Données traitées",
+          "short_help": "Liste des données concernées"
         },
         "lifecycle": {
-          "title": "Cycle de vie des données"
+          "title": "Cycle de vie des données",
+          "short_help": "Description des étapes"
         }
-      }
+      },
+      "next": "Suivant",
+      "previous": "Précédent"
     },
     "statuses": {
       "0": "Valide",
@@ -391,6 +416,10 @@
         "name": "Recueil du consentement de l'utilisateur du service",
         "description": "Il s'agit de permettre un choix libre, spécifique et éclairé; vérifier que l'une des bases légales du traitement est le consentement, tel que prévu à l'<a target=\"_blank\" href=\"https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre2#Article6\">article 6 du RGPD</a> (obligation légale, sauvegarde de la vie, mission de service public, contrat ou mesures prises avec la personne, intérêt légitime).",
         "source": "WIKI Recueil_du_consentement"
+      },
+      "PIA_LGL_LFC": {
+        "name": "Cycle de vie des données",
+        "description": "Décrivez les différentes étapes qui concerneront les données tout au long de leur durée de conservation."
       },
       "PIA_VAL_DPO": {
         "name": "Avis du délégué à la protection des données",
