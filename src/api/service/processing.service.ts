@@ -14,7 +14,6 @@ export class ProcessingService extends BaseService<Processing> {
   protected routing: any = {
     all: '/processings',
     one: '/processings/{id}',
-    template: '/processings/new-from-template/{templateId}',
     export: '/processings/{id}/export',
     import: '/processings/import'
   };

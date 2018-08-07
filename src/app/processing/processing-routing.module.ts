@@ -14,16 +14,7 @@ const routes: Routes = [
       sections: ProcessingSectionsResolve,
       processing: ProcessingResolve
     }
-  },
-  {
-    path: 'processing/:id/section/:section_id',
-    component: ProcessingComponent,
-    canActivate: [AuthenticationGuardService],
-    resolve: {
-      sections: ProcessingSectionsResolve,
-      processing: ProcessingResolve
-    }
-  },
+  }
 ];
 
 @NgModule({
