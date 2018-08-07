@@ -1,7 +1,7 @@
 <div class="row">
   <div class="processed-data-type small-12" id="identification-data">
     <div class="type-exists">
-      <input class="field" id="identification" type="checkbox" name="identification[exists]" field="exists" category="identification"
+      <input *ngxPermissionsOnly="['CanEditProcessing']" class="field" id="identification" type="checkbox" name="identification[exists]" field="exists" category="identification"
         [(ngModel)]="identification" (change)="updateValue(
               $event.target.attributes.category.nodeValue,
               $event.target.attributes.field.nodeValue,
@@ -31,7 +31,7 @@
 <div class="row">
   <div class="processed-data-type small-12" id="personal-data">
     <div class="type-exists">
-      <input class="field" id="personal" type="checkbox" name="personal[exists]" field="exists" category="personal" [(ngModel)]="personal"
+      <input *ngxPermissionsOnly="['CanEditProcessing']" class="field" id="personal" type="checkbox" name="personal[exists]" field="exists" category="personal" [(ngModel)]="personal"
         (change)="updateValue(
                 $event.target.attributes.category.nodeValue,
                 $event.target.attributes.field.nodeValue,
@@ -61,7 +61,7 @@
 <div class="row">
   <div class="processed-data-type small-12" id="professional-data">
     <div class="type-exists">
-      <input class="field" id="professional" type="checkbox" name="professional[exists]" field="exists" category="professional"
+      <input *ngxPermissionsOnly="['CanEditProcessing']" class="field" id="professional" type="checkbox" name="professional[exists]" field="exists" category="professional"
         [(ngModel)]="professional" (change)="updateValue(
                   $event.target.attributes.category.nodeValue,
                   $event.target.attributes.field.nodeValue,
@@ -92,7 +92,8 @@
 <div class="row">
   <div class="processed-data-type small-12" id="financial-data">
     <div class="type-exists">
-      <input class="field" id="financial" type="checkbox" name="financial[exists]" field="exists" category="financial" [(ngModel)]="financial"
+      <input *ngxPermissionsOnly="['CanEditProcessing']" class="field" id="financial" type="checkbox" name="financial[exists]" field="exists" category="financial" 
+        [(ngModel)]="financial"
         (change)="updateValue(
                     $event.target.attributes.category.nodeValue,
                     $event.target.attributes.field.nodeValue,
@@ -123,7 +124,7 @@
 <div class="row">
   <div class="processed-data-type small-12" id="log-data">
     <div class="type-exists">
-      <input class="field" id="log" type="checkbox" name="log[exists]" field="exists" category="log" [(ngModel)]="log" (change)="updateValue(
+      <input *ngxPermissionsOnly="['CanEditProcessing']" class="field" id="log" type="checkbox" name="log[exists]" field="exists" category="log" [(ngModel)]="log" (change)="updateValue(
                       $event.target.attributes.category.nodeValue,
                       $event.target.attributes.field.nodeValue,
                       $event.target.checked
@@ -152,7 +153,7 @@
 <div class="row">
   <div class="processed-data-type small-12" id="location-data">
     <div class="type-exists">
-      <input class="field" id="location" type="checkbox" name="location[exists]" field="exists" category="location" [(ngModel)]="location"
+      <input *ngxPermissionsOnly="['CanEditProcessing']" class="field" id="location" type="checkbox" name="location[exists]" field="exists" category="location" [(ngModel)]="location"
         (change)="updateValue(
                         $event.target.attributes.category.nodeValue,
                         $event.target.attributes.field.nodeValue,
@@ -183,7 +184,7 @@
 <div class="row">
   <div class="processed-data-type small-12" id="internet-data">
     <div class="type-exists">
-      <input class="field" id="internet" type="checkbox" name="internet[exists]" field="exists" category="internet" [(ngModel)]="internet"
+      <input *ngxPermissionsOnly="['CanEditProcessing']" class="field" id="internet" type="checkbox" name="internet[exists]" field="exists" category="internet" [(ngModel)]="internet"
         (change)="updateValue(
                           $event.target.attributes.category.nodeValue,
                           $event.target.attributes.field.nodeValue,
@@ -214,7 +215,7 @@
 <div class="row">
   <div class="processed-data-type small-12" id="other-data">
     <div class="type-exists">
-      <input class="field" id="other" type="checkbox" name="other[exists]" field="exists" category="other" [(ngModel)]="other"
+      <input *ngxPermissionsOnly="['CanEditProcessing']" class="field" id="other" type="checkbox" name="other[exists]" field="exists" category="other" [(ngModel)]="other"
         (change)="updateValue(
                           $event.target.attributes.category.nodeValue,
                           $event.target.attributes.field.nodeValue,
