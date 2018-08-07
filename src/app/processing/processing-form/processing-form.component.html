@@ -35,7 +35,7 @@
             name="description" 
             minRows="8"
             cols="50"
-            placeholder="'processing.form.description.placeholder' | translate"
+            placeholder="{{'processing.form.description.placeholder' | translate }}"
             #description
             (change)="updateProcessing()"
             [(ngModel)]="processing.description"
@@ -59,7 +59,7 @@
             name="standards" 
             minRows="8"
             cols="50"
-            placeholder="'processing.form.standards.placeholder' | translate"
+            placeholder="{{'processing.form.standards.placeholder' | translate}}"
             #standards
             (change)="updateProcessing()"
             [(ngModel)]="processing.standards"
@@ -96,7 +96,7 @@
             name="storage" 
             minRows="8"
             cols="50"
-            placeholder="'processing.form.storage.placeholder' | translate"
+            placeholder="{{'processing.form.storage.placeholder' | translate}}"
             #storage
             (change)="updateProcessing()"
             [(ngModel)]="processing.storage"
@@ -122,7 +122,7 @@
               name="lifecycle" 
               minRows="8"
               cols="50"
-              placeholder="'processing.form.lifecycle.placeholder' | translate"
+              placeholder="{{'processing.form.lifecycle.placeholder' | translate}}"
               #lifecycle
               (change)="updateProcessing()"
               [(ngModel)]="processing.lifecycle"
@@ -145,7 +145,7 @@
               name="processors" 
               minRows="8"
               cols="50"
-              placeholder="'processing.form.processors.placeholder' | translate"
+              placeholder="{{'processing.form.processors.placeholder' | translate}}"
               #processors
               (change)="updateProcessing()"
               [(ngModel)]="processing.processors"
@@ -165,10 +165,10 @@
               class="field" 
               id="processing-non-eu-transfer" 
               required
-              name="non-eu-transfer" 
+              name="non-eu-transfer"
               minRows="8"
               cols="50"
-              placeholder="'processing.form.non-eu-transfer.placeholder' | translate"
+              placeholder="{{'processing.form.non-eu-transfer.placeholder' | translate}}"
               #nonEuTransfer
               (change)="updateProcessing()"
               [(ngModel)]="processing.nonEuTransfer"
