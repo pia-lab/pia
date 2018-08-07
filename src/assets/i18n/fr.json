@@ -188,22 +188,45 @@
   },
   "processing": {
     "form": {
-      "description": "Quels sont les finalités du traitement",
-      "standards": "Quels sont les référenciels applicables",
-      "non-eu-transfer": "Transfert hors UE",
+      "previous": "Section précédente",
+      "next": "Section suivante",
+      "description": { 
+        "title": "Quels sont les finalités du traitement ?",
+        "placeholder": "Décrivez les objectifs et finalités du traitement"
+      },
+      "standards": {
+        "title": "Quels sont les référenciels applicables ?",
+        "placeholder": "Listez les référenciels qui concernent ce traitement"
+      },
+      "non-eu-transfer":  {
+        "title": "Transfert hors UE",
+        "placeholder": "Laisser vide si pas de transfert de données hors UE"
+      },
       "data-types": "Types de données traitées",
-      "storage": "Où les données sont elles stockées",
-      "lifecycle": "Cycle de vie des données",
-      "processors": "Sous traitants",
+      "storage": {
+        "title": "Où les données sont elles stockées",
+        "placeholder": "Décrivez le/les lieux de stockage des données"
+      },
+      "processors": {
+        "title": "Sous traitants",
+        "placeholder": "Listez les sous traitants"
+      },
+      "lifecycle": {
+        "title": "Cycle de vie des données",
+        "placeholder": "Décrivez le cycle de vie des données pour ce traitement"
+      },
       "sections": {
         "description": {
-          "title": "Description de l'activité de traitement"
+          "title": "Description de l'activité de traitement",
+          "short_help": ""
         },
         "data": {
-          "title": "Données traitées"
+          "title": "Données traitées",
+          "short_help": ""
         },
         "lifecycle": {
-          "title": "Cycle de vie des données"
+          "title": "Cycle de vie des données",
+          "short_help": ""
         }
       }
     },

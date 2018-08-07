@@ -21,7 +21,7 @@
       
       <fieldset *ngIf="currentSection.id == 1" id="description" class="form-section">
         <div class="form-field">
-          <label class="title" for="processing-description">{{ 'processing.form.description' | translate }}</label>
+          <label class="title" for="processing-description">{{ 'processing.form.description.title' | translate }}</label>
           <div (click)="editField(description)"
             class="pia-questionBlock-contentText"
             [innerHTML]="processingForm.form.controls['description']?.value | safeHtml"
@@ -45,7 +45,7 @@
         </div>
         
         <div class="form-field">
-          <label class="title" for="processing-standards">{{ 'processing.form.standards' | translate }}</label>
+          <label class="title" for="processing-standards">{{ 'processing.form.standards.title' | translate }}</label>
           <div (click)="editField(standards)"
             class="pia-questionBlock-contentText"
             [innerHTML]="processingForm.form.controls['standards']?.value | safeHtml"
@@ -82,7 +82,7 @@
         </div>
 
         <div class="form-field">
-          <label class="title" for="processing-storage">{{ 'processing.form.storage' | translate }}</label>
+          <label class="title" for="processing-storage">{{ 'processing.form.storage.title' | translate }}</label>
           <div (click)="editField(storage)"
             class="pia-questionBlock-contentText"
             [innerHTML]="processingForm.form.controls['storage']?.value | safeHtml"
@@ -108,7 +108,7 @@
 
       <fieldset *ngIf="currentSection.id == 3" id="lifecycle" class="form-section">
           <div class="form-field">
-            <label class="title" for="processing-lifecycle">{{ 'processing.form.lifecycle' | translate }}</label>
+            <label class="title" for="processing-lifecycle">{{ 'processing.form.lifecycle.title' | translate }}</label>
             <div (click)="editField(lifecycle)"
               class="pia-questionBlock-contentText"
               [innerHTML]="processingForm.form.controls['lifecycle']?.value | safeHtml"
@@ -131,7 +131,7 @@
             ></textarea>
           </div>
           <div class="form-field">
-            <label class="title" for="processing-processors">{{ 'processing.form.processors' | translate }}</label>
+            <label class="title" for="processing-processors">{{ 'processing.form.processors.title' | translate }}</label>
             <div (click)="editField(processors)"
               class="pia-questionBlock-contentText"
               [innerHTML]="processingForm.form.controls['processors']?.value | safeHtml"
@@ -154,7 +154,7 @@
             ></textarea>
           </div>
           <div class="form-field">
-            <label class="title" for="processing-non-eu-transfer">{{ 'processing.form.non-eu-transfer' | translate }}</label>
+            <label class="title" for="processing-non-eu-transfer">{{ 'processing.form.non-eu-transfer.title' | translate }}</label>
             <div (click)="editField(nonEuTransfer)"
               class="pia-questionBlock-contentText"
               [innerHTML]="processingForm.form.controls['non-eu-transfer']?.value | safeHtml"
