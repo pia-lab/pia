@@ -72,13 +72,13 @@
       <fieldset *ngIf="currentSection.id == 2" id="data" class="form-section">
         <div class="form-field">
           <label class="title" for="processing-data-types">{{ 'processing.form.data-types' | translate }}</label>
-          <app-processed-data-types 
-            [(ngModel)]="processing.processedDataTypes" 
+          <app-processing-data-types 
+            [(ngModel)]="processing.processing_data_types" 
             name="data-types"
             id="processing-data-types"
             (focusIn)="updateKnowledgeBase($event.target)"
             (change)="updateProcessing()"
-          ></app-processed-data-types>
+          ></app-processing-data-types>
         </div>
 
         <div class="form-field">
@@ -125,7 +125,7 @@
               placeholder="{{'processing.form.lifecycle.placeholder' | translate}}"
               #lifecycle
               (change)="updateProcessing()"
-              [(ngModel)]="processing.lifecycle"
+              [(ngModel)]="processing.life_cycle"
               [ngClass]="{ 'hide': (processingForm.form.controls['lifecycle']?.value && processingForm.form.controls['lifecycle']?.value.length > 0) }"
               (focusin)="editField($event.target)"
             ></textarea>
@@ -171,7 +171,7 @@
               placeholder="{{'processing.form.non-eu-transfer.placeholder' | translate}}"
               #nonEuTransfer
               (change)="updateProcessing()"
-              [(ngModel)]="processing.nonEuTransfer"
+              [(ngModel)]="processing.non_eu_transfer"
               [ngClass]="{ 'hide': (processingForm.form.controls['non-eu-transfer']?.value && processingForm.form.controls['non-eu-transfer']?.value.length > 0) }"
               (focusin)="editField($event.target)"
             ></textarea>

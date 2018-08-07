@@ -2,19 +2,19 @@ import { Component, forwardRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
-  selector: 'app-processed-data-types',
-  templateUrl: './processed-data-types.component.html',
-  styleUrls: ['./processed-data-types.component.scss'],
+  selector: 'app-processing-data-types',
+  templateUrl: './processing-data-types.component.html',
+  styleUrls: ['./processing-data-types.component.scss'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => ProcessedDataTypesComponent),
+      useExisting: forwardRef(() => ProcessingDataTypesComponent),
       multi: true
     }
   ]
 })
 
-export class ProcessedDataTypesComponent implements ControlValueAccessor {
+export class ProcessingDataTypesComponent implements ControlValueAccessor {
   _value: any = {};
   onChange: (value: any) => {};
   onTouched: () => {};

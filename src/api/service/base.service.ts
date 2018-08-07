@@ -36,7 +36,7 @@ export class BaseService<T extends BaseModel> {
   protected httpPut(routeTpl: string, params: any = {}, model: T, query: any = {}): Observable<T> {
     query = this.buildQuery(query);
     const route = this.buildRoute(routeTpl, params);
-
+console.log(route, query);
     return this.http.put(route, model.toJson(), { params: query }).map(res => this.mapToModel(res, this.modelClass));
   }
 

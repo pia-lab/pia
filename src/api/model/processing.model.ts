@@ -8,13 +8,13 @@ export class Processing extends BaseModel {
   public status: string;
   public description: string;
   public author: string;
-  public lifeCycle: string;
+  public life_cycle: string;
   public storage: string;
   public standards: string;
   public processors: any;
   public controllers: any;
-  public nonEuTransfer: string;
-  public processedDataTypes: any;
+  public non_eu_transfer: string;
+  public processing_data_types: any;
   public folder: FolderModel;
   public pias: PiaModel[];
 }

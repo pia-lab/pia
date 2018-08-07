@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="processed-data-type small-12" id="identification-data">
+  <div class="processing-data-type small-12" id="identification-data">
     <div class="type-exists">
       <input *ngxPermissionsOnly="['CanEditProcessing']" class="field" id="identification" type="checkbox" name="identification[exists]" field="exists" category="identification"
         [(ngModel)]="identification" (change)="updateValue(
@@ -7,10 +7,10 @@
               $event.target.attributes.field.nodeValue,
               $event.target.checked
             )">
-      <label class="exists-label" for="identification">{{ 'processed-data-types.form.identification'| translate }}</label>
+      <label class="exists-label" for="identification">{{ 'processing-data-types.form.identification'| translate }}</label>
     </div>
     <div class="type-duration" *ngIf="identification">
-      <label class="label" for="identification-duration">{{ 'processed-data-types.form.duration'| translate }}</label>
+      <label class="label" for="identification-duration">{{ 'processing-data-types.form.duration'| translate }}</label>
       <input type="text" name="identification[duration]" field="duration" id="identification-duration" class="duration" category="identification"
         (change)="updateValue(
               $event.target.attributes.category.nodeValue,
@@ -19,7 +19,7 @@
             )">
     </div>
     <div class="type-sensitive" *ngIf="identification">
-      <label class="label" for="identification-sensitive">{{ 'processed-data-types.form.sensitive'| translate }}</label>
+      <label class="label" for="identification-sensitive">{{ 'processing-data-types.form.sensitive'| translate }}</label>
       <input type="checkbox" name="identification[sensitive]" field="sensitive" category="identification" (change)="updateValue(
                 $event.target.attributes.category.nodeValue,
                 $event.target.attributes.field.nodeValue,
@@ -29,7 +29,7 @@
   </div>
 </div>
 <div class="row">
-  <div class="processed-data-type small-12" id="personal-data">
+  <div class="processing-data-type small-12" id="personal-data">
     <div class="type-exists">
       <input *ngxPermissionsOnly="['CanEditProcessing']" class="field" id="personal" type="checkbox" name="personal[exists]" field="exists" category="personal" [(ngModel)]="personal"
         (change)="updateValue(
@@ -37,10 +37,10 @@
                 $event.target.attributes.field.nodeValue,
                 $event.target.checked
               )">
-      <label class="exists-label" for="personal">{{ 'processed-data-types.form.personal'| translate }}</label>
+      <label class="exists-label" for="personal">{{ 'processing-data-types.form.personal'| translate }}</label>
     </div>
     <div class="type-duration" *ngIf="personal">
-      <label class="label" for="personal-duration">{{ 'processed-data-types.form.duration'| translate }}</label>
+      <label class="label" for="personal-duration">{{ 'processing-data-types.form.duration'| translate }}</label>
       <input type="text" name="personal[duration]" field="duration" id="personal-duration" class="duration" category="personal"
         (change)="updateValue(
                 $event.target.attributes.category.nodeValue,
@@ -49,7 +49,7 @@
               )">
     </div>
     <div class="type-sensitive" *ngIf="personal">
-      <label class="label" for="personal-sensitive">{{ 'processed-data-types.form.sensitive'| translate }}</label>
+      <label class="label" for="personal-sensitive">{{ 'processing-data-types.form.sensitive'| translate }}</label>
       <input type="checkbox" name="personal[sensitive]" field="sensitive" category="personal" (change)="updateValue(
                   $event.target.attributes.category.nodeValue,
                   $event.target.attributes.field.nodeValue,
@@ -59,7 +59,7 @@
   </div>
 </div>
 <div class="row">
-  <div class="processed-data-type small-12" id="professional-data">
+  <div class="processing-data-type small-12" id="professional-data">
     <div class="type-exists">
       <input *ngxPermissionsOnly="['CanEditProcessing']" class="field" id="professional" type="checkbox" name="professional[exists]" field="exists" category="professional"
         [(ngModel)]="professional" (change)="updateValue(
@@ -67,10 +67,10 @@
                   $event.target.attributes.field.nodeValue,
                   $event.target.checked
                 )">
-      <label class="exists-label" for="professional">{{ 'processed-data-types.form.professional'| translate }}</label>
+      <label class="exists-label" for="professional">{{ 'processing-data-types.form.professional'| translate }}</label>
     </div>
     <div class="type-duration" *ngIf="professional">
-      <label class="label" for="professional-duration">{{ 'processed-data-types.form.duration'| translate }}</label>
+      <label class="label" for="professional-duration">{{ 'processing-data-types.form.duration'| translate }}</label>
       <input type="text" name="professional[duration]" field="duration" id="professional-duration" class="duration" category="professional"
         (change)="updateValue(
                   $event.target.attributes.category.nodeValue,
@@ -79,7 +79,7 @@
                 )">
     </div>
     <div class="type-sensitive" *ngIf="professional">
-      <label class="label" for="professional-sensitive">{{ 'processed-data-types.form.sensitive'| translate }}</label>
+      <label class="label" for="professional-sensitive">{{ 'processing-data-types.form.sensitive'| translate }}</label>
       <input type="checkbox" name="professional[sensitive]" field="sensitive" category="professional" (change)="updateValue(
                     $event.target.attributes.category.nodeValue,
                     $event.target.attributes.field.nodeValue,
@@ -90,7 +90,7 @@
 </div>
 
 <div class="row">
-  <div class="processed-data-type small-12" id="financial-data">
+  <div class="processing-data-type small-12" id="financial-data">
     <div class="type-exists">
       <input *ngxPermissionsOnly="['CanEditProcessing']" class="field" id="financial" type="checkbox" name="financial[exists]" field="exists" category="financial" 
         [(ngModel)]="financial"
@@ -99,10 +99,10 @@
                     $event.target.attributes.field.nodeValue,
                     $event.target.checked
                   )">
-      <label class="exists-label" for="financial">{{ 'processed-data-types.form.financial'| translate }}</label>
+      <label class="exists-label" for="financial">{{ 'processing-data-types.form.financial'| translate }}</label>
     </div>
     <div class="type-duration" *ngIf="financial">
-      <label class="label" for="financial-duration">{{ 'processed-data-types.form.duration'| translate }}</label>
+      <label class="label" for="financial-duration">{{ 'processing-data-types.form.duration'| translate }}</label>
       <input type="text" name="financial[duration]" field="duration" id="financial-duration" class="duration" category="financial"
         (change)="updateValue(
                     $event.target.attributes.category.nodeValue,
@@ -111,7 +111,7 @@
                   )">
     </div>
     <div class="type-sensitive" *ngIf="financial">
-      <label class="label" for="financial-sensitive">{{ 'processed-data-types.form.sensitive'| translate }}</label>
+      <label class="label" for="financial-sensitive">{{ 'processing-data-types.form.sensitive'| translate }}</label>
       <input type="checkbox" name="financial[sensitive]" field="sensitive" category="financial" (change)="updateValue(
                       $event.target.attributes.category.nodeValue,
                       $event.target.attributes.field.nodeValue,
@@ -122,17 +122,17 @@
 </div>
 
 <div class="row">
-  <div class="processed-data-type small-12" id="log-data">
+  <div class="processing-data-type small-12" id="log-data">
     <div class="type-exists">
       <input *ngxPermissionsOnly="['CanEditProcessing']" class="field" id="log" type="checkbox" name="log[exists]" field="exists" category="log" [(ngModel)]="log" (change)="updateValue(
                       $event.target.attributes.category.nodeValue,
                       $event.target.attributes.field.nodeValue,
                       $event.target.checked
                     )">
-      <label class="exists-label" for="log">{{ 'processed-data-types.form.log'| translate }}</label>
+      <label class="exists-label" for="log">{{ 'processing-data-types.form.log'| translate }}</label>
     </div>
     <div class="type-duration" *ngIf="log">
-      <label class="label" for="log-duration">{{ 'processed-data-types.form.duration'| translate }}</label>
+      <label class="label" for="log-duration">{{ 'processing-data-types.form.duration'| translate }}</label>
       <input type="text" name="log[duration]" field="duration" id="log-duration" class="duration" category="log" (change)="updateValue(
                       $event.target.attributes.category.nodeValue,
                       $event.target.attributes.field.nodeValue,
@@ -140,7 +140,7 @@
                     )">
     </div>
     <div class="type-sensitive" *ngIf="log">
-      <label class="label" for="log-sensitive">{{ 'processed-data-types.form.sensitive'| translate }}</label>
+      <label class="label" for="log-sensitive">{{ 'processing-data-types.form.sensitive'| translate }}</label>
       <input type="checkbox" name="log[sensitive]" field="sensitive" category="log" (change)="updateValue(
                         $event.target.attributes.category.nodeValue,
                         $event.target.attributes.field.nodeValue,
@@ -151,7 +151,7 @@
 </div>
 
 <div class="row">
-  <div class="processed-data-type small-12" id="location-data">
+  <div class="processing-data-type small-12" id="location-data">
     <div class="type-exists">
       <input *ngxPermissionsOnly="['CanEditProcessing']" class="field" id="location" type="checkbox" name="location[exists]" field="exists" category="location" [(ngModel)]="location"
         (change)="updateValue(
@@ -159,10 +159,10 @@
                         $event.target.attributes.field.nodeValue,
                         $event.target.checked
                       )">
-      <label class="exists-label" for="location">{{ 'processed-data-types.form.location'| translate }}</label>
+      <label class="exists-label" for="location">{{ 'processing-data-types.form.location'| translate }}</label>
     </div>
     <div class="type-duration" *ngIf="location">
-      <label class="label" for="location-duration">{{ 'processed-data-types.form.duration'| translate }}</label>
+      <label class="label" for="location-duration">{{ 'processing-data-types.form.duration'| translate }}</label>
       <input type="text" name="location[duration]" field="duration" id="location-duration" class="duration" category="location"
         (change)="updateValue(
                         $event.target.attributes.category.nodeValue,
@@ -171,7 +171,7 @@
                       )">
     </div>
     <div class="type-sensitive" *ngIf="location">
-      <label class="label" for="location-sensitive">{{ 'processed-data-types.form.sensitive'| translate }}</label>
+      <label class="label" for="location-sensitive">{{ 'processing-data-types.form.sensitive'| translate }}</label>
       <input type="checkbox" name="location[sensitive]" field="sensitive" category="location" (change)="updateValue(
                           $event.target.attributes.category.nodeValue,
                           $event.target.attributes.field.nodeValue,
@@ -182,7 +182,7 @@
 </div>
 
 <div class="row">
-  <div class="processed-data-type small-12" id="internet-data">
+  <div class="processing-data-type small-12" id="internet-data">
     <div class="type-exists">
       <input *ngxPermissionsOnly="['CanEditProcessing']" class="field" id="internet" type="checkbox" name="internet[exists]" field="exists" category="internet" [(ngModel)]="internet"
         (change)="updateValue(
@@ -190,10 +190,10 @@
                           $event.target.attributes.field.nodeValue,
                           $event.target.checked
                         )">
-      <label class="exists-label" for="internet">{{ 'processed-data-types.form.internet'| translate }}</label>
+      <label class="exists-label" for="internet">{{ 'processing-data-types.form.internet'| translate }}</label>
     </div>
     <div class="type-duration" *ngIf="internet">
-      <label class="label" for="internet-duration">{{ 'processed-data-types.form.duration'| translate }}</label>
+      <label class="label" for="internet-duration">{{ 'processing-data-types.form.duration'| translate }}</label>
       <input type="text" name="internet[duration]" field="duration" id="internet-duration" class="duration" category="internet"
         (change)="updateValue(
                           $event.target.attributes.category.nodeValue,
@@ -202,7 +202,7 @@
                         )">
     </div>
     <div class="type-sensitive" *ngIf="internet">
-      <label class="label" for="internet-sensitive">{{ 'processed-data-types.form.sensitive'| translate }}</label>
+      <label class="label" for="internet-sensitive">{{ 'processing-data-types.form.sensitive'| translate }}</label>
       <input type="checkbox" name="internet[sensitive]" field="sensitive" category="internet" (change)="updateValue(
                             $event.target.attributes.category.nodeValue,
                             $event.target.attributes.field.nodeValue,
@@ -213,7 +213,7 @@
 </div>
 
 <div class="row">
-  <div class="processed-data-type small-12" id="other-data">
+  <div class="processing-data-type small-12" id="other-data">
     <div class="type-exists">
       <input *ngxPermissionsOnly="['CanEditProcessing']" class="field" id="other" type="checkbox" name="other[exists]" field="exists" category="other" [(ngModel)]="other"
         (change)="updateValue(
@@ -221,7 +221,7 @@
                           $event.target.attributes.field.nodeValue,
                           $event.target.checked
                         )">
-      <label class="exists-label" for="other">{{ 'processed-data-types.form.other'| translate }}</label>
+      <label class="exists-label" for="other">{{ 'processing-data-types.form.other'| translate }}</label>
     </div>
     <div class="type-duration" *ngIf="other">
       <input type="text" name="other[data]" field="data" id="other-data" class="other" category="other" (change)="updateValue(
@@ -231,7 +231,7 @@
                           )">
     </div>
     <div class="type-duration" *ngIf="other">
-      <label class="label" for="other-duration">{{ 'processed-data-types.form.duration'| translate }}</label>
+      <label class="label" for="other-duration">{{ 'processing-data-types.form.duration'| translate }}</label>
       <input type="text" name="other[duration]" field="duration" id="other-duration" class="duration" category="other" (change)="updateValue(
                           $event.target.attributes.category.nodeValue,
                           $event.target.attributes.field.nodeValue,
@@ -239,7 +239,7 @@
                         )">
     </div>
     <div class="type-sensitive" *ngIf="other">
-      <label class="label" for="other-sensitive">{{ 'processed-data-types.form.sensitive'| translate }}</label>
+      <label class="label" for="other-sensitive">{{ 'processing-data-types.form.sensitive'| translate }}</label>
       <input type="checkbox" name="other[sensitive]" field="sensitive" category="other" (change)="updateValue(
                             $event.target.attributes.category.nodeValue,
                             $event.target.attributes.field.nodeValue,

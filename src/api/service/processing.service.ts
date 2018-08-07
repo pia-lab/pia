@@ -31,6 +31,7 @@ export class ProcessingService extends BaseService<Processing> {
   }
 
   public update(model: Processing): Observable<Processing> {
+    console.log(model)
     return this.httpPut(this.routing.one, { id: model.id }, model);
   }
 

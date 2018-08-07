@@ -73,7 +73,7 @@ import { StructureGuardService } from 'app/services/structure-guard.service';
 import { ProcessingComponent } from './processing/processing.component';
 import { ProcessingFormComponent} from './processing/processing-form/processing-form.component';
 import { ProcessingService} from './processing/processing.service';
-import { ProcessedDataTypesComponent } from './processing/processing-form/processed-data-types/processed-data-types.component';
+import { ProcessingDataTypesComponent } from './processing/processing-form/processing-data-types/processing-data-types.component';
 import { PiasListComponent } from './pias/list/list.component';
 import { PiasListItemComponent } from './pias/list/item/item.component';
 
@@ -162,7 +162,7 @@ export function createTranslateLoader(http: HttpClient) {
     DashboardItemComponent,
     ProcessingComponent,
     ProcessingFormComponent,
-    ProcessedDataTypesComponent,
+    ProcessingDataTypesComponent,
     PiasListComponent,
     PiasListItemComponent
   ],

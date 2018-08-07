@@ -2,7 +2,7 @@
 import { BaseModel } from '@api/model/base.model';
 import { ProcessingModel } from '@api/models';
 
-export class ProcessedDataType extends BaseModel {
+export class ProcessingDataType extends BaseModel {
   public id: any;
   public reference: string;
   public data: string;

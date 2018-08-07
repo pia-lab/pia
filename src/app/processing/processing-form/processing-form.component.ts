@@ -33,7 +33,7 @@ export class ProcessingFormComponent implements OnDestroy {
   }
 
   updateProcessing() {
-    this.processingApi.update(this.processing);
+    this.processingApi.update(this.processing).subscribe(() => {});
   }
 
   updateKnowledgeBase(item: any) {

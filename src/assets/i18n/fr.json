@@ -259,7 +259,7 @@
       }
     }
   },
-  "processed-data-types": {
+  "processing-data-types": {
     "form": {
       "duration": "Durée de conservation",
       "sensitive": "Données sensibles ?",
