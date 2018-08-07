@@ -73,12 +73,9 @@ import { StructureGuardService } from 'app/services/structure-guard.service';
 import { ProcessingComponent } from './processing/processing.component';
 import { ProcessingFormComponent} from './processing/processing-form/processing-form.component';
 import { ProcessingService} from './processing/processing.service';
-<<<<<<< HEAD
 import { ProcessedDataTypesComponent } from './processing/processing-form/processed-data-types/processed-data-types.component';
-=======
 import { PiasListComponent } from './pias/list/list.component';
 import { PiasListItemComponent } from './pias/list/item/item.component';
->>>>>>> 203078e00d0a7f822e493c843f084d11681c21fe
 
 const providersList: any = [
   AppDataService,
