@@ -94,7 +94,7 @@ export class ModalsComponent implements OnInit {
     // disable the type feature
     pia.type = 'advanced'; // this.piaForm.value.type;
 
-    this.piaApi.create(pia, this._piaService.currentProcessing).subscribe((newPia: PiaModel) => {
+    this.piaApi.create(pia).subscribe((newPia: PiaModel) => {
       this.piaForm.reset();
       this.router.navigate(['entry', newPia.id, 'section', 1, 'item', 1]);
     });

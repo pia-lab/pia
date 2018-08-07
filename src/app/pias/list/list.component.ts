@@ -27,7 +27,6 @@ export class PiasListComponent implements OnInit {
     this.route.params.subscribe( params => {
       this.processingApi.get(params.id).subscribe(processing => {
         this.processing = processing;
-        this._piaService.currentProcessing = this.processing;
       });
       this.piaApi.getAll({'processing' : params.id}).subscribe((pias: Array<PiaModel>) => {
         this.pias = pias;
