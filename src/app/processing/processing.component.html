@@ -28,6 +28,17 @@
         <!-- Main form content -->
         <div class="small-12 medium-6 columns">
             <app-processing-form [processing]="processing" [sections]="sections" [currentSection]="currentSection"></app-processing-form>
+
+            <div class="processing-bottom-nav">
+                <a *ngIf="currentSection.id > 1" class="processing-previous" (click)="changeSection(currentSection.id - 1)">
+                    <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+                    {{ 'processing.form.previous' | translate}}
+                </a>
+                <a *ngIf="currentSection.id < 3" class="processing-next" (click)="changeSection(currentSection.id + 1)">
+                    {{ 'processing.form.next' | translate}}
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                </a>
+            </div>
         </div>
 
         <!-- Right sidebar (knowledge base) -->
@@ -38,6 +49,7 @@
         </div>
     </div>
 </main>
+
 
 
 

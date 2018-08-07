@@ -1,6 +1,7 @@
 import { Component, Input, OnDestroy, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
+import { KnowledgeBaseService } from '../../entry/knowledge-base/knowledge-base.service';
 import { ProcessingModel } from '@api/models';
 import { ProcessingApi } from '@api/services';
 import { PermissionsService } from '@security/permissions.service';
@@ -23,7 +24,8 @@ export class ProcessingFormComponent implements OnDestroy {
   constructor(
     private processingApi: ProcessingApi,
     private ref: ChangeDetectorRef,
-    private permissionsService: PermissionsService
+    private permissionsService: PermissionsService,
+    private knowledgeBaseService: KnowledgeBaseService
   ) { }
 
   ngOnDestroy() {
@@ -31,11 +33,7 @@ export class ProcessingFormComponent implements OnDestroy {
   }
 
   updateProcessing() {
-    this.processingApi.get(this.processing.id);
-  }
-
-  getSectionById(sectionId) {
-    return this.sections.filter((section) => section.id === sectionId)[0];
+    this.processingApi.update(this.processing);
   }
 
   updateKnowledgeBase(item: any) {

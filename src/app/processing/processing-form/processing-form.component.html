@@ -1,12 +1,12 @@
-<section class="processing-entryContentBlock processing-entryContentBlock-section{{currentSection.id}}">
+<section class="processing-setion">
   <header autoscroll="true" class="processing-entryContentBlock-header">
     <div>
       <div class="processing-entryContentBlock-header-progress">
       </div>
     </div>
     <div class="processing-entryContentBlock-header-title">
-      <h1>{{ getSectionById(currentSection).title | translate }}</h1>
-      <h3>{{ getSectionById(currentSection).short_help | translate }}</h3>
+      <h1>{{ currentSection.title | translate }}</h1>
+      <h3>{{ currentSection.short_help | translate }}</h3>
     </div>
     <ng-template #defaultBlock>
       <a routerLink="/summary/{{processing.id}}" class="btn processing-previewBlock">
@@ -19,7 +19,7 @@
 
     <form id="processing-form" #processingForm="ngForm">
       
-      <fieldset *ngIf="currentSection == 1" id="description" class="form-section">
+      <fieldset *ngIf="currentSection.id == 1" id="description" class="form-section">
         <div class="form-field">
           <label class="title" for="processing-description">{{ 'processing.form.description' | translate }}</label>
           <div (click)="editField(description)"
@@ -69,7 +69,7 @@
         </div>
       </fieldset>
 
-      <fieldset *ngIf="currentSection == 2" id="data" class="form-section">
+      <fieldset *ngIf="currentSection.id == 2" id="data" class="form-section">
         <div class="form-field">
           <label class="title" for="processing-data-types">{{ 'processing.form.data-types' | translate }}</label>
           <app-processed-data-types 
@@ -106,7 +106,7 @@
         </div>
       </fieldset>
 
-      <fieldset *ngIf="currentSection == 3" id="lifecycle" class="form-section">
+      <fieldset *ngIf="currentSection.id == 3" id="lifecycle" class="form-section">
           <div class="form-field">
             <label class="title" for="processing-lifecycle">{{ 'processing.form.lifecycle' | translate }}</label>
             <div (click)="editField(lifecycle)"
@@ -179,17 +179,4 @@
       </fieldset>
     </form>
   </main>
-
-  <footer class="processing-entryContentBlock-footer">
-    <div class="processing-entryContentBlock-footer-nav">
-      <a *ngIf="currentSection > 1" class="processing-previous" routerLink="/processing/{{ processing.id }}/section/{{ getSectionById(currentSection - 1).id }}">
-        <i class="fa fa-angle-double-left" aria-hidden="true"></i>
-        {{ getSectionById(currentSection - 1).title | translate }}
-      </a>
-      <a *ngIf="currentSection < 3" class="processing-next" routerLink="/processing/{{ processing.id }}/section/{{ getSectionById(currentSection + 1).id }}">
-        {{ getSectionById(currentSection + 1).title | translate }}
-        <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-      </a>
-    </div>
-  </footer>
 </section>
