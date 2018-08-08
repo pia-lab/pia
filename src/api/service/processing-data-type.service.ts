@@ -11,7 +11,7 @@ export class ProcessingDataTypeService extends BaseService<ProcessingDataType> {
   protected modelClass = ProcessingDataType;
 
   protected routing: any = {
-    all: '/processing-data-type',
+    all: '/processing-data-types',
     one: '/processing-data-types/{id}'
   };
 

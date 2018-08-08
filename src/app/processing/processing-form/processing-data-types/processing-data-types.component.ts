@@ -1,5 +1,7 @@
-import { Component, forwardRef } from '@angular/core';
+import { Component, forwardRef, Input } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ProcessingDataTypeModel } from '@api/models';
+import { ProcessingDataTypeApi } from '@api/services';
 
 @Component({
   selector: 'app-processing-data-types',
@@ -15,31 +17,63 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 })
 
 export class ProcessingDataTypesComponent implements ControlValueAccessor {
-  _value: any = {};
-  onChange: (value: any) => {};
-  onTouched: () => {};
+  public identification: Field = {enabled: false, processedDataType: new ProcessingDataTypeModel()};
+  public personal: Field       = {enabled: false, processedDataType: new ProcessingDataTypeModel()};
+  public professional: Field   = {enabled: false, processedDataType: new ProcessingDataTypeModel()};
+  public financial: Field      = {enabled: false, processedDataType: new ProcessingDataTypeModel()};
+  public log: Field            = {enabled: false, processedDataType: new ProcessingDataTypeModel()};
+  public location: Field       = {enabled: false, processedDataType: new ProcessingDataTypeModel()};
+  public internet: Field       = {enabled: false, processedDataType: new ProcessingDataTypeModel()};
+  public other: Field          = {enabled: false, processedDataType: new ProcessingDataTypeModel()};
+  private onChange: (value: any) => {};
+  private onTouched: () => {};
+  @Input() processingId: number;
 
 
-  constructor() { }
+  constructor(private processingDataTypeApi: ProcessingDataTypeApi) { }
 
-  updateValue(category: string, field: string, value: any): void {
-    switch (field) {
-      case 'exists':
-        if (this._value.hasOwnProperty(category)) {
-          delete this._value[category];
-        }
+  /**
+   * Update model value from form control value
+   * @param reference
+   * @param field
+   * @param value
+   */
+  updateValue(reference: string, enable: boolean = false): void {
+    const type = this[reference].processedDataType;
 
-        break;
+    // Data type enabled no creation yet
+    if (enable) {
+      // Disabling
+      if (type.id) {
+        // Delete from server
+        this.processingDataTypeApi.delete(type).subscribe(() => {
+          // Clear model
+          this[reference].processingDataType = new ProcessingDataTypeModel();
+        });
+      }
 
-      default:
-        if (!this._value.hasOwnProperty(category)) {
-          this._value[category] = {};
-        }
-
-        this._value[category][field] = value;
+      return;
     }
 
-    this.writeValue(this._value);
+    // Create new
+    if (!type.id) {
+      // Set missing properties
+      type.processing_id = this.processingId;
+      type.reference = reference;
+      // Create on server
+      this.processingDataTypeApi.create(type).subscribe((theType: ProcessingDataTypeModel) => {
+        // Udate model
+        this[reference].processedDataType = theType;
+      });
+
+      return;
+    }
+
+    // Update existing on server
+    this.processingDataTypeApi.update(type).subscribe((theType: ProcessingDataTypeModel) => {
+      // update model
+      this[reference].processedDataType = theType;
+    });
   }
 
   /**
@@ -47,8 +81,11 @@ export class ProcessingDataTypesComponent implements ControlValueAccessor {
    * @param element
    */
   writeValue(value: any): void {
-    if (this.onChange) {
-      this.onChange(value);
+    if (value) {
+      value.forEach((type: ProcessingDataTypeModel) => {
+        this[type.reference].enabled = true;
+        this[type.reference].processedDataType = type;
+      });
     }
   }
 
@@ -57,7 +94,6 @@ export class ProcessingDataTypesComponent implements ControlValueAccessor {
    * @param fn
    */
   registerOnChange(fn: any): void {
-    this.onChange = fn;
   }
 
   /**
@@ -66,7 +102,6 @@ export class ProcessingDataTypesComponent implements ControlValueAccessor {
    * @param fn
   */
   registerOnTouched(fn: any): void {
-    this.onTouched = fn;
   }
 
   /**
@@ -74,7 +109,10 @@ export class ProcessingDataTypesComponent implements ControlValueAccessor {
    * @param isDisabled
    */
   setDisabledState?(isDisabled: boolean): void {
-
   }
+}
 
+interface Field {
+  enabled: boolean;
+  processedDataType: ProcessingDataTypeModel
 }

@@ -44,7 +44,6 @@ import { ModalsService } from 'app/modals/modals.service';
 import { AttachmentsService } from 'app/entry/attachments/attachments.service';
 import { KnowledgeBaseService } from 'app/entry/knowledge-base/knowledge-base.service';
 import { PaginationService } from 'app/entry/entry-content/pagination.service';
-import { PaginationService as ProcessingPaginationService} from 'app/processing/processing-form/pagination.service';
 import { LanguagesService } from 'app/services/languages.service';
 import { OverviewRisksComponent } from 'app/entry/entry-content/overview-risks/overview-risks.component';
 import { ErrorsComponent } from 'app/errors/errors.component';
@@ -76,6 +75,7 @@ import { ProcessingService} from './processing/processing.service';
 import { ProcessingDataTypesComponent } from './processing/processing-form/processing-data-types/processing-data-types.component';
 import { PiasListComponent } from './pias/list/list.component';
 import { PiasListItemComponent } from './pias/list/item/item.component';
+import { ProcessingDataTypeService } from '@api/service';
 
 const providersList: any = [
   AppDataService,
@@ -93,7 +93,7 @@ const providersList: any = [
   LanguagesService,
   GlobalEvaluationService,
   ProcessingService,
-  ProcessingPaginationService,
+  ProcessingDataTypeService,
   {
     provide: ErrorHandler,
     useClass: AppErrorHandler,

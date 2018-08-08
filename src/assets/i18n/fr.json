@@ -261,7 +261,7 @@
   },
   "processing-data-types": {
     "form": {
-      "duration": "Durée de conservation",
+      "retention-period": "Durée de conservation",
       "sensitive": "Données sensibles ?",
       "identification": "État-civil, identité, données d'identification, images(ex.nom, prénom, adresse, photographie, date et lieu de naissance, etc.)",
       "personal": "Vie personnelle (ex. habitudes de vie, situation familiale, etc.)",

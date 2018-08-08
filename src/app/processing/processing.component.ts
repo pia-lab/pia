@@ -11,7 +11,7 @@ import { ProcessingModel } from '@api/models';
 export class ProcessingComponent implements OnInit {
   processing: ProcessingModel;
   sections: any;
-  currentSection: number;
+  currentSection: any;
   field: { id: number, title: string, evaluation_mode: string, short_help: string, questions: any };
 
   constructor(private route: ActivatedRoute) { }

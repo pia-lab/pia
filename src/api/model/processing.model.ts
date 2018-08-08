@@ -16,5 +16,5 @@ export class Processing extends BaseModel {
   public non_eu_transfer: string;
   public processing_data_types: any;
   public folder: FolderModel;
-  public pias: PiaModel[];
+  public pias_count: number;
 }
