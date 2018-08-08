@@ -92,7 +92,7 @@
 <div class="row">
   <div class="processed-data-type small-12" id="financial-data">
     <div class="type-exists">
-      <input *ngxPermissionsOnly="['CanEditProcessing']" class="field" id="financial" type="checkbox" name="financial[exists]" field="exists" category="financial" 
+      <input *ngxPermissionsOnly="['CanEditProcessing']" class="field" id="financial" type="checkbox" name="financial[exists]" field="exists" category="financial"
         [(ngModel)]="financial"
         (change)="updateValue(
                     $event.target.attributes.category.nodeValue,
