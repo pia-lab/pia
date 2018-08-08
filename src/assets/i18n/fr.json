@@ -189,49 +189,47 @@
   },
   "processing": {
     "form": {
-      "description": {
-        "label":  "Quelles sont les finalités du traitement",
-        "placeholder": "Saisissez les finalités du traitement"
+      "previous": "Section précédente",
+      "next": "Section suivante",
+      "description": { 
+        "title": "Quelles sont les finalités du traitement ?",
+        "placeholder": "Décrivez les objectifs et finalités du traitement"
       },
       "standards": {
-        "label":  "Quels sont les référentiels applicables",
-        "placeholder": "Saisissez les référentiels applicables"
+        "title": "Quels sont les référenciels applicables ?",
+        "placeholder": "Listez les référenciels qui concernent ce traitement"
       },
-      "non-eu-transfer": {
-        "label":  "Transfert hors UE",
-        "placeholder": "Saisissez s'il y a des transferts de données"
+      "non-eu-transfer":  {
+        "title": "Transfert hors UE",
+        "placeholder": "Laisser vide si pas de transfert de données hors UE"
       },
-      "data-types": {
-        "label":  "Types de données traitées"
-      },
+      "data-types": "Types de données traitées",
       "storage": {
-        "label":  "Où les données sont elles stockées",
-        "placeholder": "Saisissez les supports de données, emplacements, etc."
-      },
-      "lifecycle": {
-        "label":  "Cycle de vie des données",
-        "placeholder": "Saisissez "
+        "title": "Où les données sont elles stockées",
+        "placeholder": "Décrivez le/les lieux de stockage des données"
       },
       "processors": {
-        "label":  "Sous traitants",
-        "placeholder": "Saisissez "
+        "title": "Sous traitants",
+        "placeholder": "Listez les sous traitants"
+      },
+      "lifecycle": {
+        "title": "Cycle de vie des données",
+        "placeholder": "Décrivez le cycle de vie des données pour ce traitement"
       },
       "sections": {
         "description": {
           "title": "Description de l'activité de traitement",
-          "short_help": "Contexte du traitement"
+          "short_help": ""
         },
         "data": {
           "title": "Données traitées",
-          "short_help": "Liste des données concernées"
+          "short_help": ""
         },
         "lifecycle": {
           "title": "Cycle de vie des données",
-          "short_help": "Description des étapes"
+          "short_help": ""
         }
-      },
-      "next": "Suivant",
-      "previous": "Précédent"
+      }
     },
     "statuses": {
       "0": "Valide",
@@ -261,9 +259,9 @@
       }
     }
   },
-  "processed-data-types": {
+  "processing-data-types": {
     "form": {
-      "duration": "Durée de conservation",
+      "retention-period": "Durée de conservation",
       "sensitive": "Données sensibles ?",
       "identification": "État-civil, identité, données d'identification, images(ex.nom, prénom, adresse, photographie, date et lieu de naissance, etc.)",
       "personal": "Vie personnelle (ex. habitudes de vie, situation familiale, etc.)",

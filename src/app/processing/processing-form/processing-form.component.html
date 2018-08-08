@@ -21,7 +21,7 @@
 
       <fieldset *ngIf="currentSection.id == 1" id="description" class="form-section">
         <div class="form-field">
-          <label class="title" for="processing-description">{{ 'processing.form.description.label' | translate }}</label>
+          <label class="title" for="processing-description">{{ 'processing.form.description.title' | translate }}</label>
           <div (click)="editField(description, ['PIA_LGL_DESC', 'PIA_LGL_FIN'])"
             class="pia-questionBlock-contentText"
             [innerHTML]="processingForm.form.controls['description']?.value | safeHtml"
@@ -45,7 +45,7 @@
         </div>
 
         <div class="form-field">
-          <label class="title" for="processing-standards">{{ 'processing.form.standards.label' | translate }}</label>
+          <label class="title" for="processing-standards">{{ 'processing.form.standards.title' | translate }}</label>
           <div (click)="editField(standards, ['PIA_LGL_FOND'])"
             class="pia-questionBlock-contentText"
             [innerHTML]="processingForm.form.controls['standards']?.value | safeHtml"
@@ -71,18 +71,19 @@
 
       <fieldset *ngIf="currentSection.id == 2" id="data" class="form-section">
         <div class="form-field">
-          <label class="title" for="processing-data-types">{{ 'processing.form.data-types.label' | translate }}</label>
-          <app-processed-data-types
-            [(ngModel)]="processing.processedDataTypes"
+          <label class="title" for="processing-data-types">{{ 'processing.form.data-types' | translate }}</label>
+          <app-processing-data-types 
+            [(ngModel)]="processing.processing_data_types" 
             name="data-types"
             id="processing-data-types"
             (click)="updateKnowledgeBase(['PIA_LGL_DATA'])"
-            (change)="updateProcessing()"
-          ></app-processed-data-types>
+            (change)="updateProcessing(true)"
+            [processingId]="processing.id"
+          ></app-processing-data-types>
         </div>
 
         <div class="form-field">
-          <label class="title" for="processing-storage">{{ 'processing.form.storage.label' | translate }}</label>
+          <label class="title" for="processing-storage">{{ 'processing.form.storage.title' | translate }}</label>
           <div (click)="editField(storage, ['PIA_LGL_SUPT'])"
             class="pia-questionBlock-contentText"
             [innerHTML]="processingForm.form.controls['storage']?.value | safeHtml"
@@ -108,7 +109,7 @@
 
       <fieldset *ngIf="currentSection.id == 3" id="lifecycle" class="form-section">
           <div class="form-field">
-            <label class="title" for="processing-lifecycle">{{ 'processing.form.lifecycle.label' | translate }}</label>
+            <label class="title" for="processing-lifecycle">{{ 'processing.form.lifecycle.title' | translate }}</label>
             <div (click)="editField(lifecycle, ['PIA_LGL_LFC'])"
               class="pia-questionBlock-contentText"
               [innerHTML]="processingForm.form.controls['lifecycle']?.value | safeHtml"
@@ -125,13 +126,13 @@
               placeholder="{{'processing.form.lifecycle.placeholder' | translate}}"
               #lifecycle
               (change)="updateProcessing()"
-              [(ngModel)]="processing.lifecycle"
+              [(ngModel)]="processing.life_cycle"
               [ngClass]="{ 'hide': (processingForm.form.controls['lifecycle']?.value && processingForm.form.controls['lifecycle']?.value.length > 0) }"
               (focusin)="editField($event.target, ['PIA_LGL_LFC'])"
             ></textarea>
           </div>
           <div class="form-field">
-            <label class="title" for="processing-processors">{{ 'processing.form.processors.label' | translate }}</label>
+            <label class="title" for="processing-processors">{{ 'processing.form.processors.title' | translate }}</label>
             <div (click)="editField(processors, ['PIA_LGL_ST', 'PIA_LGL_DEST'])"
               class="pia-questionBlock-contentText"
               [innerHTML]="processingForm.form.controls['processors']?.value | safeHtml"
@@ -154,7 +155,7 @@
             ></textarea>
           </div>
           <div class="form-field">
-            <label class="title" for="processing-non-eu-transfer">{{ 'processing.form.non-eu-transfer.label' | translate }}</label>
+            <label class="title" for="processing-non-eu-transfer">{{ 'processing.form.non-eu-transfer.title' | translate }}</label>
             <div (click)="editField(nonEuTransfer, ['PIA_LGL_TRAN'])"
               class="pia-questionBlock-contentText"
               [innerHTML]="processingForm.form.controls['non-eu-transfer']?.value | safeHtml"
@@ -171,7 +172,7 @@
               placeholder="{{'processing.form.non-eu-transfer.placeholder' | translate}}"
               #nonEuTransfer
               (change)="updateProcessing()"
-              [(ngModel)]="processing.nonEuTransfer"
+              [(ngModel)]="processing.non_eu_transfer"
               [ngClass]="{ 'hide': (processingForm.form.controls['non-eu-transfer']?.value && processingForm.form.controls['non-eu-transfer']?.value.length > 0) }"
               (focusin)="editField($event.target, ['PIA_LGL_TRAN'])"
             ></textarea>
