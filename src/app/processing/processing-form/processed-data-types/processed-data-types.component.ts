@@ -19,14 +19,14 @@ export class ProcessedDataTypesComponent implements ControlValueAccessor {
   onChange: (value: any) => {};
   onTouched: () => {};
 
-  public identification: string
-  public personal: string
-  public professional: string
-  public financial: string
-  public log: string
-  public location: string
-  public internet: string
-  public other: string
+  public identification: Field
+  public personal: Field
+  public professional: Field
+  public financial: Field
+  public log: Field
+  public location: Field
+  public internet: Field
+  public other: Field
 
   constructor() { }
 
@@ -85,4 +85,9 @@ export class ProcessedDataTypesComponent implements ControlValueAccessor {
 
   }
 
+}
+
+interface Field {
+  duration: string
+  sensitive: boolean
 }
