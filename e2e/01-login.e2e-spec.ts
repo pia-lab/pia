@@ -50,7 +50,7 @@ describe('PIA Login page', () => {
 
     expect(homePage.navbarProfile().isPresent()).toBeTruthy();
     homePage.clickOnLogoutInProfileMenu();
-    
+
   });
 
 });
