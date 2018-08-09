@@ -38,7 +38,8 @@ const routes: Routes = [
   {
     path: 'processing/:id/pias',
     component: PiasListComponent,
-    canActivate: [AuthenticationGuardService, ProcessingResolve]
+    canActivate: [AuthenticationGuardService],
+    resolve: {processing: ProcessingResolve}
   },
   { path: '**', component: ErrorsComponent },
 ];

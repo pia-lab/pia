@@ -57,7 +57,7 @@ export class AppComponent {
 
      /*  PERMISSIONS */
 
-    let roles = {};
+    const roles = {};
 
     roles['ROLE_USER'] = [];
 
@@ -68,7 +68,7 @@ export class AppComponent {
     roles['ROLE_DPO'] = roles['ROLE_CONTROLLER'].concat([
       'CanCreatePIA', 'CanCreatePIAExample', 'CanShowPIA',
       'CanEvaluatePIA', 'CanValidatePIA', 'CanCancelValidatePIA',
-      'CanDeletePIA', 'CanImportPIA', 'CanExportPIA', 'CanCreateFolder',
+      'CanDeletePIA', 'CanCreateFolder',
       'CanCreateProcessing', 'CanEditProcessing', 'CanImportProcessing', 'CanExportProcessing', 'CanShowProcessing', 'CanDeleteProcessing',
        'AccessToValidationSection'
     ]);

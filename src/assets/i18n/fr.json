@@ -192,7 +192,7 @@
       "previous": "Section précédente",
       "next": "Section suivante",
       "description": { 
-        "title": "Quels sont les finalités du traitement ?",
+        "title": "Quelles sont les finalités du traitement ?",
         "placeholder": "Décrivez les objectifs et finalités du traitement"
       },
       "standards": {
@@ -414,6 +414,10 @@
         "name": "Recueil du consentement de l'utilisateur du service",
         "description": "Il s'agit de permettre un choix libre, spécifique et éclairé; vérifier que l'une des bases légales du traitement est le consentement, tel que prévu à l'<a target=\"_blank\" href=\"https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre2#Article6\">article 6 du RGPD</a> (obligation légale, sauvegarde de la vie, mission de service public, contrat ou mesures prises avec la personne, intérêt légitime).",
         "source": "WIKI Recueil_du_consentement"
+      },
+      "PIA_LGL_LFC": {
+        "name": "Cycle de vie des données",
+        "description": "Décrivez les différentes étapes qui concerneront les données tout au long de leur durée de conservation."
       },
       "PIA_VAL_DPO": {
         "name": "Avis du délégué à la protection des données",

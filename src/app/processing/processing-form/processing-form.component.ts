@@ -12,7 +12,6 @@ import { PermissionsService } from '@security/permissions.service';
   templateUrl: './processing-form.component.html',
   styleUrls: ['./processing-form.component.scss']
 })
-
 export class ProcessingFormComponent implements OnDestroy {
   @Input() sections: any;
   @Input() processing: ProcessingModel;
@@ -26,7 +25,9 @@ export class ProcessingFormComponent implements OnDestroy {
     private ref: ChangeDetectorRef,
     private permissionsService: PermissionsService,
     private knowledgeBaseService: KnowledgeBaseService
-  ) { }
+  ) {
+    this.knowledgeBaseService.knowledgeBaseData = [];
+  }
 
   ngOnDestroy() {
     this.closeEditor();
@@ -46,23 +47,29 @@ export class ProcessingFormComponent implements OnDestroy {
     this.processingApi.update(this.processing).subscribe(() => {});
   }
 
-  updateKnowledgeBase(item: any) {
-
+  updateKnowledgeBase(slugs: string[]) {
+    const item = {
+      link_knowledge_base: slugs
+    };
+    this.knowledgeBaseService.loadByItem(item);
   }
 
   /**
    * Check permissions and open editor to edit field content
    *
-   * @param element
+   * @param {any} element
+   * @param {string[]} knowledgeBaseItemIdentifier
    * @memberof ProcessingFormComponent
    */
-  editField(element: any) {
+  editField(element: any, knowledgeBaseItemIdentifier?: string[]) {
     this.permissionsService.hasPermission('CanEditProcessing').then((hasPerm: boolean) => {
       if (hasPerm) {
         this.elementId = element.id;
 
         this.loadEditor(element);
-        this.updateKnowledgeBase(element);
+      }
+      if (knowledgeBaseItemIdentifier) {
+        this.updateKnowledgeBase(knowledgeBaseItemIdentifier);
       }
     });
   }

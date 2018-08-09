@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/Observable';
 import { map } from 'rxjs/operators';
 
 import { AnswerService } from './answer.service';
-import { Pia, Template, Folder, Answer } from '../model';
+import { Pia, Template, Processing, Answer } from '../model';
 
 @Injectable()
 export class PiaService extends BaseService<Pia> {
@@ -30,8 +30,8 @@ export class PiaService extends BaseService<Pia> {
     return model.progress;
   }
 
-  public createFromTemplate(model: Pia, template: Template, folder: Folder): Observable<Pia> {
-    model.folder = folder;
+  public createFromTemplate(model: Pia, template: Template, processing: Processing): Observable<Pia> {
+    model.processing = processing;
     return this.httpPost(this.routing.template, { templateId: template.id }, model);
   }
 
