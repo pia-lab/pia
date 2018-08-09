@@ -17,6 +17,7 @@ export class PiaService {
   processings = [];
   folders = [];
   currentFolder: FolderModel = null
+  currentProcessing: ProcessingModel = null;
   isRootFolder: boolean = false
   pia: PiaModel = new PiaModel();
   answer: AnswerModel = new AnswerModel();
