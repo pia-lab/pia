@@ -26,9 +26,13 @@ export class ProcessingComponent implements OnInit {
     this.changeSection(1);
   }
 
-  changeSection(sectionId): void {
-    this.currentSection = this.getSectionById(sectionId);
-    this.displayKnowledgeBaseForSection(this.currentSection);
+  /**
+   * Change current section
+   *
+   * @param sectionId
+   */
+  changeSection(sectionId) {
+    this.currentSection = this.sections.filter((section) => section.id === sectionId)[0];
   }
 
   public displayKnowledgeBaseForSection(section?: Section): void {
@@ -56,11 +60,6 @@ export class ProcessingComponent implements OnInit {
       ]);
     }
   }
-
-  private getSectionById(sectionId) {
-    return this.sections.filter((section) => section.id === sectionId)[0];
-  }
-
 }
 
 interface Section {

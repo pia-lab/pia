@@ -25,8 +25,6 @@ export class ProcessingDataTypesComponent implements ControlValueAccessor {
   public location: Field       = {enabled: false, processedDataType: new ProcessingDataTypeModel()};
   public internet: Field       = {enabled: false, processedDataType: new ProcessingDataTypeModel()};
   public other: Field          = {enabled: false, processedDataType: new ProcessingDataTypeModel()};
-  private onChange: (value: any) => {};
-  private onTouched: () => {};
   @Input() processingId: number;
 
 
@@ -34,6 +32,7 @@ export class ProcessingDataTypesComponent implements ControlValueAccessor {
 
   /**
    * Update model value from form control value
+   *
    * @param reference
    * @param field
    * @param value
@@ -78,6 +77,7 @@ export class ProcessingDataTypesComponent implements ControlValueAccessor {
 
   /**
    * Write form control value
+   * 
    * @param element
    */
   writeValue(value: any): void {
@@ -91,6 +91,7 @@ export class ProcessingDataTypesComponent implements ControlValueAccessor {
 
   /**
    * Register onChange callback
+   * 
    * @param fn
    */
   registerOnChange(fn: any): void {
@@ -106,6 +107,7 @@ export class ProcessingDataTypesComponent implements ControlValueAccessor {
 
   /**
    * Set disabled state of form control
+   *
    * @param isDisabled
    */
   setDisabledState?(isDisabled: boolean): void {
