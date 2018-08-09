@@ -65,7 +65,7 @@ export class BaseService<T extends BaseModel> {
   }
 
   protected mapToCollection(res: any, modelClass: new () => T) {
-    return res.pipe(map(item => (new modelClass()).fromJson(item)));
+    return res.map(item => (new modelClass()).fromJson(item));
   }
 
   protected buildQuery(query: any): HttpParams {
