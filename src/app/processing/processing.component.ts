@@ -23,12 +23,13 @@ export class ProcessingComponent implements OnInit {
     this.changeSection(1);
   }
 
+  /**
+   * Change current section
+   *
+   * @param sectionId
+   */
   changeSection(sectionId) {
-    this.currentSection = this.getSectionById(sectionId);
-  }
-
-  private getSectionById(sectionId) {
-    return this.sections.filter((section) => section.id === sectionId)[0];
+    this.currentSection = this.sections.filter((section) => section.id === sectionId)[0];
   }
 
 }

@@ -32,6 +32,12 @@ export class ProcessingFormComponent implements OnDestroy {
     this.closeEditor();
   }
 
+  /**
+   * Update Processing model
+   *
+   * @param {boolean} dataTypes
+   * @memberof ProcessingFormComponent
+   */
   updateProcessing(dataTypes: boolean = false ) {
     if (dataTypes) {
       return
@@ -44,6 +50,12 @@ export class ProcessingFormComponent implements OnDestroy {
 
   }
 
+  /**
+   * Check permissions and open editor to edit field content
+   *
+   * @param element
+   * @memberof ProcessingFormComponent
+   */
   editField(element: any) {
     this.permissionsService.hasPermission('CanEditProcessing').then((hasPerm: boolean) => {
       if (hasPerm) {
@@ -57,9 +69,12 @@ export class ProcessingFormComponent implements OnDestroy {
 
   /**
    * Load wysiwyg editor.
+   *
+   * @private
+   * @param element
    * @memberof ProcessingFormComponent
    */
-  loadEditor(element: any) {
+  private loadEditor(element: any) {
     tinymce.init({
       branding: false,
       menubar: false,
@@ -91,9 +106,10 @@ export class ProcessingFormComponent implements OnDestroy {
   }
 
   /**
-   * Close wysiwig editor.
+   * Close wysiwig editor
+   *
    * @private
-   * @memberof QuestionsComponent
+   * @memberof ProcessingFormComponent
    */
   private closeEditor() {
     tinymce.remove(this.editor);
