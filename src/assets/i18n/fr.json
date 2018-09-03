@@ -191,11 +191,7 @@
     "form": {
       "previous": "Section précédente",
       "next": "Section suivante",
-<<<<<<< HEAD
-      "description": { 
-=======
       "description": {
->>>>>>> 0f6560e50ca6393733f877cc2116c640d862464a
         "title": "Quelles sont les finalités du traitement ?",
         "placeholder": "Décrivez les objectifs et finalités du traitement"
       },
@@ -267,10 +263,7 @@
     "form": {
       "retention-period": "Durée de conservation",
       "sensitive": "Données sensibles ?",
-<<<<<<< HEAD
-=======
       "sensitive-affirmative": "Données sensibles",
->>>>>>> 0f6560e50ca6393733f877cc2116c640d862464a
       "identification": "État-civil, identité, données d'identification, images(ex.nom, prénom, adresse, photographie, date et lieu de naissance, etc.)",
       "personal": "Vie personnelle (ex. habitudes de vie, situation familiale, etc.)",
       "professional": "Vie professionnelle(ex. CV, situation professionnelle, scolarité, formation, distinctions, diplômes, etc.)",
