@@ -85,8 +85,8 @@
           <div>{{ processing.pias_count }}</div>
         </div>
         <div class="pia-cardsBlock-item-btn bottom-actions">
-          <a *ngIf="processing.status === 0" routerLink="/processing/{{processing.id}}" class="btn btn-green">{{ 'homepage.cards.item.edit_processing' | translate }}</a>
-          <a *ngIf="processing.status > 0" routerLink="/processing/{{processing.id}}" class="btn btn-green">{{ 'homepage.cards.item.consult_processing' | translate }}</a>
+          <a *ngIf="processing.status === 0" routerLink="/processing/{{processing.id}}" class="btn btn-edit btn-green">{{ 'homepage.cards.item.edit_processing' | translate }}</a>
+          <a *ngIf="processing.status > 0" routerLink="/processing/{{processing.id}}" class="btn btn-show btn-green">{{ 'homepage.cards.item.consult_processing' | translate }}</a>
         </div>
       </form>
   </div>

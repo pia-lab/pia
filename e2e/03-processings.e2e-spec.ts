@@ -1,4 +1,4 @@
-import { browser } from 'protractor';
+import { browser, element, by } from 'protractor';
 import { LoginPage } from './page/login.po';
 import { Dashboard } from './page/dashboard.po';
 import { Folders } from './page/folders.po';
@@ -20,6 +20,15 @@ describe('Processing management from cards view', () => {
   const processingName = 'Test processing ' + salt;
   const processingAuthor = 'author ' + salt;
   const processingControllers = 'controllers ' + salt;
+  const testData = {
+    'processing-description': 'desc' + salt,
+    'processing-standards': 'stan' + salt,
+    'processing-data-types': 'data' + salt,
+    'processing-storage': 'sto' + salt,
+    'processing-lifecycle': 'life' + salt,
+    'processing-processors': 'proc' + salt,
+    'processing-non-eu-transfer': 'non' + salt
+  };
 
   const loginPage = new LoginPage();
   const dashboard = new Dashboard();
@@ -86,6 +95,21 @@ describe('Processing management from cards view', () => {
 
     });
 
+  });
+
+  it('when user edits a processing the value is updated', () => {
+    const card = processingCards.byProcessingName(processingName);
+
+    card.clickOnEdit().then(() => {
+      processingForm.fill(testData).then(function() {
+        processingForm.getValue().then(value => {
+          // tslint:disable-next-line:forin
+          for (const field in value) {
+            expect(value[field] === testData[field]).toBeTruthy();
+          }
+        });
+      });
+    });
   });
 
   it('when user deletes a processing - a popup asks for confirmation and the processing is deleted', () => {

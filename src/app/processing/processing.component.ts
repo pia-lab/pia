@@ -33,6 +33,7 @@ export class ProcessingComponent implements OnInit {
    */
   changeSection(sectionId) {
     this.currentSection = this.sections.filter((section) => section.id === sectionId)[0];
+    console.log('SECTIONNNNNNNNNNNNNNNNN');
   }
 
   public displayKnowledgeBaseForSection(section?: Section): void {
