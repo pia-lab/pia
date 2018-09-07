@@ -1,5 +1,4 @@
-import { browser, by, element } from 'protractor';
-import { filterEffects } from 'ngx-drag-drop/dnd-utils';
+import { browser, by, element, protractor } from 'protractor';
 
 export class ProcessingForm {
 
@@ -31,69 +30,72 @@ export class ProcessingForm {
   }
 
   async fillField(fieldId: string, value: any) {
-    console.log('fill field', fieldId);
-    if (fieldId === 'processing-storage' || fieldId === 'processing-lifecycle') {
-      await this.nextSection();
-      browser.sleep(1000);
+    if (fieldId === 'processing-storage') {
+     await this.dataSection();
+    }
+
+    if (fieldId === 'processing-lifecycle') {
+      await this.lifecycleSection();
     }
 
     const field = element(by.css('#' + fieldId));
+    // wait for element to be in the DOM and visible
+    browser.wait(protractor.ExpectedConditions.presenceOf(field), 5000);
+    browser.wait(protractor.ExpectedConditions.visibilityOf(field), 5000);
+
     // Scroll to element
+    browser.actions().mouseMove(field).perform();
     browser.executeScript('arguments[0].scrollIntoView()', field);
 
     await field.click();
-    console.log('field clicked');
 
     // fill tinymce editor
     browser.executeScript('tinyMCE.activeEditor.setContent("' + value + '")');
     // focus out to close editor
-    this.focusOut();
+    await this.focusOut();
   }
 
   async getValue() {
     const values = {};
 
-    await this.resetSection();
+    await this.descriptionSection();
 
     // tslint:disable-next-line:forin
     for (const key in this.fields) {
       const fieldId = this.fields[key];
 
-      if (fieldId === 'processing-storage' || fieldId === 'processing-lifecycle') {
-        await this.nextSection();
-        browser.sleep(1000);
+      if (fieldId === 'processing-storage') {
+        await this.dataSection();
+      }
+
+      if (fieldId === 'processing-lifecycle') {
+        await this.lifecycleSection();
       }
 
       if (fieldId === 'processing-data-types') {
-        return;
+        continue;
       }
 
-      const field = element(by.id(fieldId));
-
-      browser.executeScript('arguments[0].scrollIntoView()', field);
-console.log('getValue', fieldId);
-      const value = await field.getAttribute('value');
-      console.log('value: ', value);
-      values[fieldId] = value;
+      values[fieldId] = await element(by.id(fieldId)).getAttribute('value');
     }
 
     return values;
   }
 
-  async nextSection() {
-    console.log('nextSection');
-    browser.sleep(1000);
-    return await element(by.css('a.processing-next')).click();
-  }
-
-  async resetSection() {
-    await element(by.css('a.processing-previous')).click();
-    return await element(by.css('a.processing-previous')).click()
-  }
-
   focusOut() {
-    console.log('focus out');
-    element(by.css('div.processing-entryContentBlock-header-title')).click();
+    return element(by.css('div.processing-entryContentBlock-header-title')).click();
+  }
+
+  descriptionSection() {
+    return element(by.css('div.description-section')).click();
+  }
+
+  dataSection() {
+    return element(by.css('div.data-section')).click();
+  }
+
+  lifecycleSection() {
+    return element(by.css('div.lifecycle-section')).click();
   }
 
 }

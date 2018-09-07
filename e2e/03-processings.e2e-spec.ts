@@ -10,7 +10,7 @@ import { ProcessingCards } from './element/processing-cards.po';
 import './set-env';
 
 
-describe('Processing management from cards view', () => {
+describe('Processing management', () => {
 
   const auth = {
     username: process.env.TEST_USERNAME,
@@ -40,10 +40,7 @@ describe('Processing management from cards view', () => {
   const processingCards = new ProcessingCards();
 
   beforeEach(() => {
-    loginPage.navigateTo();
-    loginPage.clearSessionAndStorage();
-    loginPage.fillCredentionals(auth.username, auth.password);
-    loginPage.submitCredentials();
+    loginPage.authenticate(auth.username, auth.password);
 
     browser.wait(function() {
       return browser.getCurrentUrl().then(function(url) {
@@ -62,6 +59,7 @@ describe('Processing management from cards view', () => {
   });
 
   afterEach(() => {
+    browser.executeScript('arguments[0].scrollIntoView()', header.el());
     header.clickOnLogoutInProfileMenu();
   });
 
@@ -103,6 +101,8 @@ describe('Processing management from cards view', () => {
     card.clickOnEdit().then(() => {
       processingForm.fill(testData).then(function() {
         processingForm.getValue().then(value => {
+          expect(Object.keys(value).length > 0).toBeTruthy();
+
           // tslint:disable-next-line:forin
           for (const field in value) {
             expect(value[field] === testData[field]).toBeTruthy();
@@ -113,7 +113,6 @@ describe('Processing management from cards view', () => {
   });
 
   it('when user deletes a processing - a popup asks for confirmation and the processing is deleted', () => {
-
     const card = processingCards.byProcessingName(processingName);
 
     card.clickOnDeleteInToolMenu().then(() => {
@@ -124,7 +123,6 @@ describe('Processing management from cards view', () => {
         expect(processingCards.byProcessingName(processingName).el().isPresent()).toBeFalsy();
       })
     });
-
   });
 
 });
