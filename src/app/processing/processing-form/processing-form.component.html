@@ -69,7 +69,7 @@
         </div>
       </fieldset>
 
-      <fieldset *ngIf="currentSection.id == 2" id="data" class="form-section">
+      <fieldset [hidden]="currentSection.id !== 2" id="data" class="form-section">
         <div class="form-field">
           <label class="title" for="processing-data-types">{{ 'processing.form.data-types' | translate }}</label>
           <app-processing-data-types

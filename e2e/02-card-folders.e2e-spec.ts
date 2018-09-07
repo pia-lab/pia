@@ -49,33 +49,33 @@ describe('Processing folder management', () => {
     header.clickOnLogoutInProfileMenu();
   });
 
-  // it('when user create a folder - a popup has to be filled and the created folder appear on the page', () => {
+  it('when user creates a folder - a popup has to be filled and the created folder appears on the page', () => {
 
-  //   folders.clickOnCreateFolderInCreationMenu().then(() => {
-  //       expect(folderCreationModal.el().isDisplayed()).toBeTruthy();
+    folders.clickOnCreateFolderInCreationMenu().then(() => {
+        expect(folderCreationModal.el().isDisplayed()).toBeTruthy();
 
-  //       folderCreationModal.fillFolderName(folderName);
+        folderCreationModal.fillFolderName(folderName);
 
-  //       folderCreationModal.submitForm().then(() => {
-  //         expect(folderCreationModal.el().isDisplayed()).toBeFalsy();
-  //         expect(folderCards.byFolderName(folderName).el().isPresent()).toBeTruthy();
-  //       });
+        folderCreationModal.submitForm().then(() => {
+          expect(folderCreationModal.el().isDisplayed()).toBeFalsy();
+          expect(folderCards.byFolderName(folderName).el().isPresent()).toBeTruthy();
+        });
 
-  //   });
+    });
 
-  // });
+  });
 
-  // it('when user deletes a folder - a popup asks for confirmation and the folder is deleted', () => {
+  it('when user deletes a folder - a popup asks for confirmation and the folder is deleted', () => {
 
-  //   folderCards.byFolderName(folderName).clickOnDeleteInToolMenu().then(() => {
-  //     expect(folderDeleteConfirmationModal.el().isDisplayed()).toBeTruthy();
-  //   });
+    folderCards.byFolderName(folderName).clickOnDeleteInToolMenu().then(() => {
+      expect(folderDeleteConfirmationModal.el().isDisplayed()).toBeTruthy();
+    });
 
-  //   folderDeleteConfirmationModal.confirmDeletion().then(() => {
-  //     expect(folderDeleteConfirmationModal.el().isDisplayed()).toBeFalsy();
-  //     expect(folderCards.byFolderName(folderName).el().isPresent()).toBeFalsy();
-  //   })
+    folderDeleteConfirmationModal.confirmDeletion().then(() => {
+      expect(folderDeleteConfirmationModal.el().isDisplayed()).toBeFalsy();
+      expect(folderCards.byFolderName(folderName).el().isPresent()).toBeFalsy();
+    });
 
-  // });
+  });
 
 });

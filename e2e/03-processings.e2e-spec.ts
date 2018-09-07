@@ -23,7 +23,13 @@ describe('Processing management', () => {
   const testData = {
     'processing-description': 'desc' + salt,
     'processing-standards': 'stan' + salt,
-    'processing-data-types': 'data' + salt,
+    'processing-data-types': {
+      'personal' : {
+        retention: 'ret' + salt,
+        sensitive: true
+      }
+    }
+    ,
     'processing-storage': 'sto' + salt,
     'processing-lifecycle': 'life' + salt,
     'processing-processors': 'proc' + salt,
@@ -59,12 +65,13 @@ describe('Processing management', () => {
   });
 
   afterEach(() => {
-    browser.executeScript('arguments[0].scrollIntoView()', header.el());
-    header.clickOnLogoutInProfileMenu();
+    browser.sleep(5000).then(() => {
+      browser.executeScript('arguments[0].scrollIntoView()', header.el());
+      header.clickOnLogoutInProfileMenu();
+    });
   });
 
   it('when user creates a processing - a popup has to be filled and the created processing appears on the page', () => {
-
     folders.clickOnCreateProcessingInCreationMenu().then(() => {
       expect(processingCreationModal.el().isDisplayed()).toBeTruthy();
 
@@ -105,7 +112,19 @@ describe('Processing management', () => {
 
           // tslint:disable-next-line:forin
           for (const field in value) {
-            expect(value[field] === testData[field]).toBeTruthy();
+            if (field === 'processing-data-types') {
+              const types = value[field];
+              // tslint:disable-next-line:forin
+              for (const key in types) {
+                const type = types[key];
+                // tslint:disable-next-line:forin
+                for (const index in type) {
+                  expect(type[index].toString() === testData[field][key][index].toString()).toBeTruthy();
+                }
+              }
+            }
+
+            expect(value[field].toString() === testData[field].toString()).toBeTruthy();
           }
         });
       });

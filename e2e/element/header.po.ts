@@ -13,10 +13,8 @@ export class Header {
   openProfileMenu() {
     const menu = element(by.css('li.pia-navigationBlock-profile > a'));
 
-    browser.executeScript('arguments[0].scrollIntoView()', menu);
     browser.wait(protractor.ExpectedConditions.presenceOf(menu), 5000);
     browser.wait(protractor.ExpectedConditions.visibilityOf(menu), 5000);
-    browser.actions().mouseMove(menu).perform();
 
     return menu.click();
   }

@@ -1,4 +1,5 @@
 import { browser, by, element, protractor } from 'protractor';
+import { ProcessingDataTypes } from './../form/processing-data-types.po';
 
 export class ProcessingForm {
 
@@ -12,6 +13,8 @@ export class ProcessingForm {
     'processing-non-eu-transfer'
   ];
 
+  private processingDataTypes = new ProcessingDataTypes(element(by.css('#processing-data-types')));
+
   navigateTo(processingId: any) {
     return browser.get('/#/processing/' + processingId);
   }
@@ -23,15 +26,17 @@ export class ProcessingForm {
   async fill(data: any) {
     // tslint:disable-next-line:forin
     for (const key in data) {
-      if (key !== 'processing-data-types') {
-        await this.fillField(key, data[key]);
-      }
+      await this.fillField(key, data[key]);
     }
   }
 
   async fillField(fieldId: string, value: any) {
-    if (fieldId === 'processing-storage') {
-     await this.dataSection();
+    if (fieldId === 'processing-data-types') {
+      await this.dataSection();
+
+      await this.processingDataTypes.fill(value);
+
+      return;
     }
 
     if (fieldId === 'processing-lifecycle') {
@@ -39,7 +44,7 @@ export class ProcessingForm {
     }
 
     const field = element(by.css('#' + fieldId));
-    // wait for element to be in the DOM and visible
+    // Wait for element to be in the DOM and visible
     browser.wait(protractor.ExpectedConditions.presenceOf(field), 5000);
     browser.wait(protractor.ExpectedConditions.visibilityOf(field), 5000);
 
@@ -64,16 +69,15 @@ export class ProcessingForm {
     for (const key in this.fields) {
       const fieldId = this.fields[key];
 
-      if (fieldId === 'processing-storage') {
+      if (fieldId === 'processing-data-types') {
         await this.dataSection();
+        values[fieldId] = await this.processingDataTypes.getValue();
+
+        continue;
       }
 
       if (fieldId === 'processing-lifecycle') {
         await this.lifecycleSection();
-      }
-
-      if (fieldId === 'processing-data-types') {
-        continue;
       }
 
       values[fieldId] = await element(by.id(fieldId)).getAttribute('value');

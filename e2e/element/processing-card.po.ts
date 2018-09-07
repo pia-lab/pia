@@ -1,4 +1,4 @@
-import { browser, by, element } from 'protractor';
+import { by } from 'protractor';
 
 export class ProcessingCard {
 

@@ -19,37 +19,37 @@ describe('PiaLab Login page', () => {
     header = new Header();
   });
 
-  // it('when user trying to login with wrong credentials he should stay on “login” page and see error notification', () => {
+  it('when user trying to login with wrong credentials he should stay on “login” page and see error notification', () => {
 
-  //   loginPage.navigateTo();
-  //   loginPage.clearSessionAndStorage();
+    loginPage.navigateTo();
+    loginPage.clearSessionAndStorage();
 
-  //   expect(loginPage.loginForm().isPresent()).toBeTruthy();
-  //   expect(loginPage.loginErrorMessage().isDisplayed()).toBeFalsy();
+    expect(loginPage.loginForm().isPresent()).toBeTruthy();
+    expect(loginPage.loginErrorMessage().isDisplayed()).toBeFalsy();
 
-  //   loginPage.fillCredentionals('wrong@wrong.com', 'wrongpwd');
-  //   loginPage.submitCredentials().then(() => {
-  //     expect(loginPage.loginErrorMessage().isDisplayed()).toBeTruthy();
-  //   });
+    loginPage.fillCredentionals('wrong@wrong.com', 'wrongpwd');
+    loginPage.submitCredentials().then(() => {
+      expect(loginPage.loginErrorMessage().isDisplayed()).toBeTruthy();
+    });
 
-  // });
+  });
 
-  // it('when login is successful — he should redirect to home page', () => {
+  it('when login is successful — he should be redirected to home page', () => {
 
-  //   loginPage.navigateTo();
-  //   loginPage.clearSessionAndStorage();
-  //   loginPage.fillCredentionals(auth.username, auth.password);
+    loginPage.navigateTo();
+    loginPage.clearSessionAndStorage();
+    loginPage.fillCredentionals(auth.username, auth.password);
 
-  //   loginPage.submitCredentials();
+    loginPage.submitCredentials();
 
-  //   browser.wait(function() {
-  //     return browser.getCurrentUrl().then(function(url) {
-  //       return /dashboard/.test(url);
-  //     });
-  //   }, 10000);
+    browser.wait(function() {
+      return browser.getCurrentUrl().then(function(url) {
+        return /dashboard/.test(url);
+      });
+    }, 10000);
 
-  //   expect(header.navbarProfile().isPresent()).toBeTruthy();
-  //   header.clickOnLogoutInProfileMenu();
-  // });
+    expect(header.navbarProfile().isPresent()).toBeTruthy();
+    header.clickOnLogoutInProfileMenu();
+  });
 
 });
