@@ -119,7 +119,7 @@
 
         <div class="form-field">
           <label class="title" for="processing-consent">{{ 'processing.form.consent.title' | translate }}</label>
-          <div (click)="editField(consent, ['PIA_LGL_FOND'])"
+          <div (click)="editField(consent, ['PIA_LGL_CONS', 'PIA_LGL_INFO', 'PIA_DEF_CONS'])"
             class="pia-questionBlock-contentText"
             [innerHTML]="processingForm.form.controls['consent']?.value | safeHtml"
             [ngClass]="{ 'hide': ((editor && elementId === consent.id) || !processingForm.form.controls['consent']?.value) }"
@@ -137,13 +137,13 @@
             (change)="updateProcessing()"
             [(ngModel)]="processing.consent"
             [ngClass]="{ 'hide': (processingForm.form.controls['consent']?.value && processingForm.form.controls['consent']?.value.length > 0) }"
-            (focusin)="editField($event.target, ['PIA_LGL_FOND'])"
+            (focusin)="editField($event.target, ['PIA_LGL_CONS', 'PIA_LGL_INFO', 'PIA_DEF_CONS'])"
           ></textarea>
         </div>
 
         <div class="form-field">
           <label class="title" for="processing-rights_guarantee">{{ 'processing.form.rights_guarantee.title' | translate }}</label>
-          <div (click)="editField(rights_guarantee, ['PIA_LGL_FOND'])"
+          <div (click)="editField(rights_guarantee, ['PIA_DEF_ACC', 'PIA_DEF_PORT', 'PIA_DEF_RECT', 'PIA_DEF_EFF', 'PIA_DEF_LIM'])"
             class="pia-questionBlock-contentText"
             [innerHTML]="processingForm.form.controls['rights_guarantee']?.value | safeHtml"
             [ngClass]="{ 'hide': ((editor && elementId === rights_guarantee.id) || !processingForm.form.controls['rights_guarantee']?.value) }"
@@ -161,7 +161,7 @@
             (change)="updateProcessing()"
             [(ngModel)]="processing.rights_guarantee"
             [ngClass]="{ 'hide': (processingForm.form.controls['rights_guarantee']?.value && processingForm.form.controls['rights_guarantee']?.value.length > 0) }"
-            (focusin)="editField($event.target, ['PIA_LGL_FOND'])"
+            (focusin)="editField($event.target, ['PIA_DEF_ACC', 'PIA_DEF_PORT', 'PIA_DEF_RECT', 'PIA_DEF_EFF', 'PIA_DEF_LIM'])"
           ></textarea>
         </div>
       </fieldset>
@@ -181,7 +181,7 @@
 
         <div class="form-field">
           <label class="title" for="processing-exactness">{{ 'processing.form.exactness.title' | translate }}</label>
-          <div (click)="editField(exactness, ['PIA_LGL_SUPT'])"
+          <div (click)="editField(exactness, ['PIA_DEF_EXA'])"
             class="pia-questionBlock-contentText"
             [innerHTML]="processingForm.form.controls['exactness']?.value | safeHtml"
             [ngClass]="{ 'hide': ((editor && elementId === exactness.id) || !processingForm.form.controls['exactness']?.value) }"
@@ -199,13 +199,13 @@
             (change)="updateProcessing()"
             [(ngModel)]="processing.exactness"
             [ngClass]="{ 'hide': (processingForm.form.controls['exactness']?.value && processingForm.form.controls['exactness']?.value.length > 0) }"
-            (focusin)="editField($event.target, ['PIA_LGL_SUPT'])"
+            (focusin)="editField($event.target, ['PIA_DEF_EXA'])"
           ></textarea>
         </div>
 
         <div class="form-field">
           <label class="title" for="processing-minimization">{{ 'processing.form.minimization.title' | translate }}</label>
-          <div (click)="editField(minimization, ['PIA_LGL_SUPT'])"
+          <div (click)="editField(minimization, ['PIA_LGL_MINI', 'PIA_DF_MINC', 'PIA_DEF_MIND'])"
             class="pia-questionBlock-contentText"
             [innerHTML]="processingForm.form.controls['minimization']?.value | safeHtml"
             [ngClass]="{ 'hide': ((editor && elementId === minimization.id) || !processingForm.form.controls['minimization']?.value) }"
@@ -223,7 +223,7 @@
             (change)="updateProcessing()"
             [(ngModel)]="processing.minimization"
             [ngClass]="{ 'hide': (processingForm.form.controls['minimization']?.value && processingForm.form.controls['minimization']?.value.length > 0) }"
-            (focusin)="editField($event.target, ['PIA_LGL_SUPT'])"
+            (focusin)="editField($event.target, ['PIA_LGL_MINI', 'PIA_DF_MINC', 'PIA_DEF_MIND'])"
           ></textarea>
         </div>
 
