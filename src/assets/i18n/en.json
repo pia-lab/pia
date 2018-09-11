@@ -88,7 +88,7 @@
       "validator": "Validator",
       "new": "New...",
       "new_pia": "PIA",
-      "new_from_template": "PIA from template",
+      "new_from_template": "Processing from template",
       "new_folder": "Folder",
       "import_pia": "Import PIA",
       "list_rocket_content": "Get started ! To initiate <br>a PIA, click on the +",
