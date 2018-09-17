@@ -1,6 +1,6 @@
 
 import { BaseModel } from '@api/model/base.model';
-import { PiaModel, FolderModel } from '@api/models';
+import { FolderModel } from '@api/models';
 
 export class Processing extends BaseModel {
   public id: any;
@@ -19,4 +19,9 @@ export class Processing extends BaseModel {
   public folder: FolderModel;
   public pias_count: number;
   public context_of_implementation: string;
+  public lawfulness: string;
+  public consent: string;
+  public rights_guarantee: string;
+  public exactness: string;
+  public minimization: string;
 }
