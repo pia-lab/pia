@@ -1,4 +1,4 @@
-import { browser, element, by } from 'protractor';
+import { browser, protractor } from 'protractor';
 import { LoginPage } from './page/login.po';
 import { Dashboard } from './page/dashboard.po';
 import { Folders } from './page/folders.po';
@@ -8,6 +8,7 @@ import { ProcessingDeleteConfirmationModal } from './modal/processing-delete-con
 import { Header } from './element/header.po';
 import { ProcessingCards } from './element/processing-cards.po';
 import './set-env';
+import { doesNotThrow } from 'assert';
 
 
 describe('Processing management', () => {
@@ -19,10 +20,14 @@ describe('Processing management', () => {
   const salt = Math.random().toString(36).substring(2, 8);
   const processingName = 'Test processing ' + salt;
   const processingAuthor = 'author ' + salt;
-  const processingControllers = 'controllers ' + salt;
+  const processingDesignatedController = 'controller ' + salt;
   const testData = {
     'processing-description': 'desc' + salt,
+    'processing-controllers': 'cont' + salt,
+    'processing-lawfulness': 'law' + salt,
     'processing-standards': 'stan' + salt,
+    'processing-consent': 'con' + salt,
+    'processing-rights-guarantee': 'rig' + salt,
     'processing-data-types': {
       'personal' : {
         retention: 'ret' + salt,
@@ -30,6 +35,8 @@ describe('Processing management', () => {
       }
     }
     ,
+    'processing-exactness': 'exa' + salt,
+    'processing-minimization': 'min' + salt,
     'processing-storage': 'sto' + salt,
     'processing-lifecycle': 'life' + salt,
     'processing-processors': 'proc' + salt,
@@ -65,10 +72,12 @@ describe('Processing management', () => {
   });
 
   afterEach(() => {
-    browser.sleep(5000).then(() => {
-      browser.executeScript('arguments[0].scrollIntoView()', header.el());
+      const menu = header.el();
+
+      browser.wait(protractor.ExpectedConditions.presenceOf(menu), 5000);
+      browser.wait(protractor.ExpectedConditions.visibilityOf(menu), 5000);
+      browser.executeScript('arguments[0].scrollIntoView()', menu);
       header.clickOnLogoutInProfileMenu();
-    });
   });
 
   it('when user creates a processing - a popup has to be filled and the created processing appears on the page', () => {
@@ -77,7 +86,7 @@ describe('Processing management', () => {
 
       processingCreationModal.fillProcessingName(processingName);
       processingCreationModal.fillProcessingAuthor(processingAuthor);
-      processingCreationModal.fillProcessingControllers(processingControllers);
+      processingCreationModal.fillProcessingDesignatedController(processingDesignatedController);
 
       processingCreationModal.submitForm().then(() => {
         browser.wait(function() {
@@ -102,7 +111,7 @@ describe('Processing management', () => {
 
   });
 
-  it('when user edits a processing the value is updated', () => {
+  it('when user edits a processing the value is updated', done => {
     const card = processingCards.byProcessingName(processingName);
 
     card.clickOnEdit().then(() => {
@@ -126,6 +135,8 @@ describe('Processing management', () => {
 
             expect(value[field].toString() === testData[field].toString()).toBeTruthy();
           }
+
+          done();
         });
       });
     });

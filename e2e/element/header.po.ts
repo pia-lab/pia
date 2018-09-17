@@ -10,11 +10,14 @@ export class Header {
     return element(by.css('li.pia-navigationBlock-profile > a > span'));
   }
 
-  openProfileMenu() {
+  async openProfileMenu() {
     const menu = element(by.css('li.pia-navigationBlock-profile > a'));
 
     browser.wait(protractor.ExpectedConditions.presenceOf(menu), 5000);
     browser.wait(protractor.ExpectedConditions.visibilityOf(menu), 5000);
+
+    browser.executeScript('arguments[0].scrollIntoView()', menu);
+    browser.actions().mouseMove(menu).perform();
 
     return menu.click();
   }

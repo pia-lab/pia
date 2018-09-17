@@ -14,8 +14,8 @@ export class ProcessingCreationModal {
     return this.el().element(by.css('input#author')).sendKeys(processingAuthor);
   }
 
-  fillProcessingControllers(processingControllers: string) {
-    return this.el().element(by.css('input#controllers')).sendKeys(processingControllers);
+  fillProcessingDesignatedController(processingDesignatedController: string) {
+    return this.el().element(by.css('input#designated-controller')).sendKeys(processingDesignatedController);
   }
 
   submitForm() {

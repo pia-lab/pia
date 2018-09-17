@@ -142,25 +142,25 @@
         </div>
 
         <div class="form-field">
-          <label class="title" for="processing-rights_guarantee">{{ 'processing.form.rights_guarantee.title' | translate }}</label>
-          <div (click)="editField(rights_guarantee, ['PIA_DEF_ACC', 'PIA_DEF_PORT', 'PIA_DEF_RECT', 'PIA_DEF_EFF', 'PIA_DEF_LIM'])"
+          <label class="title" for="processing-rights-guarantee">{{ 'processing.form.rights_guarantee.title' | translate }}</label>
+          <div (click)="editField(guarantee, ['PIA_DEF_ACC', 'PIA_DEF_PORT', 'PIA_DEF_RECT', 'PIA_DEF_EFF', 'PIA_DEF_LIM'])"
             class="pia-questionBlock-contentText"
-            [innerHTML]="processingForm.form.controls['rights_guarantee']?.value | safeHtml"
-            [ngClass]="{ 'hide': ((editor && elementId === rights_guarantee.id) || !processingForm.form.controls['rights_guarantee']?.value) }"
+            [innerHTML]="processingForm.form.controls['guarantee']?.value | safeHtml"
+            [ngClass]="{ 'hide': ((editor && elementId === guarantee.id) || !processingForm.form.controls['guarantee']?.value) }"
           ></div>
 
           <textarea
             class="field"
-            id="processing-rights_guarantee"
+            id="processing-rights-guarantee"
             required
-            name="rights_guarantee"
+            name="guarantee"
             minRows="8"
             cols="50"
             placeholder="{{'processing.form.rights_guarantee.placeholder' | translate}}"
-            #rights_guarantee
+            #guarantee
             (change)="updateProcessing()"
             [(ngModel)]="processing.rights_guarantee"
-            [ngClass]="{ 'hide': (processingForm.form.controls['rights_guarantee']?.value && processingForm.form.controls['rights_guarantee']?.value.length > 0) }"
+            [ngClass]="{ 'hide': (processingForm.form.controls['guarantee']?.value && processingForm.form.controls['guarantee']?.value.length > 0) }"
             (focusin)="editField($event.target, ['PIA_DEF_ACC', 'PIA_DEF_PORT', 'PIA_DEF_RECT', 'PIA_DEF_EFF', 'PIA_DEF_LIM'])"
           ></textarea>
         </div>

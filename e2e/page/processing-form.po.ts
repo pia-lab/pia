@@ -5,8 +5,14 @@ export class ProcessingForm {
 
   private fields = [
     'processing-description',
+    'processing-controllers',
+    'processing-lawfulness',
     'processing-standards',
+    'processing-consent',
+    'processing-rights-guarantee',
     'processing-data-types',
+    'processing-exactness',
+    'processing-minimization',
     'processing-storage',
     'processing-lifecycle',
     'processing-processors',
@@ -44,13 +50,8 @@ export class ProcessingForm {
     }
 
     const field = element(by.css('#' + fieldId));
-    // Wait for element to be in the DOM and visible
-    browser.wait(protractor.ExpectedConditions.presenceOf(field), 5000);
-    browser.wait(protractor.ExpectedConditions.visibilityOf(field), 5000);
 
-    // Scroll to element
-    browser.actions().mouseMove(field).perform();
-    browser.executeScript('arguments[0].scrollIntoView()', field);
+    this.waitForElement(field);
 
     await field.click();
 
@@ -80,26 +81,54 @@ export class ProcessingForm {
         await this.lifecycleSection();
       }
 
-      values[fieldId] = await element(by.id(fieldId)).getAttribute('value');
+      const field = element(by.id(fieldId));
+
+      values[fieldId] = await field.getAttribute('value');
     }
 
     return values;
   }
 
   focusOut() {
-    return element(by.css('div.processing-entryContentBlock-header-title')).click();
+    const field = element(by.css('div.processing-entryContentBlock-header-title'));
+
+    this.waitForElement(field);
+
+    return field.click();
   }
 
   descriptionSection() {
-    return element(by.css('div.description-section')).click();
+    const field = element(by.css('div.description-section'));
+
+    this.waitForElement(field);
+
+    return field.click();
   }
 
   dataSection() {
-    return element(by.css('div.data-section')).click();
+    const field = element(by.css('div.data-section'));
+
+    this.waitForElement(field);
+
+    return field.click();
   }
 
   lifecycleSection() {
-    return element(by.css('div.lifecycle-section')).click();
+    const field = element(by.css('div.lifecycle-section'));
+
+    this.waitForElement(field);
+
+    return field.click();
+  }
+
+  waitForElement(elem: any) {
+    // Wait for element to be in the DOM and visible
+    browser.wait(protractor.ExpectedConditions.presenceOf(elem), 5000);
+    browser.wait(protractor.ExpectedConditions.visibilityOf(elem), 5000);
+
+    // Scroll to element
+    browser.actions().mouseMove(elem).perform();
+    browser.executeScript('arguments[0].scrollIntoView()', elem);
   }
 
 }

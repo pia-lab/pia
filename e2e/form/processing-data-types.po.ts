@@ -17,11 +17,17 @@ export class ProcessingDataTypes {
     // tslint:disable-next-line:forin
     for (const type in value) {
       const data = value[type];
+      const enabledInput = element(by.css('#' + type + '-data .type-enabled input'));
+      const retentionInput = element(by.css('#' + type + '-data input.retention-period'));
+
+      this.waitForElement(enabledInput);
 
       // Enabled
-      await element(by.css('#' + type + '-data .type-enabled input')).click();
+      await enabledInput.click();
+
+      this.waitForElement(retentionInput);
       // Retention period
-      await element(by.css('#' + type + '-data input.retention-period')).sendKeys(data.retention);
+      await retentionInput.sendKeys(data.retention);
       // Is sensitive
       if (data.sensitive) {
         await element(by.css('#' + type + '-data .type-sensitive input')).click();
@@ -40,7 +46,7 @@ export class ProcessingDataTypes {
       const type = id.replace('-data', '');
       const enabledInput = element(by.css('#' + id + ' .type-enabled input'));
 
-      this.waitForElement(enabledInput);
+      // this.waitForElement(enabledInput);
 
       const enabled = await enabledInput.isSelected();
 
@@ -51,7 +57,6 @@ export class ProcessingDataTypes {
       }
     });
 
-console.log(value);
     return value;
   }
 
