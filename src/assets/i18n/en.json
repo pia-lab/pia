@@ -170,6 +170,9 @@
           "remove": "Delete"
         }
       }
+    },
+    "structure": {
+      "info_button": "Structure informations"
     }
   },
   "pia": {
@@ -219,13 +222,50 @@
       "mandatory_fields": "All fields must be filled"
     }
   },
+  "structure": {
+    "form": {
+      "name": {
+        "title": "Name"
+      },
+      "address": {
+        "title": "Address"
+      },
+      "phone": {
+        "title": "Phone number"
+      },
+      "siren": {
+        "title": "SIREN"
+      },
+      "siret": {
+        "title": "SIRET (HQ)"
+      },
+      "vat_number": {
+        "title": "Vat Number"
+      },
+      "activity_code": {
+        "title": "Activity Code"
+      },
+      "legal_form": {
+        "title": "Legal form"
+      },
+      "registration_date": {
+        "title": "Registration date"
+      }
+    }
+  },
   "processing": {
     "form": {
       "previous": "Previous section",
       "next": "Next section",
+      "ask_validate_button": "Ask for processing validation",
+      "cancel_ask_validate_button": "Cancel processing validation ask",
       "description": {
         "title": "Quelles sont les finalités du traitement ?",
         "placeholder": "Décrivez les objectifs et finalités du traitement"
+      },
+      "context_of_implementation": {
+        "title": "Quel est le context de mise en œuvre du traitement ?",
+        "placeholder": "Décrivez le context de mise en œuvre du traitement"
       },
       "controllers": {
         "title": "Quelles sont les personnes responsables du traitement?",
