@@ -83,6 +83,7 @@ import { CommentsComponent as ProcessingCommentsComponent } from './processing/c
 import { AttachmentsComponent as ProcessingAttachmentsComponent } from './processing/attachments/attachments.component';
 import { AttachmentsService as ProcessingAttachmentsService} from './processing/attachments/attachments.service';
 import { AttachmentItemComponent as ProcessingAttachmentItemComponent } from './processing/attachments/attachment-item/attachment-item.component';
+import { EvaluationBlockComponent } from './processing/evaluation-block/evaluation-block.component';
 
 const providersList: any = [
   AppDataService,
@@ -178,7 +179,8 @@ export function createTranslateLoader(http: HttpClient) {
     StructureComponent,
     ProcessingCommentsComponent,
     ProcessingAttachmentsComponent,
-    ProcessingAttachmentItemComponent
+    ProcessingAttachmentItemComponent,
+    EvaluationBlockComponent,
   ],
   imports: [
     BrowserModule,
