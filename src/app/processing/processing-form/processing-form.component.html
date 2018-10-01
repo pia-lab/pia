@@ -64,6 +64,7 @@
             [ngClass]="{ 'hide': (processingForm.form.controls['description']?.value && processingForm.form.controls['description']?.value.length > 0) }"
             (focusin)="editField($event.target, ['PIA_LGL_DESC', 'PIA_LGL_FIN'])"
           ></textarea>
+          <app-processing-comments [processing]="processing" [field]="'description'"></app-processing-comments>
         </div>
 
         <div class="form-field">
@@ -88,6 +89,7 @@
             [ngClass]="{ 'hide': (processingForm.form.controls['context_of_implementation']?.value && processingForm.form.controls['context_of_implementation']?.value.length > 0) }"
             (focusin)="editField($event.target, ['PIA_LGL_DESC', 'PIA_LGL_FIN'])"
           ></textarea>
+          <app-processing-comments [processing]="processing" [field]="'context'"></app-processing-comments>
         </div>
 
         <div class="form-field">
@@ -112,6 +114,7 @@
             [ngClass]="{ 'hide': (processingForm.form.controls['controllers']?.value && processingForm.form.controls['controllers']?.value.length > 0) }"
             (focusin)="editField($event.target, ['PIA_VAL_RT', 'PIA_LGL_DESC', 'PIA_DEF_RT'])"
           ></textarea>
+          <app-processing-comments [processing]="processing" [field]="'controllers'"></app-processing-comments>
         </div>
 
         <div class="form-field">
@@ -136,6 +139,7 @@
             [ngClass]="{ 'hide': (processingForm.form.controls['lawfulness']?.value && processingForm.form.controls['lawfulness']?.value.length > 0) }"
             (focusin)="editField($event.target, ['PIA_LGL_FOND'])"
           ></textarea>
+          <app-processing-comments [processing]="processing" [field]="'lawfulness'"></app-processing-comments>
         </div>
 
         <div class="form-field">
@@ -160,6 +164,7 @@
             [ngClass]="{ 'hide': (processingForm.form.controls['standards']?.value && processingForm.form.controls['standards']?.value.length > 0) }"
             (focusin)="editField($event.target, ['PIA_LGL_FOND'])"
           ></textarea>
+          <app-processing-comments [processing]="processing" [field]="'standards'"></app-processing-comments>
         </div>
 
         <div class="form-field">
@@ -184,6 +189,7 @@
             [ngClass]="{ 'hide': (processingForm.form.controls['consent']?.value && processingForm.form.controls['consent']?.value.length > 0) }"
             (focusin)="editField($event.target, ['PIA_LGL_CONS', 'PIA_LGL_INFO', 'PIA_DEF_CONS'])"
           ></textarea>
+          <app-processing-comments [processing]="processing" [field]="'consent'"></app-processing-comments>
         </div>
 
         <div class="form-field">
@@ -208,6 +214,7 @@
             [ngClass]="{ 'hide': (processingForm.form.controls['guarantee']?.value && processingForm.form.controls['guarantee']?.value.length > 0) }"
             (focusin)="editField($event.target, ['PIA_DEF_ACC', 'PIA_DEF_PORT', 'PIA_DEF_RECT', 'PIA_DEF_EFF', 'PIA_DEF_LIM'])"
           ></textarea>
+          <app-processing-comments [processing]="processing" [field]="'rights-guarantee'"></app-processing-comments>
         </div>
       </fieldset>
 
@@ -222,6 +229,7 @@
             (change)="updateProcessing(true)"
             [processingId]="processing.id"
           ></app-processing-data-types>
+          <app-processing-comments [processing]="processing" [field]="'data-types'"></app-processing-comments>
         </div>
 
         <div class="form-field">
@@ -246,6 +254,7 @@
             [ngClass]="{ 'hide': (processingForm.form.controls['exactness']?.value && processingForm.form.controls['exactness']?.value.length > 0) }"
             (focusin)="editField($event.target, ['PIA_DEF_EXA'])"
           ></textarea>
+          <app-processing-comments [processing]="processing" [field]="'exactness'"></app-processing-comments>
         </div>
 
         <div class="form-field">
@@ -270,6 +279,7 @@
             [ngClass]="{ 'hide': (processingForm.form.controls['minimization']?.value && processingForm.form.controls['minimization']?.value.length > 0) }"
             (focusin)="editField($event.target, ['PIA_LGL_MINI', 'PIA_DF_MINC', 'PIA_DEF_MIND'])"
           ></textarea>
+          <app-processing-comments [processing]="processing" [field]="'minimization'"></app-processing-comments>
         </div>
 
         <div class="form-field">
@@ -294,6 +304,7 @@
             [ngClass]="{ 'hide': (processingForm.form.controls['storage']?.value && processingForm.form.controls['storage']?.value.length > 0) }"
             (focusin)="editField($event.target, ['PIA_LGL_SUPT'])"
           ></textarea>
+          <app-processing-comments [processing]="processing" [field]="'storage'"></app-processing-comments>
         </div>
       </fieldset>
 
@@ -320,6 +331,7 @@
               [ngClass]="{ 'hide': (processingForm.form.controls['lifecycle']?.value && processingForm.form.controls['lifecycle']?.value.length > 0) }"
               (focusin)="editField($event.target, ['PIA_LGL_LFC'])"
             ></textarea>
+            <app-processing-comments [processing]="processing" [field]="'lifecycle'"></app-processing-comments>
           </div>
           <div class="form-field">
             <label class="title" for="processing-processors">{{ 'processing.form.processors.title' | translate }}</label>
@@ -343,6 +355,7 @@
               [ngClass]="{ 'hide': (processingForm.form.controls['processors']?.value && processingForm.form.controls['processors']?.value.length > 0) }"
               (focusin)="editField($event.target, ['PIA_LGL_ST', 'PIA_LGL_DEST'])"
             ></textarea>
+            <app-processing-comments [processing]="processing" [field]="'processors'"></app-processing-comments>
           </div>
           <div class="form-field">
             <label class="title" for="processing-recipients">{{ 'processing.form.recipients.title' | translate }}</label>
@@ -366,6 +379,7 @@
               [ngClass]="{ 'hide': (processingForm.form.controls['recipients']?.value && processingForm.form.controls['recipients']?.value.length > 0) }"
               (focusin)="editField($event.target, ['PIA_LGL_ST', 'PIA_LGL_DEST'])"
             ></textarea>
+            <app-processing-comments [processing]="processing" [field]="'recipients'"></app-processing-comments>
           </div>
           <div class="form-field">
             <label class="title" for="processing-non-eu-transfer">{{ 'processing.form.non-eu-transfer.title' | translate }}</label>
@@ -389,6 +403,7 @@
               [ngClass]="{ 'hide': (processingForm.form.controls['non-eu-transfer']?.value && processingForm.form.controls['non-eu-transfer']?.value.length > 0) }"
               (focusin)="editField($event.target, ['PIA_LGL_TRAN'])"
             ></textarea>
+            <app-processing-comments [processing]="processing" [field]="'non-eu-transfer'"></app-processing-comments>
           </div>
       </fieldset>
 

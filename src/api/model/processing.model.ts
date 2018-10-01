@@ -1,6 +1,6 @@
 
 import { BaseModel } from '@api/model/base.model';
-import { FolderModel } from '@api/models';
+import { FolderModel, ProcessingCommentModel } from '@api/models';
 
 export class Processing extends BaseModel {
   public id: any;
@@ -27,6 +27,7 @@ export class Processing extends BaseModel {
   public minimization: string;
   public evaluation_comment: string;
   public evaluation_state: number;
+  public comments: ProcessingCommentModel[] = [];
 }
 
 export enum ProcessingStatus {

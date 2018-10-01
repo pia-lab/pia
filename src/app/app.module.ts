@@ -80,6 +80,7 @@ import { EditableFieldComponent } from './pias/list/item/editable-field/editable
 import { ListsComponent } from './lists/lists.component';
 import { StructureComponent } from './structure/structure.component';
 import { EvaluationBlockComponent } from './processing/evaluation-block/evaluation-block.component';
+import { CommentsComponent as ProcessingCommentsComponent} from './processing/comments/comments.component';
 
 const providersList: any = [
   AppDataService,
@@ -173,6 +174,7 @@ export function createTranslateLoader(http: HttpClient) {
     ListsComponent,
     StructureComponent,
     EvaluationBlockComponent
+    ProcessingCommentsComponent
   ],
   imports: [
     BrowserModule,
