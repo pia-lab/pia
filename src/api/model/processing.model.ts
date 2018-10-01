@@ -1,6 +1,6 @@
 
 import { BaseModel } from '@api/model/base.model';
-import { FolderModel, ProcessingCommentModel } from '@api/models';
+import { FolderModel, ProcessingCommentModel, ProcessingAttachmentModel } from '@api/models';
 
 export class Processing extends BaseModel {
   public id: any;
@@ -26,6 +26,7 @@ export class Processing extends BaseModel {
   public exactness: string;
   public minimization: string;
   public comments: ProcessingCommentModel[] = [];
+  public attachments: ProcessingAttachmentModel[] = [];
 }
 
 export enum ProcessingStatus {
