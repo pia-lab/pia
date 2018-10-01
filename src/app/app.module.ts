@@ -173,7 +173,7 @@ export function createTranslateLoader(http: HttpClient) {
     EditableFieldComponent,
     ListsComponent,
     StructureComponent,
-    EvaluationBlockComponent
+    EvaluationBlockComponent,
     ProcessingCommentsComponent
   ],
   imports: [
