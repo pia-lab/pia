@@ -170,6 +170,9 @@
           "remove": "Delete"
         }
       }
+    },
+    "structure": {
+      "info_button": "Structure informations"
     }
   },
   "pia": {
@@ -219,13 +222,57 @@
       "mandatory_fields": "All fields must be filled"
     }
   },
+  "structure": {
+    "form": {
+      "name": {
+        "title": "Name"
+      },
+      "address": {
+        "title": "Address"
+      },
+      "phone": {
+        "title": "Phone number"
+      },
+      "siren": {
+        "title": "SIREN"
+      },
+      "siret": {
+        "title": "SIRET (HQ)"
+      },
+      "vat_number": {
+        "title": "Vat Number"
+      },
+      "activity_code": {
+        "title": "Activity Code"
+      },
+      "legal_form": {
+        "title": "Legal form"
+      },
+      "registration_date": {
+        "title": "Registration date"
+      }
+    }
+  },
   "processing": {
+    "comments": {
+      "add": "Comment",
+      "new": "Send",
+      "count": "comment(s)",
+      "comment": "Comment",
+      "placeholder_new_comment": "Leave a comment"
+    },
     "form": {
       "previous": "Previous section",
       "next": "Next section",
+      "ask_validate_button": "Ask for processing validation",
+      "cancel_ask_validate_button": "Cancel processing validation ask",
       "description": {
         "title": "Quelles sont les finalités du traitement ?",
         "placeholder": "Décrivez les objectifs et finalités du traitement"
+      },
+      "context_of_implementation": {
+        "title": "Quel est le context de mise en œuvre du traitement ?",
+        "placeholder": "Décrivez le context de mise en œuvre du traitement"
       },
       "controllers": {
         "title": "Quelles sont les personnes responsables du traitement?",
@@ -248,9 +295,33 @@
         "title": "Sous traitants",
         "placeholder": "Listez les sous traitants"
       },
+      "recipients": {
+        "title": "Destinataires",
+        "placeholder": "Listez les destinataires du traitement"
+      },
       "lifecycle": {
-        "title": "Cycle de vie des données",
-        "placeholder": "Décrivez le cycle de vie des données pour ce traitement"
+        "title": "Data lifecycle",
+        "placeholder": "Describe data lifecycle in this processing"
+      },
+      "lawfulness": {
+        "title": "Quels sont les fondements qui rendent le traitement licite ?",
+        "placeholder": "Presentez les fondements de votre traitement (ex: consentement, exécution d'un contrat, obligation légale, etc...)"
+      },
+      "consent": {
+        "title": "Si applicable, comment le consentement des personnes concernées est-il obtenu ou comment sont elles informées?",
+        "placeholder": "Décrivez les modalités prévues pour obtenir le consentement des personnes concernées ou les informer qu'elles sont concernées par le traitement."
+      },
+      "rights_guarantee": {
+        "title": "Mesures protectrices des droits",
+        "placeholder": "Décrivez les modalités prévues pour guarantir les droits élémentaires des personnes concernées (portabilité, oubli, limitation, opposition, rectification, suppression)."
+      },
+      "minimization": {
+        "title": "Les données collectées sont-elles adéquates, pertinentes et limitées à ce qui est nécessaire au regard des finalités pour lesquelles elles sont traitées (minimisation des données) ?",
+        "placeholder": "Expliquez en quoi chaque donnée collectée est nécessaire aux finalités de votre traitement."
+      },
+      "exactness": {
+        "title": "Les données sont-elles exactes et tenues à jour ?",
+        "placeholder": "Décrivez les mesures prévues pour assurer la qualité et la pertinence des données."
       },
       "sections": {
         "description": {
@@ -265,11 +336,18 @@
           "title": "Cycle de vie des données",
           "short_help": ""
         }
+      },
+      "pia_section": {
+        "title": "PIAs",
+        "new_pia_button": "Create new PIA",
+        "list_button": "List of PIAs"
       }
     },
     "statuses": {
-      "0": "Validated",
-      "1": "Archived"
+      "0": "Doing",
+      "1": "To be validated",
+      "2": "Validated",
+      "3": "Archived"
     },
     "pia-list": {
       "table-header": {
@@ -928,7 +1006,10 @@
       "1": "To correct",
       "2": "Improvable",
       "3": "Acceptable"
-    }
+    },
+    "processing_validated": "Processing validated",
+    "processing_partialy_validated": "Processing partially validated",
+    "cancel": "Cancel validation"
   },
   "help": {
     "title": "Help",

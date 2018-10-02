@@ -8,7 +8,8 @@ import { AttachmentsService } from 'app/entry/attachments/attachments.service';
 import { FormControl, FormGroup } from '@angular/forms';
 
 import { PiaModel, FolderModel, ProcessingModel } from '@api/models';
-import { PiaApi, FolderApi, ProcessingApi } from '@api/services';
+import { PiaApi, FolderApi, ProcessingApi, ProcessingAttachmentApi } from '@api/services';
+import { AttachmentsService as ProcessingAttachmentsService } from 'app/processing/attachments/attachments.service';
 import { PiaType } from '@api/model/pia.model';
 
 
@@ -38,6 +39,8 @@ export class ModalsComponent implements OnInit {
     public _measuresService: MeasureService,
     public _attachmentsService: AttachmentsService,
     private piaApi: PiaApi,
+    public processingAttachmentApi: ProcessingAttachmentApi,
+    public processingAttachmentsService: ProcessingAttachmentsService,
     public _folderApi: FolderApi
   ) { }
 
@@ -52,7 +55,7 @@ export class ModalsComponent implements OnInit {
     this.processingForm = new FormGroup({
       name: new FormControl(),
       author: new FormControl(),
-      controllers: new FormControl()
+      designated_controller: new FormControl()
     });
 
     this.folderForm = new FormGroup({
@@ -95,7 +98,7 @@ export class ModalsComponent implements OnInit {
 
     this.piaApi.create(pia).subscribe((newPia: PiaModel) => {
       this.piaForm.reset();
-      this.router.navigate(['entry', newPia.id, 'section', 2, 'item', 1]);
+      this.router.navigate(['entry', newPia.id, 'section', 3, 'item', 1]);
     });
   }
 
@@ -108,7 +111,7 @@ export class ModalsComponent implements OnInit {
     const processing = new ProcessingModel();
     processing.name = this.processingForm.value.name;
     processing.author = this.processingForm.value.author;
-    processing.controllers = this.processingForm.value.controllers;
+    processing.designated_controller = this.processingForm.value.designated_controller;
 
     this._processingApi.create(processing, this._piaService.currentFolder).subscribe((newProcessing: ProcessingModel) => {
       this.piaForm.reset();

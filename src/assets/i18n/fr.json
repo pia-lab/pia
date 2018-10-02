@@ -188,27 +188,94 @@
           "remove": "Supprimer"
         }
       }
+    },
+    "structure": {
+      "info_button": "Informations de la structure"
+    }
+  },
+  "structure": {
+    "form": {
+      "name": {
+        "title": "Dénomination"
+      },
+      "address": {
+        "title": "Adresse"
+      },
+      "phone": {
+        "title": "Numéro de téléphone"
+      },
+      "siren": {
+        "title": "SIREN"
+      },
+      "siret": {
+        "title": "SIRET (Siège)"
+      },
+      "vat_number": {
+        "title": "Numéro de TVA intracommunautaire"
+      },
+      "activity_code": {
+        "title": "Activité (Code NAF ou APE)"
+      },
+      "legal_form": {
+        "title": "Forme juridique"
+      },
+      "registration_date": {
+        "title": "Date immatriculation RCS"
+      }
     }
   },
   "processing": {
+    "comments": {
+      "add": "Commenter",
+      "new": "Envoyer",
+      "count": "commentaire(s)",
+      "comment": "Commentaire",
+      "placeholder_new_comment": "Laisser un commentaire"
+    },
     "form": {
       "previous": "Section précédente",
       "next": "Section suivante",
+      "ask_validate_button": "Demander la validation du traitement",
+      "cancel_ask_validate_button": "Annuler la demande de validation du traitement",
       "description": {
         "title": "Quelles sont les finalités du traitement ?",
         "placeholder": "Décrivez les objectifs et finalités du traitement"
+      },
+      "context_of_implementation": {
+        "title": "Quel est le contexte de mise en œuvre du traitement ?",
+        "placeholder": "Décrivez le contexte de mise en œuvre du traitement"
       },
       "controllers": {
         "title": "Quelles sont les personnes responsables du traitement?",
         "placeholder": "Désignez les personnes opérationnelles qui sont responsables du traitement"
       },
+      "lawfulness": {
+        "title": "Quels sont les fondements qui rendent le traitement licite ?",
+        "placeholder": "Presentez les fondements de votre traitement (ex: consentement, exécution d'un contrat, obligation légale, etc...)"
+      },
       "standards": {
         "title": "Quels sont les référenciels applicables ?",
         "placeholder": "Listez les référenciels qui concernent ce traitement"
       },
+      "consent": {
+        "title": "Si applicable, comment le consentement des personnes concernées est-il obtenu ou comment sont elles informées?",
+        "placeholder": "Décrivez les modalités prévues pour obtenir le consentement des personnes concernées ou les informer qu'elles sont concernées par le traitement."
+      },
+      "rights_guarantee": {
+        "title": "Mesures protectrices des droits",
+        "placeholder": "Décrivez les modalités prévues pour guarantir les droits élémentaires des personnes concernées (portabilité, oubli, limitation, opposition, rectification, suppression)."
+      },
+      "minimization": {
+        "title": "Les données collectées sont-elles adéquates, pertinentes et limitées à ce qui est nécessaire au regard des finalités pour lesquelles elles sont traitées (minimisation des données) ?",
+        "placeholder": "Expliquez en quoi chaque donnée collectée est nécessaire aux finalités de votre traitement."
+      },
+      "exactness": {
+        "title": "Les données sont-elles exactes et tenues à jour ?",
+        "placeholder": "Décrivez les mesures prévues pour assurer la qualité et la pertinence des données."
+      },
       "non-eu-transfer":  {
-        "title": "Transfert hors UE",
-        "placeholder": "Laisser vide si pas de transfert de données hors UE"
+        "title": "En cas de transfert de données en dehors de l'Union européenne, les données sont-elles protégées de manière équivalente ?",
+        "placeholder": "Pour chaque pays en dehors de l'Union européenne où des données sont stockées ou traitées, identifiez-le et indiquez s'il est reconnu comme adéquat ou décrivez les clauses qui encadrent le transfert.(Laisser vide si pas de transfert de données hors UE)"
       },
       "data-types": "Types de données traitées",
       "storage": {
@@ -219,9 +286,13 @@
         "title": "Sous traitants",
         "placeholder": "Listez les sous traitants"
       },
+      "recipients": {
+        "title": "Destinataires",
+        "placeholder": "Listez les destinataires du traitement"
+      },
       "lifecycle": {
         "title": "Cycle de vie des données",
-        "placeholder": "Décrivez le cycle de vie des données pour ce traitement"
+        "placeholder": "Décrivez le cycle de vie des données pour ce traitement (description fonctionnelle)"
       },
       "sections": {
         "description": {
@@ -236,11 +307,18 @@
           "title": "Cycle de vie des données",
           "short_help": ""
         }
+      },
+      "pia_section": {
+        "title": "PIAs",
+        "new_pia_button": "Créer un PIA",
+        "list_button": "Voir la liste des PIAs"
       }
     },
     "statuses": {
-      "0": "Valide",
-      "1": "Archivé"
+      "0": "En cours",
+      "1": "À valider",
+      "2": "Valide",
+      "3": "Archivé"
     },
     "pia-list": {
       "table-header": {
@@ -942,7 +1020,10 @@
       "1": "À corriger",
       "2": "Améliorable",
       "3": "Acceptable"
-    }
+    },
+    "processing_validated": "Traitement validé",
+    "processing_partialy_validated": "Traitement validé avec réserves",
+    "cancel": "Annuler la validation"
   },
   "help": {
     "title": "Aide",

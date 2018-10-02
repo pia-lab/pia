@@ -224,7 +224,7 @@
         <span class="pia-icons pia-icon-sad"></span>
         <div class="pia-modalBlock-buttons-choice">
             <button tabindex="1" class="btn btn-red get-focus" type="button" (click)="_modalsService.closeModal()">{{ 'modals.cancel' | translate }}</button>
-            <button tabindex="2" class="btn btn-red" (click)="_piaService.removeProcessing()" type="button">{{ 'modals.remove_processing.remove' | translate }}</button>
+            <button tabindex="2" class="btn-confirm btn btn-red" (click)="_piaService.removeProcessing()" type="button">{{ 'modals.remove_processing.remove' | translate }}</button>
         </div>
     </div>
 </div>
@@ -256,6 +256,20 @@
         <div class="pia-modalBlock-buttons-choice">
             <button tabindex="1" class="btn btn-red get-focus" type="button" (click)="_modalsService.closeModal()">{{ 'modals.remove_attachment.keep' | translate }}</button>
             <button tabindex="2" class="btn btn-red" [disabled]="enableSubmit" (click)="_attachmentsService.removeAttachment(removeAttachmentForm.controls['comment'].value)"
+                type="button">{{ 'modals.remove_attachment.remove' | translate }}</button>
+        </div>
+    </div>
+</div>
+
+<div class="pia-modalBlock" id="modal-remove-processing-attachment">
+    <div class="pia-modalBlock-content pia-modalBlock-removeAttachment bounceIn">
+        <button tabindex="3" type="button" class="pia-modalBlock-close btn" title="{{ 'modals.close' | translate }}" (click)="_modalsService.closeModal()">
+            <span class="pia-icons pia-icon-close-big"></span>
+        </button>
+        <p [innerHTML]="'modals.remove_attachment.content' | translate"></p>
+        <div class="pia-modalBlock-buttons-choice">
+            <button tabindex="1" class="btn btn-red get-focus" type="button" (click)="_modalsService.closeModal()">{{ 'modals.remove_attachment.keep' | translate }}</button>
+            <button tabindex="2" class="btn btn-red" (click)="processingAttachmentsService.deleteAttachment()"
                 type="button">{{ 'modals.remove_attachment.remove' | translate }}</button>
         </div>
     </div>
@@ -359,9 +373,9 @@
                     required>
             </div>
             <div>
-                <label for="controllers">{{ 'homepage.cards.controllers' | translate }}</label>
-                <input formControlName="controllers" type="text" placeholder="{{ 'homepage.cards.placeholder_controllers' | translate }}"
-                    id="controllers" required>
+                <label for="designated-controller">{{ 'homepage.cards.designated_controller' | translate }}</label>
+                <input formControlName="designated_controller" type="text" placeholder="{{ 'homepage.cards.placeholder_designated_controller' | translate }}"
+                    id="designated-controller" required>
             </div>
             <p>&nbsp;</p>
             <!--
