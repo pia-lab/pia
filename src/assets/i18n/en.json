@@ -131,7 +131,8 @@
         "title": "Folder",
         "parent": "Parent folder",
         "open": "Open folder",
-        "root": "Root folder"
+        "root": "Root folder",
+        "person_in_charge": "Person in charge"
       },
       "item": {
         "tools": {
@@ -226,6 +227,15 @@
     "form": {
       "name": {
         "title": "Name"
+      },
+      "executive": {
+        "title": "Executive"
+      },
+      "backup": {
+        "title": "Backup"
+      },
+      "dpo": {
+        "title": "DPO"
       },
       "address": {
         "title": "Address"
@@ -322,6 +332,10 @@
       "exactness": {
         "title": "Les données sont-elles exactes et tenues à jour ?",
         "placeholder": "Décrivez les mesures prévues pour assurer la qualité et la pertinence des données."
+      },
+      "concerned_people": {
+        "title": "Concerned people",
+        "placeholder": "Détaillez les types de personnes concernées"
       },
       "sections": {
         "description": {
